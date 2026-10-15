@@ -1,0 +1,2914 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMA Learning Hub - Belajar Jadi Gampang</title>
+<style>
+  :root {
+    --primary: #8b5cf6;
+    --primary-light: #a78bfa;
+    --primary-dark: #6d28d9;
+    --primary-bg: #f5f3ff;
+    --primary-bg-2: #ede9fe;
+    --text: #1f2937;
+    --text-muted: #6b7280;
+    --white: #ffffff;
+    --border: #e5e7eb;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --shadow: 0 4px 20px rgba(139, 92, 246, 0.08);
+    --shadow-hover: 0 8px 30px rgba(139, 92, 246, 0.15);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #faf5ff 0%, #f5f3ff 100%);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
+  }
+
+  .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    cursor: pointer;
+  }
+
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  }
+
+  .breadcrumb {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .breadcrumb span {
+    color: var(--primary);
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .breadcrumb span:hover { text-decoration: underline; }
+
+  /* ===== CONTAINER ===== */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ===== SECTION ===== */
+  .section-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .section-title::before {
+    content: '';
+    width: 5px;
+    height: 24px;
+    background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+    border-radius: 4px;
+  }
+
+  /* ===== GRID ===== */
+  .grid {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .grid-kelas {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .grid-mapel {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .grid-bab {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  /* ===== CARDS ===== */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-light);
+  }
+
+  .card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .card-kelas {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .card-kelas .icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .card-kelas .title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin-bottom: 0.25rem;
+  }
+
+  .card-kelas .subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .card-mapel {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .card-mapel .icon {
+    font-size: 2rem;
+  }
+
+  .card-mapel .name {
+    font-weight: 700;
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+
+  /* ===== BAB CARD ===== */
+  .card-bab {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.25rem;
+  }
+
+  .bab-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .bab-number {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--primary);
+    background: var(--primary-bg-2);
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .bab-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.35;
+  }
+
+  .bab-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .progress-bar {
+    height: 6px;
+    background: var(--primary-bg-2);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 0.25rem;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+    border-radius: 3px;
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+
+  .bab-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    padding: 0.6rem 1.1rem;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: var(--white);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(139, 92, 246, 0.4);
+  }
+
+  .btn-outline {
+    background: var(--white);
+    color: var(--primary);
+    border: 2px solid var(--primary-light);
+  }
+
+  .btn-outline:hover {
+    background: var(--primary-bg);
+  }
+
+  .btn-block { width: 100%; justify-content: center; }
+
+  .btn-back {
+    background: var(--white);
+    color: var(--primary);
+    border: 2px solid var(--border);
+    padding: 0.5rem 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  .btn-back:hover { border-color: var(--primary-light); background: var(--primary-bg); }
+
+  /* ===== MATERI VIEW ===== */
+  .materi-content {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+  }
+
+  .materi-content h2 {
+    color: var(--primary-dark);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--primary-bg-2);
+  }
+
+  .materi-content h3 {
+    color: var(--primary);
+    font-size: 1.15rem;
+    margin: 1.5rem 0 0.75rem;
+  }
+
+  .materi-content p {
+    margin-bottom: 0.85rem;
+    color: #374151;
+  }
+
+  .materi-content ul {
+    margin: 0.75rem 0 1rem 1.5rem;
+    color: #374151;
+  }
+
+  .materi-content li { margin-bottom: 0.4rem; }
+
+  .highlight-box {
+    background: var(--primary-bg);
+    border-left: 4px solid var(--primary);
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-sm);
+    margin: 1rem 0;
+  }
+
+  .highlight-box strong { color: var(--primary-dark); }
+
+  .contoh-soal {
+    background: #fffbeb;
+    border-left: 4px solid var(--warning);
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-sm);
+    margin: 1rem 0;
+  }
+
+  .contoh-soal strong { color: #92400e; }
+
+  .rumus-box {
+    background: linear-gradient(135deg, var(--primary-bg) 0%, var(--primary-bg-2) 100%);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin: 1rem 0;
+    border: 2px dashed var(--primary-light);
+  }
+
+  .materi-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  /* ===== QUIZ ===== */
+  .quiz-container {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+  }
+
+  .quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .quiz-progress {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary);
+    background: var(--primary-bg-2);
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+  }
+
+  .quiz-question {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .quiz-option {
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--border);
+    background: var(--white);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+    font-family: inherit;
+    text-align: left;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .quiz-option:hover:not(:disabled) {
+    border-color: var(--primary-light);
+    background: var(--primary-bg);
+    transform: translateX(4px);
+  }
+
+  .quiz-option:disabled { cursor: default; }
+
+  .quiz-option.correct {
+    background: #d1fae5;
+    border-color: var(--success);
+    color: #065f46;
+  }
+
+  .quiz-option.wrong {
+    background: #fee2e2;
+    border-color: var(--danger);
+    color: #991b1b;
+  }
+
+  .option-label {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--primary-bg-2);
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .quiz-option.correct .option-label { background: var(--success); color: white; }
+  .quiz-option.wrong .option-label { background: var(--danger); color: white; }
+
+  .quiz-explanation {
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    animation: slideIn 0.3s ease;
+  }
+
+  .quiz-explanation.correct {
+    background: #d1fae5;
+    border-left: 4px solid var(--success);
+    color: #065f46;
+  }
+
+  .quiz-explanation.wrong {
+    background: #fee2e2;
+    border-left: 4px solid var(--danger);
+    color: #991b1b;
+  }
+
+  .quiz-explanation strong { display: block; margin-bottom: 0.4rem; }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .quiz-result {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .quiz-score {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 1rem 0;
+  }
+
+  .quiz-result h3 {
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .quiz-result p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ===== FLASHCARDS ===== */
+  .flashcard-container {
+    max-width: 600px;
+    margin: 0 auto;
+    perspective: 1000px;
+  }
+
+  .flashcard {
+    width: 100%;
+    height: 320px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+  }
+
+  .flashcard.flipped { transform: rotateY(180deg); }
+
+  .flashcard-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: var(--radius);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: var(--shadow-hover);
+  }
+
+  .flashcard-front {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: var(--white);
+  }
+
+  .flashcard-back {
+    background: var(--white);
+    color: var(--text);
+    transform: rotateY(180deg);
+    border: 2px solid var(--primary-light);
+  }
+
+  .flashcard-face .label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 1rem;
+  }
+
+  .flashcard-front .content {
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .flashcard-back .content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #374151;
+  }
+
+  .flashcard-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .flashcard-counter {
+    font-weight: 700;
+    color: var(--primary-dark);
+    font-size: 0.95rem;
+    min-width: 80px;
+    text-align: center;
+  }
+
+  /* ===== ANIMASI PELAJARAN ===== */
+  .animasi-container {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .animasi-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+  }
+
+  .animasi-canvas {
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(135deg, #faf5ff 0%, #ede9fe 100%);
+    border-radius: var(--radius-sm);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    border: 2px dashed var(--primary-light);
+  }
+
+  .animasi-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Animasi Matematika - Gelombang Sinus */
+  @keyframes drawWave {
+    from { stroke-dashoffset: 1200; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes floatPoint {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* Animasi Fisika - Bola Jatuh */
+  @keyframes ballBounce {
+    0% { transform: translateY(-100px); }
+    50% { transform: translateY(0); }
+    100% { transform: translateY(-100px); }
+  }
+
+  /* Animasi Kimia - Atom */
+  @keyframes orbit {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.15); opacity: 0.8; }
+  }
+
+  /* Animasi Geografi - Bumi Berputar */
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes cloudMove {
+    from { transform: translateX(-50px); }
+    to { transform: translateX(350px); }
+  }
+
+  .animasi-controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .animasi-caption {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+    font-style: italic;
+  }
+
+  /* ===== HIDDEN ===== */
+  .hidden { display: none !important; }
+
+  /* ===== STATS ===== */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .stat-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border-top: 3px solid var(--primary);
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    .container { padding: 1rem; }
+    header { padding: 0.75rem 1rem; }
+    .logo { font-size: 1.1rem; }
+    .logo-icon { width: 36px; height: 36px; font-size: 1.2rem; }
+    .hero { padding: 1.5rem 0.5rem; }
+    .materi-content, .quiz-container { padding: 1.25rem; }
+    .flashcard { height: 280px; }
+    .flashcard-front .content { font-size: 1.1rem; }
+    .animasi-canvas { height: 220px; }
+    .grid-mapel { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+    .grid-bab { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-content">
+    <div class="logo" onclick="goHome()">
+      <div class="logo-icon">🎓</div>
+      <span>SMA Learning Hub</span>
+    </div>
+    <div class="breadcrumb" id="breadcrumb"></div>
+  </div>
+</header>
+
+<div class="container">
+  <!-- HOME VIEW -->
+  <div id="homeView">
+    <div class="hero">
+      <h1>Belajar SMA Jadi Gampang 🚀</h1>
+      <p>Materi lengkap kelas 10, 11, 12. Ada kuis, flashcard, dan animasi interaktif. Belajar santai, hasil maksimal!</p>
+    </div>
+
+    <div class="stats-row" id="statsRow">
+      <div class="stat-card">
+        <div class="stat-value">10</div>
+        <div class="stat-label">Mata Pelajaran</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">3</div>
+        <div class="stat-label">Tingkat Kelas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="totalBabStat">0</div>
+        <div class="stat-label">Total Bab</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="progressStat">0%</div>
+        <div class="stat-label">Progress Belajar</div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Pilih Kelas</h2>
+    <div class="grid grid-kelas" id="kelasGrid"></div>
+  </div>
+
+  <!-- MAPEL VIEW -->
+  <div id="mapelView" class="hidden">
+    <button class="btn btn-back" onclick="goHome()">← Kembali ke Beranda</button>
+    <h2 class="section-title" id="mapelViewTitle">Pilih Mata Pelajaran</h2>
+    <div class="grid grid-mapel" id="mapelGrid"></div>
+  </div>
+
+  <!-- BAB VIEW -->
+  <div id="babView" class="hidden">
+    <button class="btn btn-back" id="babBackBtn">← Kembali</button>
+    <h2 class="section-title" id="babViewTitle">Daftar Bab</h2>
+    <div class="grid grid-bab" id="babGrid"></div>
+  </div>
+
+  <!-- MATERI VIEW -->
+  <div id="materiView" class="hidden">
+    <button class="btn btn-back" id="materiBackBtn">← Kembali ke Daftar Bab</button>
+    <div class="materi-content" id="materiContent"></div>
+    <div class="materi-nav">
+      <button class="btn btn-outline" id="btnPrevBab">← Bab Sebelumnya</button>
+      <button class="btn btn-primary" id="btnKuis">📝 Mulai Kuis (10 Soal)</button>
+      <button class="btn btn-outline" id="btnNextBab">Bab Selanjutnya →</button>
+    </div>
+  </div>
+
+  <!-- QUIZ VIEW -->
+  <div id="quizView" class="hidden">
+    <button class="btn btn-back" id="quizBackBtn">← Kembali ke Materi</button>
+    <div class="quiz-container" id="quizContent"></div>
+  </div>
+
+  <!-- FLASHCARD VIEW -->
+  <div id="flashcardView" class="hidden">
+    <button class="btn btn-back" id="flashcardBackBtn">← Kembali</button>
+    <h2 class="section-title" id="flashcardTitle">Flashcards</h2>
+    <div class="flashcard-container">
+      <div class="flashcard" id="flashcard" onclick="flipCard()">
+        <div class="flashcard-face flashcard-front">
+          <div class="label">Pertanyaan</div>
+          <div class="content" id="flashcardFront">-</div>
+        </div>
+        <div class="flashcard-face flashcard-back">
+          <div class="label">Jawaban</div>
+          <div class="content" id="flashcardBack">-</div>
+        </div>
+      </div>
+      <div class="flashcardface flashcard-front">
+          <div class="label">Pertanyaan</div>
+          <div class="content" id="flashcardFront">-</div>
+        </div>
+        <div class="flashcard-face flashcard-back">
+          <div class="label">Jawaban</div>
+          <div class="content" id="flashcardBack">-</div>
+        </div>
+      </div>
+      <div class="flashcard-controls">
+        <button class="btn btn-outline" onclick="prevCard()">← Sebelumnya</button>
+        <div class="flashcard-counter" id="flashcardCounter">1 / 1</div>
+        <button class="btn btn-primary" onclick="nextCard()">Selanjutnya →</button>
+      </div>
+      <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; margin-top:1rem;">
+        💡 Klik kartu buat lihat jawaban
+      </p>
+    </div>
+  </div>
+
+ <!-- ANIMASI VIEW -->
+  <div id="animasiView" class="hidden">
+    <button class="btn btn-back" id="animasiBackBtn">← Kembali</button>
+    <h2 class="section-title" id="animasiTitle">Animasi Interaktif</h2>
+    <div class="animasi-container">
+      <div class="animasi-title" id="animasiSubtitle">Visualisasi Konsep</div>
+      <div class="animasi-canvas" id="animasiCanvas"></div>
+      <div class="animasi-caption" id="animasiCaption"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   DATA MATA PELAJARAN & BAB
+   ============================================================*/
+
+      const MAPEL = {
+  matematika: { name: "Matematika", icon: "📐", color: "#8b5cf6", hasAnimasi: true },
+  fisika:     { name: "Fisika",     icon: "⚛️", color: "#06b6d4", hasAnimasi: true },
+  kimia:      { name: "Kimia",      icon: "🧪", color: "#10b981", hasAnimasi: true },
+  biologi:    { name: "Biologi",    icon: "🧬", color: "#22c55e", hasAnimasi: false },
+  bindo:      { name: "Bahasa Indonesia", icon: "📖", color: "#f59e0b", hasAnimasi: false },
+  bing:       { name: "Bahasa Inggris",   icon: "🌍", color: "#3b82f6", hasAnimasi: false },
+  sejarah:    { name: "Sejarah",    icon: "🏛️", color: "#a16207", hasAnimasi: false },
+  geografi:   { name: "Geografi",   icon: "🗺️", color: "#14b8a6", hasAnimasi: true },
+  ekonomi:    { name: "Ekonomi",    icon: "💰", color: "#eab308", hasAnimasi: false },
+  sosiologi:  { name: "Sosiologi",  icon: "👥", color: "#ec4899", hasAnimasi: false }
+};
+
+// Data bab per kelas per mapel
+const DATA = {
+  10: {
+    matematika: [
+      { 
+        title: "Persamaan & Pertidaksamaan Linear", 
+        desc: "Konsep dasar persamaan linear satu variabel dan penerapannya.",
+        materi: `
+          <h2>Persamaan & Pertidaksamaan Linear</h2>
+          <p>Persamaan linear adalah persamaan yang variabelnya berpangkat satu. Bentuk umumnya: <strong>ax + b = 0</strong> dengan a ≠ 0.</p>
+          <h3>🎯 Konsep Dasar</h3>
+          <ul>
+            <li><strong>Persamaan Linear:</strong> ax + b = c, tanda "=" menyatakan kesetaraan</li>
+            <li><strong>Pertidaksamaan Linear:</strong> ax + b &lt; c, pakai tanda &lt;, &gt;, ≤, ≥</li>
+            <li>Yang penting: kalau dikali/dibagi bilangan negatif, tanda pertidaksamaan <strong>dibalik</strong>!</li>
+          </ul>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> Pindahkan semua variabel ke satu sisi, konstanta ke sisi lain. Lalu sederhanakan.
+          </div>
+          <h3>📝 Contoh Soal</h3>
+          <div class="contoh-soal">
+            <strong>Tentukan nilai x dari 3x + 5 = 20</strong><br><br>
+            Penyelesaian:<br>
+            3x + 5 = 20<br>
+            3x = 20 − 5<br>
+            3x = 15<br>
+            x = 15/3 = <strong>5</strong>
+          </div>
+          <div class="contoh-soal">
+            <strong>Selesaikan 2x − 3 &lt; 7</
+          strong><br><br>
+            2x − 3 &lt; 7<br>
+            2x &lt; 10<br>
+            x &lt; <strong>5</strong>
+          </div>
+        `,
+          flashcards: [
+          { q: "Bentuk umum persamaan linear?", a: "ax + b = 0, dengan a ≠ 0" },
+          { q: "Apa yang terjadi pada tanda pertidaksamaan jika dikali bilangan negatif?", a: "Tanda dibalik (misal < menjadi >)" },
+          { q: "Selesaikan x + 7 = 15", a: "x = 8" }
+        ],
+          kuis: [
+          { q: "Nilai x dari 2x + 4 = 12 adalah...", opts: ["2", "3", "4", "5"], ans: 2, exp: "2x = 12 − 4 = 8, maka x = 8/2 = 4." },
+          { q: "Jika 5x − 3 = 22, maka x = ...", opts: ["3", "4", "5", "6"], ans: 2, exp: "5x = 25, x = 5." },
+          { q: "Himpunan penyelesaian 3x + 1 > 10 adalah...", opts: ["x > 3", "x < 3", "x > 4", "x < 4"], ans: 0, exp: "3x > 9, x > 3." },
+          { q: "Jika 2(x − 3) = 8, maka x = ...", opts: ["5", "6", "7", "8"], ans: 2, exp: "x − 3 = 4, x = 7." },
+          { q: "Pertidaksamaan x/2 + 1 ≤ 4 punya solusi...", opts: ["x ≤ 4", "x ≤ 6", "x ≥ 4", "x ≥ 6"], ans: 1, exp: "x/2 ≤ 3, x ≤ 6." },
+          { q: "Jika −2x > 8, maka...", opts: ["x > −4", "x < −4", "x > 4", "x < 4"], ans: 1, exp: "Bagi dengan −2, tanda dibalik: x < −4." },
+          { q: "Nilai x dari 4x − 7 = 2x + 5 adalah...", opts: ["4", "5", "6", "7"], ans: 2, exp: "2x = 12, x = 6." },
+          { q: "Solusi 5 − 2x ≥ 1 adalah...", opts: ["x ≥ 2", "x ≤ 2", "x ≥ 3", "x ≤ 3"], ans: 1, exp: "−2x ≥ −4, x ≤ 2." },
+          { q: "Jika 3x + 2 = x + 10, nilai x = ...", opts: ["3", "4", "5", "6"], ans: 1, exp: "2x = 8, x = 4." },
+          { q: "Pertidaksamaan 4x + 3 < 2x + 11 punya solusi...", opts: ["x < 4", "x > 4", "x < 2", "x > 2"], ans: 0, exp: "2x < 8, x < 4." }
+        ]
+      },
+      { 
+  title: "Fungsi Kuadrat", 
+        desc: "Grafik parabola, akar-akar, dan titik puncak fungsi kuadrat.",
+        materi: `
+          <h2>Fungsi Kuadrat</h2>
+          <p>Fungsi kuadrat punya bentuk umum <strong>f(x) = ax² + bx + c</strong> dengan a ≠ 0. Grafiknya berbentuk parabola.</p>
+          <h3>🎯 Karakteristik</h3>
+          <ul>
+            <li>Jika a > 0 → parabola terbuka ke atas (punya nilai minimum)</li>
+            <li>Jika a < 0 → parabola terbuka ke bawah (punya nilai maksimum)</li>
+            <li>Titik puncak: x = −b/(2a)</li>
+            <li>Diskriminan D = b² − 4ac menentukan jumlah akar</li>
+          </ul>
+          <div class="rumus-box">x = (−b ± √(b² − 4ac)) / 2a</div>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> D > 0 → 2 akar berbeda, D = 0 → 1 akar (kembar), D < 0 → tidak ada akar real.
+          </div>
+              <h3>📝 Contoh Soal</h3>
+          <div class="contoh-soal">
+            <strong>Tentukan akar dari x² − 5x + 6 = 0</strong><br><br>
+            a=1, b=−5, c=6<br>
+            D = 25 − 24 = 1<br>
+            x = (5 ± 1)/2 → x₁ = 3, x₂ = 2
+          </div>
+        `,
+        flashcards: [
+          { q: "Bentuk umum fungsi kuadrat?", a: "f(x) = ax² + bx + c, a ≠ 0" },
+          { q: "Rumus titik puncak (x)?", a: "x = −b / (2a)" },
+          { q: "Apa arti D > 0?", a: "Punya 2 akar real yang berbeda" }
+        ],
+        kuis: [
+          { q: "Akar dari x² − 7x + 12 = 0 adalah...", opts: ["2 dan 6", "3 dan 4", "1 dan 12", "−3 dan −4"], ans: 1, exp: "Faktorkan: (x−3)(x−4)=0, x=3 atau x=4." },
+          { q: "Titik puncak f(x) = x² − 4x + 3 ada di x = ...", opts: ["1", "2", "3", "4"], ans: 1, exp: "x = −b/2a = 4/2 = 2." },
+          { q: "Jika D = 0, fungsi kuadrat punya...", opts: ["2 akar berbeda", "1 akar kembar", "Tidak ada akar", "Tak hingga akar"], ans: 1, exp: "D=0 berarti akar kembar (satu solusi)." },
+          { q: "Grafik f(x) = −x² + 2x + 3 terbuka ke...", opts: ["Atas", "Bawah", "Kanan", "Kiri"], ans: 1, exp: "a = −1 < 0, jadi terbuka ke bawah." },
+          { q: "Diskriminan dari x² + 2x + 5 = 0 adalah...", opts: ["−16", "16", "−4", "4"], ans: 0, exp: "D = 4 − 20 = −16." },
+          { q: "Akar x² − 9 = 0 adalah...", opts: ["3 saja", "−3 saja", "±3", "9"], ans: 2, exp: "x² = 9, x = ±3." },
+          { q: "Nilai minimum f(x) = x² − 6x + 5 adalah...", opts: ["−4", "−3", "−2", "−1"], ans: 0, exp: "x=3, f(3)=9−18+5=−4." },
+          { q: "Jika f(x) = 2x² + 4x, sumbu simetri di x = ...", opts: ["−1", "1", "−2", "2"], ans: 0, exp: "x = −4/4 = −1." },
+          { q: "Fungsi kuadrat yang tidak punya akar real adalah...", opts: ["D > 0", "D = 0", "D < 0", "a > 0"], ans: 2, exp: "D < 0 berarti tidak ada akar real." },
+          { q: "Akar dari x² + 5x + 6 = 0 adalah...", opts: ["−2 dan −3", "2 dan 3", "−1 dan −6", "1 dan 6"], ans: 0, exp: "(x+2)(x+3)=0, x=−2 atau x=−3." }
+        ]
+        },    
+        {
+        title: "Trigonometri Dasar", 
+        desc: "Sinus, cosinus, tangen pada segitiga siku-siku.",
+        materi: `
+          <h2>Trigonometri Dasar</h2>
+          <p>Trigonometri mempelajari hubungan antara sudut dan sisi segitiga.</p>
+          <h3>🎯 Rumus Dasar (SOH-CAH-TOA)</h3>
+          <div class="rumus-box">sin θ = depan / miring</div>
+          <div class="rumus-box">cos θ = samping / miring</div>
+          <div class="rumus-box">tan θ = depan / samping</div>
+          <h3>📐 Sudut Istimewa</h3>
+          <ul>
+            <li>sin 30° = 1/2, cos 30° = √3/2, tan 30° = 1/√3</li>
+            <li>sin 45° = cos 45° = 1/√2, tan 45° = 1</li>
+            <li>sin 60° = √3/2, cos 60° = 1/2, tan 60° = √3</li>
+           </ul>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> Hafalin sudut istimewa pakai tabel, atau ingat pola sin: 0, 1/2, 1/√2, √3/2, 1 untuk 0°, 30°, 45°, 60°, 90°.
+          </div>
+        `,
+        flashcards: [
+          { q: "sin 30° = ?", a: "1/2" },
+          { q: "cos 60° = ?", a: "1/2" },
+          { q: "tan 45° = ?", a: "1" },
+          { q: "Rumus sin θ?", a: "sisi depan / sisi miring" }
+        ],
+          kuis: [
+          { q: "Nilai sin 45° adalah...", opts: ["1/2", "1/√2", "√3/2", "1"], ans: 1, exp: "sin 45° = 1/√2 = √2/2." },
+          { q: "Nilai cos 30° adalah...", opts: ["1/2", "1/√2", "√3/2", "√3"], ans: 2, exp: "cos 30° = √3/2." },
+          { q: "tan 60° = ...", opts: ["1/√3", "1", "√3", "2"], ans: 2, exp: "tan 60° = √3." },
+          { q: "Jika sisi depan = 3, miring = 5, maka sin θ = ...", opts: ["3/5", "4/5", "5/3", "5/4"], ans: 0, exp: "sin = depan/miring = 3/5." },
+          { q: "sin 90° = ...", opts: ["0", "1/2", "1", "√3/2"], ans: 2, exp: "sin 90° = 1." },
+          { q: "cos 0° = ...", opts: ["0", "1/2", "1", "√3/2"], ans: 2, exp: "cos 0° = 1." },
+          { q: "tan 30° = ...", opts: ["√3", "1/√3", "1", "1/2"], ans: 1, exp: "tan 30° = 1/√3 = √3/3." },
+          { q: "Jika cos θ = 4/5, maka sisi samping = ... (miring 5)", opts: ["3", "4", "5", "9"], ans: 1, exp: "cos = samping/miring = 4/5, jadi samping = 4." },
+          { q: "sin 60° = ...", opts: ["1/2", "√3/2", "1/√2", "1"], ans: 1, exp: "sin 60° = √3/2." },
+          { q: "tan 0° = ...", opts: ["0", "1", "∞", "−1"], ans: 0, exp: "tan 0° = 0." }
+        ]
+        }
+        ],
+        fisika: [
+      {
+        title: "Besaran & Satuan",
+        desc: "Besaran pokok, turunan, dan sistem satuan internasional.",
+        materi: `
+          <h2>Besaran & Satuan</h2>
+          <p>Besaran adalah sesuatu yang bisa diukur dan dinyatakan dengan angka.</p>
+          <h3>🎯 Besaran Pokok (7 buah)</h3>
+          <ul>
+            <li>Panjang → meter (m)</li>
+            <li>Massa → kilogram (kg)</li>
+            <li>Waktu → sekon (s)</li>
+            <li>Suhu → Kelvin (K)</li>
+            <li>Kuat arus → Ampere (A)</li>
+            <li>Intensitas cahaya → Candela (cd)</li>
+            <li>Jumlah zat → Mol (mol)</li>
+          </ul>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> Besaran turunan = gabungan besaran pokok. Contoh: kecepatan (m/s), gaya (kg·m/s²).
+          </div>
+          <h3>📝 Contoh</h3>
+          <div class="contoh-soal">
+            <strong>Kecepatan 72 km/jam = ... m/s</strong><br><br>
+            72 × 1000/3600 = 72/3,6 = <strong>20 m/s</strong>
+          </div>
+        `,
+        flashcards: [
+          { q: "Satuan SI untuk panjang?", a: "Meter (m)" },
+          { q: "Satuan SI untuk massa?", a: "Kilogram (kg)" },
+          { q: "72 km/jam = ? m/s", a: "20 m/s" }
+        ],
+        kuis: [
+          { q: "Satuan SI untuk waktu adalah...", opts: ["Menit", "Jam", "Sekon", "Hari"], ans: 2, exp: "Satuan SI waktu adalah sekon (s)." },
+          { q: "Besaran pokok ada berapa?", opts: ["5", "6", "7", "8"], ans: 2, exp: "Ada 7 besaran pokok." },
+          { q: "Kecepatan termasuk besaran...", opts: ["Pokok", "Turunan", "Skalar", "Vektor"], ans: 1, exp: "Kecepatan = panjang/waktu, jadi besaran turunan." },
+             { q: "36 km/jam = ... m/s", opts: ["8", "10", "12", "15"], ans: 1, exp: "36/3,6 = 10 m/s." },
+          { q: "Satuan SI suhu adalah...", opts: ["Celsius", "Fahrenheit", "Kelvin", "Reamur"], ans: 2, exp: "Satuan SI suhu adalah Kelvin." },
+          { q: "1 kg = ... gram", opts: ["10", "100", "1000", "10000"], ans: 2, exp: "1 kg = 1000 g." },
+          { q: "Gaya termasuk besaran...", opts: ["Pokok", "Turunan", "Skalar", "Dasar"], ans: 1, exp: "Gaya = massa × percepatan, jadi turunan." },
+          { q: "Alat ukur panjang yang paling presisi...", opts: ["Penggaris", "Jangka sorong", "Meteran", "Mikrometer sekrup"], ans: 3, exp: "Mikrometer sekrup ketelitian 0,01 mm." },
+          { q: "1 jam = ... sekon", opts: ["60", "600", "3600", "7200"], ans: 2, exp: "1 jam = 60×60 = 3600 s." },
+          { q: "Massa jenis termasuk besaran...", opts: ["Pokok", "Turunan", "Skalar", "Vektor"], ans: 1, exp: "Massa jenis = massa/volume, turunan." }
+        ]
+      },
+      {
+        title: "Gerak Lurus",
+        desc: "GLB, GLBB, jarak, perpindahan, kecepatan, dan percepatan.",
+          materi: `
+          <h2>Gerak Lurus</h2>
+          <p>Gerak lurus adalah gerak benda pada lintasan garis lurus.</p>
+          <h3>🎯 Jenis Gerak</h3>
+          <ul>
+            <li><strong>GLB (Gerak Lurus Beraturan):</strong> kecepatan konstan, a = 0</li>
+            <li><strong>GLBB (Gerak Lurus Berubah Beraturan):</strong> kecepatan berubah, a konstan</li>
+          </ul>
+          <div class="rumus-box">GLB: s = v × t</div>
+          <div class="rumus-box">GLBB: v = v₀ + a·t</div>
+          <div class="rumus-box">GLBB: s = v₀·t + ½·a·t²</div>
+          <div class="rumus-box">GLBB: v² = v₀² + 2·a·s</div>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> GLBB dipercepat (a > 0), diperlambat (a < 0). Hafalin 3 rumus GLBB!
+          </div>
+          <h3>📝 Contoh Soal</h3>
+          <div class="contoh-soal">
+            <strong>Mobil dari diam, a = 2 m/s². Kecepatan setelah 5 s?</strong><br><br>
+            v = v₀ + at = 0 + 2·5 = <strong>10 m/s</strong>
+          </div>
+        `,
+        flashcards: [
+          { q: "Rumus GLB?", a: "s = v × t" },
+          { q: "Rumus kecepatan GLBB?", a: "v = v₀ + a·t" },
+          { q: "Apa itu GLBB?", a: "Gerak Lurus Berubah Beraturan, a konstan" }
+        ],
+           kuis: [
+          { q: "Mobil bergerak 20 m/s selama 10 s. Jarak = ...", opts: ["100 m", "200 m", "300 m", "400 m"], ans: 1, exp: "s = v·t = 20×10 = 200 m." },
+          { q: "Benda dari diam, a = 3 m/s². v setelah 4 s = ...", opts: ["7 m/s", "10 m/s", "12 m/s", "15 m/s"], ans: 2, exp: "v = 0 + 3·4 = 12 m/s." },
+          { q: "Pada GLB, percepatan = ...", opts: ["0", "1", "Konstan", "Berubah"], ans: 0, exp: "GLB kecepatan konstan, a = 0." },
+          { q: "Rumus jarak GLBB?", a: "s = v₀·t + ½·a·t²", opts: ["s = v·t", "s = v₀·t + ½at²", "s = v₀ + at", "s = v²/2a"], ans: 1, exp: "s = v₀t + ½at²." },
+          { q: "Benda 10 m/s diperlambat 2 m/s². Berhenti setelah...", opts: ["3 s", "4 s", "5 s", "6 s"], ans: 2, exp: "0 = 10 − 2t, t = 5 s." },
+          { q: "Satuan percepatan...", opts: ["m/s", "m/s²", "m·s", "m²/s"], ans: 1, exp: "Percepatan = m/s²." },
+          { q: "Mobil 15 m/s, a = 2 m/s², t = 5 s. v akhir = ...", opts: ["20", "25", "30", "35"], ans: 1, exp: "v = 15 + 2·5 = 25 m/s." },
+          { q: "Jarak = luas area di grafik...", opts: ["v-t", "a-t", "s-t", "F-t"], ans: 0, exp: "Luas grafik v-t = jarak." },
+            q: "Benda jatuh bebas, g = 10 m/s². Setelah 3 s, v = ...", opts: ["10", "20", "30", "40"], ans: 2, exp: "v = g·t = 10·3 = 30 m/s." },
+          { q: "GLBB diperlambat punya a...", opts: ["Positif", "Negatif", "Nol", "Tak hingga"], ans: 1, exp: "Diperlambat → a negatif." }
+        ]
+      }
+    ],
+    kimia: [
+      {
+        title: "Struktur Atom",
+        desc: "Partikel penyusun atom, nomor atom, dan konfigurasi elektron.",
+        materi: `
+          <h2>Struktur Atom</h2>
+          <p>Atom adalah unit terkecil materi yang terdiri dari inti atom dan elektron.</p>
+          <h3>🎯 Partikel Penyusun Atom</h3>
+          <ul>
+            <li><strong>Proton (p):</strong> muatan +1, di inti atom</li>
+            <li><strong>Neutron (n):</strong> muatan 0, di inti atom</li>
+            <li><strong>Elektron (e):</strong> muatan −1, mengelilingi inti</li>
+          </ul>
+          <div class="rumus-box">Nomor Atom (Z) = jumlah proton = jumlah elektron (atom netral)</div>
+          <div class="rumus-box">Nomor Massa (A) = proton + neutron</div>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> Atom netral → proton = elektron. Ion positif (kation) → elektron berkurang. Ion negatif (anion) → elektron bertambah.
+             </div>
+          <h3>📝 Contoh Soal</h3>
+          <div class="contoh-soal">
+            <strong>Atom dengan Z=11, A=23. Tentukan p, n, e!</strong><br><br>
+            p = Z = 11<br>
+            n = A − Z = 23 − 11 = 12<br>
+            e = p = 11 (netral)
+          </div>
+        `,
+            flashcards: [
+          { q: "Muatan proton?", a: "+1" },
+          { q: "Nomor massa = ?", a: "proton + neutron" },
+          { q: "Atom netral punya...", a: "proton = elektron" }
+        ],
+        kuis: [
+          { q: "Partikel bermuatan negatif dalam atom adalah...", opts: ["Proton", "Neutron", "Elektron", "Inti"], ans: 2, exp: "Elektron bermuatan −1." },
+          { q: "Atom Z=8, A=16. Jumlah neutron = ...", opts: ["6", "7", "8", "16"], ans: 2, exp: "n = A−Z = 16−8 = 8." },
+          { q: "Atom netral Z=12 punya elektron...", opts: ["10", "11", "12", "13"], ans: 2, exp: "Netral → e = p = Z = 12." },
+          { q: "Ion Na⁺ (Z=11) punya elektron...", opts: ["9", "10", "11", "12"], ans: 1, exp: "Na⁺ kehilangan 1 e, jadi 11−1=10." },
+          { q: "Inti atom terdiri dari...", opts: ["Proton & elektron", "Proton & neutron", "Neutron & elektron", "Elektron saja"], ans: 1, exp: "Inti = proton + neutron." },
+             { q: "Nomor atom menyatakan jumlah...", opts: ["Neutron", "Proton", "Massa", "Elektron valensi"], ans: 1, exp: "Z = jumlah proton." },
+          { q: "Ion O²⁻ (Z=8) punya elektron...", opts: ["6", "8", "10", "12"], ans: 2, exp: "O²⁻ dapat 2e: 8+2=10." },
+          { q: "Isotop adalah atom dengan...", opts: ["Z sama, A beda", "Z beda, A sama", "Z & A sama", "Z & A beda"], ans: 0, exp: "Isotop: proton sama, neutron beda." },
+          { q: "Massa atom terpusat di...", opts: ["Elektron", "Inti", "Kulit", "Orbital"], ans: 1, exp: "Hampir semua massa di inti." },
+          { q: "Atom Z=17, A=35. Proton = ...", opts: ["17", "18", "35", "52"], ans: 0, exp: "p = Z = 17." }
+        ]
+        },
+        {
+title: "Ikatan Kimia",
+        desc: "Ikatan ion, kovalen, dan logam.",
+        materi: `
+          <h2>Ikatan Kimia</h2>
+          <p>Atom bergabung membentuk ikatan untuk mencapai kestabilan (oktet/duplet).</p>
+          <h3>🎯 Jenis Ikatan</h3>
+          <ul>
+            <li><strong>Ikatan Ion:</strong> serah terima elektron (logam + nonlogam). Contoh: NaCl</li>
+            <li><strong>Ikatan Kovalen:</strong> pemakaian elektron bersama (nonlogam + nonlogam). Contoh: H₂O</li>
+            <li><strong>Ikatan Logam:</strong> antar atom logam, elektron bebas bergerak</li>
+          </ul>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> Logam + nonlogam → ion. Nonlogam + nonlogam → kovalen.
+          </div>
+          <h3>📝 Contoh</h3>
+          <div class="contoh-soal">
+            <strong>NaCl terbentuk dari Na (logam) + Cl (nonlogam) → ikatan ion.</strong>
+          </div>
+        `,
+        flashcards: [
+          { q: "Ikatan NaCl?", a: "Ikatan ion" },
+          { q: "Ikatan H₂O?", a: "Ikatan kovalen" },
+          { q: "Aturan oktet?", a: "8 elektron di kulit terluar" }
+        ],
+        kuis: [
+          { q: "Ikatan NaCl adalah...", opts: ["Kovalen", "Ion", "Logam", "Hidrogen"], ans: 1, exp: "Na logam + Cl nonlogam → ion." },
+          { q: "Ikatan H₂O adalah...", opts: ["Ion", "Kovalen", "Logam", "Van der Waals"], ans: 1, exp: "Nonlogam + nonlogam → kovalen." },
+          { q: "Atom stabil jika elektron valensi...", opts: ["2 atau 8", "4", "6", "10"], ans: 0, exp: "Aturan duplet (2) atau oktet (8)." },
+          { q: "Ikatan logam terjadi karena...", opts: ["Serah elektron", "Bagi elektron", "Elektron bebas", "Gaya magnet"], ans: 2, exp: "Elektron bebas bergerak antar ion logam." },
+          { q: "Contoh ikatan kovalen...", opts: ["NaCl", "KCl", "CO₂", "MgO"], ans: 2, exp: "CO₂ = nonlogam + nonlogam." },
+          { q: "Kation adalah ion...", opts: ["Positif", "Negatif", "Netral", "Ganda"], ans: 0, exp: "Kation = ion positif (kehilangan e)." },
+            { q: "Ikatan MgCl₂ adalah...", opts: ["Kovalen", "Ion", "Logam", "Hidrogen"], ans: 1, exp: "Mg logam + Cl nonlogam → ion." },
+          { q: "Elektron valensi adalah elektron di...", opts: ["Kulit dalam", "Kulit terluar", "Inti", "Orbital d"], ans: 1, exp: "Elektron valensi ada di kulit terluar." },
+          { q: "Ikatan CH₄ adalah...", opts: ["Ion", "Kovalen", "Logam", "Ionik"], ans: 1, exp: "C + H keduanya nonlogam → kovalen." }
+        ]
+      }
+    ],
+    biologi: [
+      {
+        title: "Sel sebagai Unit Kehidupan",
+        desc: "Struktur sel, organel, dan perbedaan sel hewan-tumbuhan.",
+        materi: `
+          <h2>Sel sebagai Unit Kehidupan</h2>
+          <p>Sel adalah unit struktural dan fungsional terkecil makhluk hidup.</p>
+          <h3>🎯 Organel Sel</h3>
+          <ul>
+            <li><strong>Nukleus:</strong> pusat kendali sel</li>
+            <li><strong>Mitokondria:</strong> tempat respirasi sel (energi)</li>
+            <li><strong>Ribosom:</strong> sintesis protein</li>
+            <li><strong>Kloroplas:</strong> fotosintesis (hanya tumbuhan)</li>
+            <li><strong>Dinding sel:</strong> pelindung (hanya tumbuhan)</li>
+          </ul>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> Sel hewan tidak punya dinding sel & kloroplas. Sel tumbuhan punya vakuola besar.
+          </div>
+        `,
+        flashcards: [
+          { q: "Organel penghasil energi?", a: "Mitokondria" },
+          { q: "Organel fotosintesis?", a: "Kloroplas" },
+          { q: "Pusat kendali sel?", a: "Nukleus" }
+        ],
+        kuis: [
+          { q: "Organel yang tidak dimiliki sel hewan adalah...", opts: ["Mitokondria", "Kloroplas", "Ribosom", "Nukleus"], ans: 1, exp: "Kloroplas hanya ada di tumbuhan." },
+          { q: "Tempat sintesis protein...", opts: ["Nukleus", "Ribosom", "Mitokondria", "Vakuola"], ans: 1, exp: "Ribosom = tempat sintesis protein." },
+          { q: "Sel yang punya dinding sel...", opts: ["Hewan", "Tumbuhan", "Bakteri & tumbuhan", "Manusia"], ans: 2, exp: "Dinding sel ada di bakteri & tumbuhan." },
+          { q: "Pusat kendali sel...", opts: ["Nukleus", "Mitokondria", "Ribosom", "Lisosom"], ans: 0, exp: "Nukleus = pusat kendali." },
+          { q: "Organel penghasil energi...", opts: ["Nukleus", "Mitokondria", "Ribosom", "Badan Golgi"], ans: 1, exp: "Mitokondria = the powerhouse of cell." },
+            { q: "Vakuola terbesar ada di sel...", opts: ["Hewan", "Tumbuhan", "Bakteri", "Virus"], ans: 1, exp: "Sel tumbuhan punya vakuola besar." },
+          { q: "Teori sel dikemukakan oleh...", opts: ["Darwin", "Schleiden & Schwann", "Mendel", "Pasteur"], ans: 1, exp: "Schleiden & Schwann (1838-1839)." },
+          { q: "Sel prokariotik tidak punya...", opts: ["Ribosom", "Membran", "Nukleus sejati", "DNA"], ans: 2, exp: "Prokariotik tidak punya membran inti." },
+          { q: "Lisosom berfungsi untuk...", opts: ["Sintesis protein", "Pencernaan intrasel", "Respirasi", "Fotosintesis"], ans: 1, exp: "Lisosom = pencernaan intraseluler." },
+          { q: "Sel pertama kali dilihat oleh...", opts: ["Robert Hooke", "Leeuwenhoek", "Virchow", "Schwann"], ans: 0, exp: "Robert Hooke (1665) melihat sel gabus." }
+        ]
+      }
+    ],
+    bindo: [
+      {
+      {
+        title: "Teks Laporan Hasil Observasi",
+        desc: "Struktur, ciri, dan cara menulis teks laporan observasi.",
+        materi: `
+          <h2>Teks Laporan Hasil Observasi</h2>
+          <p>Teks laporan observasi adalah teks yang berisi hasil pengamatan secara objektif.</p>
+          <h3>🎯 Struktur Teks</h3>
+          <ul>
+            <li><strong>Pernyataan Umum:</strong> pengantar/definisi objek</li>
+            <li><strong>Deskripsi Bagian:</strong> rincian objek per bagian</li>
+            <li><strong>Simpulan:</strong> ringkasan umum</li>
+          </ul>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> Gunakan bahasa baku, objektif, dan hindari opini pribadi. Pakai kata kerja relasional (adalah, merupakan).
+          </div>
+        `,
+        flashcards: [
+          { q: "Struktur teks laporan observasi?", a: "Pernyataan umum → Deskripsi bagian → Simpulan" },
+          { q: "Ciri bahasa teks observasi?", a: "Baku, objektif, pakai istilah teknis" }
+        ],
+        kuis: [
+          { q: "Struktur pertama teks laporan observasi...", opts: ["Deskripsi", "Pernyataan umum", "Simpulan", "Orientasi"], ans: 1, exp: "Diawali pernyataan umum." },
+          { q: "Teks laporan observasi bersifat...", opts: ["Subjektif", "Objektif", "Imajinatif", "Fiktif"], ans: 1, exp: "Berdasarkan fakta pengamatan." },
+          { q: "Kata kerja relasional contohnya...", opts: ["Berlari", "Adalah", "Makan", "Tidur"], ans: 1, exp: "Adalah/merupakan = kata kerja relasional." },
+          { q: "Bagian rincian objek disebut...", opts: ["Pernyataan umum", "Deskripsi bagian", "Simpulan", "Penutup"], ans: 1, exp: "Deskripsi bagian = rincian." },
+          { q: "Teks observasi harus berdasarkan...", opts: ["Opini", "Fakta", "Khayalan", "Perasaan"], ans: 1, exp: "Harus faktual." },
+          { q: "Bahasa teks observasi
+            menggunakan...", opts: ["Bahasa gaul", "Bahasa baku", "Bahasa puisi", "Bahasa daerah"], ans: 1, exp: "Gunakan bahasa baku." },
+          { q: "Simpulan berisi...", opts: ["Opini penulis", "Ringkasan umum", "Kritik", "Saran"], ans: 1, exp: "Simpulan = ringkasan." },
+          { q: "Contoh objek teks observasi...", opts: ["Cerita rakyat", "Tumbuhan langka", "Puisi", "Dongeng"], ans: 1, exp: "Objek nyata seperti tumbuhan." },
+          { q: "Teks observasi menghindari...", opts: ["Fakta", "Data", "Opini pribadi", "Istilah teknis"], ans: 2, exp: "Hindari opini pribadi." },
+          { q: "Ciri kebahasaan teks observasi...", opts: ["Kata kerja mental", "Istilah teknis", "Kata sapaan", "Majas"], ans: 1, exp: "Pakai istilah teknis." },
+          { q: "Tujuan teks observasi...", opts: ["Menghibur", "Memberi informasi faktual", "Membujuk", "Menceritakan"], ans: 1, exp: "Memberi informasi berdasarkan fakta." }
+        ]
+      }
+    ],
+    bing: [
+      {
+        title: "Descriptive Text",
+        desc: "How to describe people, places, and things in English.",
+        materi: `
+          <h2>Descriptive Text</h2>
+          <p>Descriptive text is a text that describes a particular person, place, or thing.</p>
+          <h3>🎯 Generic Structure</h3>
+          <ul>
+            <li><strong>Identification:</strong> introduces the subject</li>
+            <li><strong>Description:</strong> describes features, appearance, etc.</li>
+          </ul>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> Use simple present tense, adjectives, and specific nouns.
+          </div>
+           <h3>📝 Example</h3>
+          <div class="contoh-soal">
+            <strong>My Cat</strong><br>
+            My cat is a Persian cat. It has long white fur and blue eyes. It is very cute and fluffy...
+          </div>
+        `,
+        flashcards: [
+          { q: "Struktur descriptive text?", a: "Identification → Description" },
+          { q: "Tense yang dipakai?", a: "Simple present tense" }
+        ],
+        kuis: [
+          { q: "Descriptive text describes...", opts: ["Past events", "A particular thing", "Steps", "Arguments"], ans: 1, exp: "Describes particular thing." },
+          { q: "First structure of descriptive text...", opts: ["Description", "Identification", "Orientation", "Resolution"], ans: 1, exp: "Identification first." },
+          { q: "Tense used in descriptive text...", opts: ["Past", "Present", "Future", "Perfect"], ans: 1, exp: "Simple present tense." },
+          { q: "Example of descriptive text...", opts: ["Recipe", "My School", "News", "Letter"], ans: 1, exp: "My School describes a place." },
+          { q: "Description part contains...", opts: ["Introduction", "Features", "Conclusion", "Opinion"], ans: 1, exp: "Features/appearance." },
+          { q: "Word class mostly used...", opts: ["Verbs", "Adjectives", "Adverbs", "Conjunctions"], ans: 1, exp: "Adjectives for describing." },
+          { q: "Purpose of descriptive text...", opts: ["To entertain", "To describe", "To persuade", "To instruct"], ans: 1, exp: "To describe." },
+          { q: "'It has long tail' is part of...", opts: ["Identification", "Description", "Orientation", "Conclusion"], ans: 1, exp: "Description part." },
+          { q: "Descriptive text uses...", opts: ["General nouns", "Specific nouns", "Abstract nouns", "Collective nouns"], ans: 1, exp: "Specific nouns." },
+          { q: "'My mother is beautiful' - this is...", opts:
+            ["Recount", "Descriptive", "Procedure", "Report"], ans: 1, exp: "Describes a person." }
+        ]
+      }
+    ],
+    sejarah: [
+      {
+        title: "Kerajaan Hindu-Buddha di Indonesia",
+        desc: "Kutai, Sriwijaya, Majapahit, dan warisannya.",
+        materi: `
+          <h2>Kerajaan Hindu-Buddha di Indonesia</h2>
+          <p>Indonesia pernah punya kerajaan besar bercorak Hindu-Buddha.</p>
+          <h3>🎯 Kerajaan Penting</h3>
+          <ul>
+            <li><strong>Kutai:</strong> kerajaan Hindu tertua (Kalimantan Timur)</li>
+            <li><strong>Sriwijaya:</strong> kerajaan maritim Buddha di Sumatera</li>
+            <li><strong>Majapahit:</strong> kerajaan terbesar, pusat di Jawa Timur</li>
+          </ul>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> Sumpah Palapa dari Gajah Mada adalah ikon Majapahit.
+          </div>
+        `,
+        flashcards: [
+          { q: "Kerajaan Hindu tertua di Indonesia?", a: "Kutai" },
+          { q: "Pusat Sriwijaya?", a: "Palembang, Sumatera Selatan" },
+          { q: "Sumpah Palapa dari?", a: "Gajah Mada" }
+        ],
+        kuis: [
+          { q: "Kerajaan Hindu tertua di Indonesia...", opts: ["Majapahit", "Kutai", "Sriwijaya", "Mataram"], ans: 1, exp: "Kutai (abad ke-4)." },
+          { q: "Sriwijaya adalah kerajaan...", opts: ["Agraris", "Maritim", "Pertanian", "Perdagangan"], ans: 1, exp: "Kerajaan maritim." },
+          { q: "Sumpah Palapa diucapkan oleh...", opts: ["Hayam Wuruk", "Gajah Mada", "Raden Wijaya", "Ken Arok"], ans: 1, exp: "Gajah Mada." },
+          { q: "Pusat Majapahit di...", opts: ["Jawa Barat", "Jawa Tengah", "Jawa Timur", "Bali"], ans: 2, exp: "Trowulan, Jawa Timur." },
+          { q: "Prasasti Kutai menggunakan huruf...", opts: ["Latin", "Pallawa", "Arab", "Jawa"], ans: 1, exp: "Huruf Pallawa." },
+              { q: "Raja terkenal Sriwijaya...", opts: ["Balaputradewa", "Hayam Wuruk", "Ken Arok", "Purnawarman"], ans: 0, exp: "Balaputradewa." },
+          { q: "Candi Borobudur bercorak...", opts: ["Hindu", "Buddha", "Islam", "Animisme"], ans: 1, exp: "Borobudur = Buddha." },
+          { q: "Candi Prambanan bercorak...", opts: ["Buddha", "Hindu", "Islam", "Kuno"], ans: 1, exp: "Prambanan = Hindu." },
+          { q: "Kerajaan Majapahit runtuh pada abad...", opts: ["13", "14", "15", "16"], ans: 2, exp: "Abad ke-15." },
+          { q: "Kitab Negarakertagama ditulis...", opts: ["Empu Tantular", "Mpu Prapanca", "Gajah Mada", "Hayam Wuruk"], ans: 1, exp: "Mpu Prapanca." }
+        ]
+      }
+    ],
+    geografi: [
+      {
+        title: "Konsep Dasar Geografi",
+        desc: "Objek studi, prinsip, dan pendekatan geografi.",
+        materi: `
+          <h2>Konsep Dasar Geografi</h2>
+          <p>Geografi adalah ilmu yang mempelajari persamaan dan perbedaan fenomena di permukaan bumi.</p>
+          <h3>🎯 Objek Studi</h3>
+          <ul>
+            <li><strong>Objek Material:</strong> fenomena di geosfer (litosfer, atmosfer, hidrosfer, biosfer, antroposfer)</li>
+            <li><strong>Objek Formal:</strong> sudut pandang keruangan</li>
+          </ul>
+          <h3>📐 Prinsip Geografi</h3>
+          <ul>
+            <li>Distribusi, Interrelasi, Deskripsi, Korologi</li>
+          </ul>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> Korologi = gabungan distribusi + interrelasi + deskripsi. Prinsip paling lengkap.
+          </div>
+        `,
+        flashcards: [
+          { q: "5 objek material geografi?", a: "Litosfer, atmosfer, hidrosfer, biosfer, antroposfer" },
+          { q: "Prinsip geografi paling lengkap?", a: "Korologi" }
+        ],
+        kuis: [
+          { q: "Objek material geografi meliputi...", opts: ["3 geosfer", "4 geosfer", "5 geosfer", "6 geosfer"], ans: 2, exp: "5: litosfer, atmosfer, hidrosfer, biosfer, antroposfer." },
+          { q: "Prinsip geografi yang paling lengkap...", opts: ["Distribusi", "Interrelasi", "Deskripsi", "Korologi"], ans: 3, exp: "Korologi = gabungan semuanya." },
+           { q: "Geografi berasal dari kata...", opts: ["Geo & graphien", "Geo & logi", "Geo & metri", "Geo & polis"], ans: 0, exp: "Geo = bumi, graphien = gambaran." },
+          { q: "Objek formal geografi adalah...", opts: ["Fenomena fisik", "Sudut pandang keruangan", "Manusia", "Hewan"], ans: 1, exp: "Cara pandang keruangan." },
+          { q: "Litosfer adalah lapisan...", opts: ["Udara", "Air", "Batu", "Tanah"], ans: 2, exp: "Litosfer = lapisan batuan." },
+          { q: "Atmosfer adalah lapisan...", opts: ["Air", "Udara", "Batu", "Tanah"], ans: 1, exp: "Atmosfer = udara." },
+          { q: "Pendekatan geografi ada...", opts: ["2", "3", "4", "5"], ans: 1, exp: "3: keruangan, kelingkungan, kewilayahan." },
+          { q: "Hidrosfer adalah lapisan...", opts: ["Udara", "Air", "Batu", "Tanah"], ans: 1, exp: "Hidrosfer = air." },
+          { q: "Antroposfer adalah lapisan...", opts: ["Manusia", "Hewan", "Tumbuhan", "Batuan"], ans: 0, exp: "Antroposfer = manusia." },
+          { q: "Biosfer adalah lapisan...", opts: ["Air", "Kehidupan", "Udara", "Batuan"], ans: 1, exp: "Biosfer = kehidupan." }
+        ]
+      }
+    ],
+    ekonomi: [
+      {
+        title: "Konsep Dasar Ilmu Ekonomi",
+        desc: "Kelangkaan, kebutuhan, dan pilihan ekonomi.",
+        materi: `
+          <h2>Konsep Dasar Ilmu Ekonomi</h2>
+          <p>Ilmu ekonomi mempelajari bagaimana manusia memenuhi kebutuhan yang tidak terbatas dengan sumber daya terbatas.</p>
+          <h3>🎯 Konsep Kunci</h3>
+          <ul>
+            <li><strong>Kelangkaan:</strong> inti masalah ekonomi</li>
+            <li><strong>Kebutuhan:</strong> sesuatu yang harus dipenuhi</li>
+            <li><strong>Keinginan:</strong> sesuatu yang ingin dipenuhi</li>
+            <li><strong>Pilihan:</strong> memilih alternatif terbaik</li>
+            <li><strong>Biaya peluang:</strong> nilai alternatif terbaik yang dikorbankan</li>
+          </ul>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> Kelangkaan ≠ sedikit, tapi terbatas dibanding kebutuhan.
+          </div>
+        `,
+          flashcards: [
+          { q: "Inti masalah ekonomi?", a: "Kelangkaan" },
+          { q: "Biaya peluang adalah...", a: "Nilai alternatif terbaik yang dikorbankan" }
+        ],
+        kuis: [
+          { q: "Inti masalah ekonomi adalah...", opts: ["Kemiskinan", "Kelangkaan", "Inflasi", "Pengangguran"], ans: 1, exp: "Kelangkaan sumber daya." },
+          { q: "Biaya peluang adalah...", opts: ["Biaya produksi", "Nilai alternatif terbaik yang dikorbankan", "Biaya total", "Biaya variabel"], ans: 1, exp: "Opportunity cost." },
+          { q: "Ilmu ekonomi mempelajari...", opts: ["Politik", "Pemenuhan kebutuhan", "Budaya", "Sejarah"], ans: 1, exp: "Kebutuhan & sumber daya." },
+          { q: "Kebutuhan primer contohnya...", opts: ["Makanan", "Mobil", "Perhiasan", "Liburan"], ans: 0, exp: "Primer = dasar (makanan)." },
+          { q: "Kebutuhan sekunder contohnya...", opts: ["Makanan", "Pakaian bagus", "Udara", "Air"], ans: 1, exp: "Sekunder = pelengkap." },
+          { q: "Alat pemuas kebutuhan disebut...", opts: ["Barang & jasa", "Uang", "Pasar", "Bank"], ans: 0, exp: "Barang dan jasa." },
+          { q: "Kelangkaan terjadi karena...", opts: ["Sumber daya melimpah", "Kebutuhan tidak terbatas", "Harga murah", "Permintaan turun"], ans: 1, exp: "Kebutuhan tak terbatas vs sumber terbatas." },
+          { q: "Ilmu ekonomi terbagi menjadi...", opts: ["2", "3", "4", "5"], ans: 0, exp: "Mikro & makro." },
+          { q: "Ekonomi mikro mempelajari...", opts: ["Inflasi", "Perilaku individu", "PDB", "Pengangguran"], ans: 1, exp: "Perilaku individu/perusahaan." },
+          { q: "Ekonomi makro mempelajari...", opts: ["Harga cabai", "Inflasi", "Untung toko", "Gaji karyawan"], ans: 1, exp: "Ekonomi agregat/nasional." }
+        ]
+      }
+    ],
+    sosiologi: [
+      {
+        title: "Pengantar Sosiologi",
+        desc: "Definisi, objek, dan manfaat sosiologi.",
+        materi: `
+          <h2>Pengantar Sosiologi</h2>
+          <p>Sosiologi adalah ilmu yang mempelajari masyarakat dan interaksi sosial.</p>
+          <h3>🎯 Ciri Sosiologi</h3>
+          <ul>
+            <li>Empiris (berdasarkan pengamatan)</li>
+            <li>Teoretis (abstraksi dari pengamatan)</li>
+            <li>Kumulatif (teori disusun dari teori sebelumnya)</li>
+            <li>Non-etis (tidak mempermasalahkan baik-buruk)</li>
+          </ul>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> Bapak Sosiologi = Auguste Comte.
+          </div>
+        `,
+        flashcards: [
+          { q: "Bapak Sosiologi?", a: "Auguste Comte" },
+          { q: "Objek sosiologi?", a: "Masyarakat & interaksi sosial" }
+        ],
+          kuis: [
+          { q: "Bapak sosiologi adalah...", opts: ["Durkheim", "Auguste Comte", "Weber", "Marx"], ans: 1, exp: "Auguste Comte." },
+          { q: "Objek sosiologi adalah...", opts: ["Individu", "Masyarakat", "Negara", "Budaya"], ans: 1, exp: "Masyarakat." },
+          { q: "Sosiologi bersifat empiris artinya...", opts: ["Berdasarkan teori", "Berdasarkan pengamatan", "Berdasarkan opini", "Berdasarkan ramalan"], ans: 1, exp: "Berdasarkan pengamatan nyata." },
+          { q: "Sosiologi bersifat non-etis artinya...", opts: ["Tidak membahas baik-buruk", "Membahas moral", "Tidak ilmiah", "Beretika"], ans: 0, exp: "Tidak menilai baik-buruk." },
+          { q: "Ilmu yang mempelajari interaksi sosial...", opts: ["Psikologi", "Sosiologi", "Antropologi", "Ekonomi"], ans: 1, exp: "Sosiologi." },
+          { q: "Sosiologi lahir pada abad...", opts: ["17", "18", "19", "20"], ans: 2, exp: "Abad ke-19." },
+          { q: "Karya Auguste Comte...", opts: ["Das Kapital", "Cours de philosophie positive", "The Prince", "Leviathan"], ans: 1, exp: "Cours de philosophie positive." },
+          { q: "Sosiologi termasuk ilmu...", opts: ["Alam", "Sosial", "Pasti", "Budaya"], ans: 1, exp: "Ilmu sosial." },
+          { q: "Manfaat sosiologi...", opts: ["Membuat bom", "Memahami masyarakat", "Menghitung laba", "Meramal cuaca"], ans: 1, exp: "Memahami masyarakat." },
+          { q: "Sosiologi bersifat kumulatif artinya...", opts: ["Berdasarkan pengamatan", "Teori disusun dari teori sebelumnya", "Tidak etis", "Empiris"], ans: 1, exp: "Kumulatif = berlapis." }
+        ]
+      }
+    ]
+  },
+  11: {
+    matematika: [
+      { 
+        title: "Limit Fungsi Aljabar", 
+        desc: "Konsep limit, sifat-sifat, dan cara menyelesaikan limit.",
+        materi: `
+          <h2>Limit Fungsi Aljabar</h2>
+          <p>Limit menggambarkan nilai yang didekati fungsi saat variabel mendekati suatu nilai.</p>
+          <div class="rumus-box">lim(x→a) f(x) = L</div>
+          <h3>🎯 Sifat Limit</h3>
+          <ul>
+            <li>lim (f+g) = lim f + lim g</li>
+            <li>lim (f·g) = lim f · lim g</li>
+            <li>lim (f/g) = lim f / lim g (g ≠ 0)</li>
+          </ul>
+          <h3>📝 Contoh</h3>
+          <div class="contoh-soal">
+            <strong>lim(x→2) (x² − 4)/(x − 2)</strong><br>
+            = lim (x−2)(x+2)/(x−2)<br>
+            = lim (x+2) = 2+2 = <strong>4</strong>
+          </div>
+        `,
+        flashcards: [
+          { q: "lim(x→2) (x²−4)/(x−2) = ?", a: "4" },
+          { q: "Limit bentuk 0/0 diselesaikan dengan...", a: "Faktorkan atau L'Hopital" }
+        ],
+        kuis: [
+          { q: "lim(x→3) (x²−9)/(x−3) = ...", opts: ["3", "6", "9", "0"], ans: 1, exp: "Faktorkan → x+3 = 6." },
+          { q: "lim(x→1) (2x+3) = ...", opts: ["3", "5", "7", "2"], ans: 1, exp: "2(1)+3 = 5." },
+          { q: "lim(x→0) sin x / x = ...", opts: ["0", "1", "∞", "−1"], ans: 1, exp: "Limit trigonometri istimewa = 1." },
+          { q: "lim(x→∞) 1/x = ...", opts: ["0", "1", "∞", "−1"], ans: 0, exp: "Menuju 0." },
+          { q: "lim(x→2) (x²−5x+6)/(x−2) = ...", opts: ["−1", "0", "1", "2"], ans: 0, exp: "(x−2)(x−3)/(x−2) = x−3 = −1." },
+          { q: "Jika lim f = 3 dan lim g = 2, lim (f+g) = ...", opts: ["5", "6", "1", "9"], ans: 0, exp: "3+2 = 5." },
+          { q: "lim(x→0) (1−cos x)/x = ...", opts: ["0", "1", "1/2", "∞"], ans: 0, exp: "Limit trigonometri = 0." },
+          { q: "lim(x→∞) (2x+1)/(x−3) = ...", opts: ["0", "1", "2", "∞"], ans: 2, exp: "Bagi dengan x tertinggi = 2." },
+          { q: "lim(x→1) (x³−1)/(x−1) = ...", opts: ["1", "2", "3", "0"], ans: 2, exp: "x²+x+1 = 3." },
+          { q: "Limit fungsi di titik diskontinu...", opts: ["Pasti ada", "Mungkin tidak ada", "Selalu ∞", "Selalu 0"], ans: 1, exp: "Bisa tidak ada." }
+        ]
+      },
+      { 
+        title: "Turunan Fungsi", 
+        desc: "Konsep turunan, aturan, dan aplikasinya.",
+        materi: `
+          <h2>Turunan Fungsi</h2>
+          <p>Turunan mengukur laju perubahan fungsi. Notasi: f'(x) atau dy/dx.</p>
+          <div class="rumus-box">f(x) = xⁿ → f'(x) = n·xⁿ⁻¹</div>
+          <h3>🎯 Aturan Turunan</h3>
+          <ul>
+            <li>Konstanta: d/dx (c) = 0</li>
+            <li>Jumlah: (f+g)' = f' + g'</li>
+            <li>Perkalian: (fg)' = f'g + fg'</li>
+            <li>Pembagian: (f/g)' = (f'g − fg')/g²</li>
+          </ul>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> Turunan = gradien garis singgung. Kalau f' > 0 naik, f' < 0 turun.
+          </div>
+        `,
+        flashcards: [
+          { q: "Turunan x³?", a: "3x²" },
+          { q: "Turunan sin x?", a: "cos x" },
+          { q: "Turunan cos x?", a: "−sin x" }
+        ],
+        kuis: [
+          { q: "Turunan f(x) = x⁵ adalah...", opts: ["5x⁴", "x⁴", "5x", "4x⁵"], ans: 0, exp: "n·xⁿ⁻¹ = 5x⁴." },
+          { q: "Turunan f(x) = 3x² + 2x adalah...", opts: ["6x + 2", "3x + 2", "6x", "2x"], ans: 0, exp: "6x + 2." },
+          { q: "Turunan konstanta 7 adalah...", opts: ["7", "0", "1", "7x"], ans: 1, exp: "Turunan konstanta = 0." },
+          { q: "Turunan sin x adalah...", opts: ["cos x", "−cos x", "sin x", "−sin x"], ans: 0, exp: "d/dx sin x = cos x." },
+          { q: "Turunan cos x adalah...", opts: ["sin x", "−sin x", "cos x", "−cos x"], ans: 1, exp: "d/dx cos x = −sin x." },
+          { q: "Turunan f(x) = 5x adalah...", opts: ["5", "5x", "0", "x"], ans: 0, exp: "Turunan linear = koefisien." },
+          { q: "Turunan f(x) = x⁴ − 2x adalah...", opts: ["4x³ − 2", "4x − 2", "x³ − 2", "4x³"], ans: 0, exp: "4x³ − 2." },
+          { q: "Jika f(x) = eˣ, maka f'(x) = ...", opts: ["eˣ", "xeˣ", "eˣ⁻¹", "1"], ans: 0, exp: "Turunan eˣ = eˣ." },
+          { q: "Turunan ln x adalah...", opts: ["1/x", "x", "ln x", "eˣ"], ans: 0, exp: "d/dx ln x = 1/x." },
+          { q: "f(x) = 2x³, f'(2) = ...", opts: ["12", "24", "6", "18"], ans: 1, exp: "f'=6x², f'(2)=6·4=24." }
+        ]
+      }
+    ],
+    fisika: [
+      {
+        title: "Fluida Statis",
+        desc: "Tekanan, hukum Pascal, Archimedes, dan terapung.",
+        materi: `
+          <h2>Fluida Statis</h2>
+          <p>Fluida statis mempelajari fluida dalam keadaan diam.</p>
+          <div class="rumus-box">P = F/A</div>
+          <div class="rumus-box">P = ρ·g·h</div>
+          <h3>🎯 Hukum Penting</h3>
+          <ul>
+            <li><strong>Hukum Pascal:</strong> tekanan diteruskan sama besar</li>
+            <li><strong>Hukum Archimedes:</strong> Fa = ρ·g·V</li>
+            <li>Terapung: ρ benda < ρ fluida</li>
+          </ul>
+        `,
+        flashcards: [
+          { q: "Rumus tekanan hidrostatis?", a: "P = ρ·g·h" },
+          { q: "Rumus gaya Archimedes?", a: "Fa = ρ·g·V" }
+        ],
+        kuis: [
+          { q: "Satuan tekanan adalah...", opts: ["Newton", "Pascal", "Joule", "Watt"], ans: 1, exp: "Pascal (Pa)." },
+          { q: "Tekanan hidrostatis bergantung pada...", opts: ["Luas", "Kedalaman", "Bentuk", "Warna"], ans: 1, exp: "Kedalaman (h)." },
+          { q: "Hukum Archimedes tentang...", opts: ["Tekanan", "Gaya apung", "Massa", "Volume"], ans: 1, exp: "Gaya apung." },
+          { q: "Benda terapung jika...", opts: ["ρb > ρf", "ρb = ρf", "ρb < ρf", "ρb = 0"], ans: 2, exp: "Massa jenis benda < fluida." },
+          { q: "1 atm = ... Pa", opts: ["10⁵", "10³", "10⁴", "10⁶"], ans: 0, exp: "≈ 1,013×10⁵ Pa." },
+          { q: "Hukum Pascal diterapkan pada...", opts: ["Pesawat", "Dongkrak hidrolik", "Kapal", "Balon"], ans: 1, exp: "Dongkrak hidrolik." },
+          { q: "Tekanan di kedalaman 10 m (ρ air=1000, g=10)...", opts: ["10⁴ Pa", "10⁵ Pa", "10³ Pa", "10⁶ Pa"], ans: 1, exp: "P = 1000·10·10 = 10⁵ Pa." },
+          { q: "Gaya apung arahnya...", opts: ["Ke bawah", "Ke atas", "Ke samping", "Nol"], ans: 1, exp: "Ke atas (melawan gravitasi)." },
+          { q: "Kapal laut terapung karena...", opts: ["Berat ringan", "Rongga berisi udara", "Besi", "Air"], ans: 1, exp: "Rongga bikin ρ rata-rata < air." },
+          { q: "Prinsip Pascal: tekanan diteruskan...", opts: ["Sebagian", "Sama besar", "Lebih kecil", "Hilang"], ans: 1, exp: "Sama besar ke segala arah." }
+        ]
+      }
+    ],
+kimia: [
+      {
+        title: "Termokimia",
+        desc: "Perubahan entalpi, reaksi eksoterm & endoterm.",
+        materi: `
+          <h2>Termokimia</h2>
+          <p>Termokimia mempelajari perubahan kalor dalam reaksi kimia.</p>
+          <h3>🎯 Jenis Reaksi</h3>
+          <ul>
+            <li><strong>Eksoterm:</strong> melepas kalor, ΔH < 0</li>
+            <li><strong>Endoterm:</strong> menyerap kalor, ΔH > 0</li>
+          </ul>
+          <div class="rumus-box">ΔH = H produk − H reaktan</div>
+        `,
+        flashcards: [
+          { q: "Reaksi melepas kalor?", a: "Eksoterm (ΔH < 0)" },
+          { q: "Reaksi menyerap kalor?", a: "Endoterm (ΔH > 0)" }
+        ],
+        kuis: [
+          { q: "Reaksi eksoterm punya ΔH...", opts: ["Positif", "Negatif", "Nol", "Tak hingga"], ans: 1, exp: "ΔH < 0." },
+          { q: "Reaksi endoterm...", opts: ["Melepas kalor", "Menyerap kalor", "Tidak berubah", "Diam"], ans: 1, exp: "Menyerap kalor." },
+          { q: "Satuan ΔH...", opts: ["Joule", "kJ/mol", "Newton", "Watt"], ans: 1, exp: "kJ/mol." },
+          { q: "Contoh reaksi eksoterm...", opts: ["Fotosintesis", "Pembakaran", "Elektrolisis", "Es mencair"], ans: 1, exp: "Pembakaran melepas kalor." },
+          { q: "Contoh reaksi endoterm...", opts: ["Pembakaran", "Fotosintesis", "Respirasi", "Karatan"], ans: 1, exp: "Fotosintesis menyerap energi." },
+          { q: "Hukum Hess tentang...", opts: ["Tekanan", "Entalpi", "Massa", "Volume"], ans: 1, exp: "Perubahan entalpi." },
+          { q: "ΔH negatif artinya...", opts: ["Sistem dapat kalor", "Sistem lepas kalor", "Tidak berubah", "Setimbang"], ans: 1, exp: "Lepas kalor ke lingkungan." },
+          { q: "Kalor jenis air...", opts: ["4,2 J/g°C", "1 J/g°C", "10 J/g°C", "0,5 J/g°C"], ans: 0, exp: "4,2 J/g°C." },
+          { q: "Rumus q = ...", opts: ["m·c·ΔT", "m·c", "c·ΔT", "m·ΔT"], ans: 0, exp: "q = m·c·ΔT." },
+          { q: "Enthalpi pembentukan standar dilambangkan...", opts: ["ΔHf°", "ΔHd°", "ΔHc°", "ΔHn°"], ans: 0, exp: "ΔHf°." }
+        ]
+      }
+    ],
+    biologi: [
+      {
+        title: "Sistem Pencernaan",
+        desc: "Organ pencernaan dan enzim-enzimnya.",
+        materi: `
+          <h2>Sistem Pencernaan</h2>
+          <p>Sistem pencernaan mengolah makanan menjadi nutrisi yang bisa diserap tubuh.</p>
+          <h3>🎯 Organ Pencernaan</h3>
+          <ul>
+            <li>Mulut → amilase (karbohidrat)</li>
+            <li>Lambung → pepsin (protein), HCl</li>
+            <li>Usus halus → penyerapan nutrisi</li>
+            <li>Usus besar → penyerapan air</li>
+          </ul>
+        `,
+        flashcards: [
+          { q: "Enzim di mulut?", a: "Amilase (ptialin)" },
+          { q: "Enzim di lambung?", a: "Pepsin" },
+          { q: "Tempat penyerapan nutrisi?", a: "Usus halus" }
+        ],
+        kuis: [
+          { q: "Enzim amilase terdapat di...", opts: ["Lambung", "Mulut", "Usus", "Kerongkongan"], ans: 1, exp: "Mulut (air liur)." },
+          { q: "Enzim pepsin mencerna...", opts: ["Karbohidrat", "Protein", "Lemak", "Vitamin"], ans: 1, exp: "Protein → pepton." },
+          { q: "Penyerapan nutrisi terjadi di...", opts: ["Lambung", "Usus halus", "Usus besar", "Mulut"], ans: 1, exp: "Usus halus (vili)." },
+          { q: "HCl di lambung berfungsi...", opts: ["Membunuh kuman", "Menyerap air", "Mencerna lemak", "Menyerap gizi"], ans: 0, exp: "Membunuh kuman & aktifkan pepsin." },
+          { q: "Enzim yang mencerna lemak...", opts: ["Pepsin", "Amilase", "Lipase", "Tripsin"], ans: 2, exp: "Lipase → asam lemak + gliserol." },
+          { q: "Usus besar berfungsi...", opts: ["Serap nutrisi", "Serap air", "Cerna protein", "Hasil enzim"], ans: 1, exp: "Menyerap air." },
+          { q: "Pencernaan mekanik terjadi di...", opts: ["Mulut", "Lambung", "Usus", "Hati"], ans: 0, exp: "Mengunyah di mulut." },
+          { q: "Hati menghasilkan...", opts: ["Pepsin", "Empedu", "Amilase", "Lipase"], ans: 1, exp: "Empedu untuk emulsi lemak." },
+          { q: "Enzim tripsin dihasilkan...", opts: ["Mulut", "Pankreas", "Hati", "Lambung"], ans: 1, exp: "Pankreas." },
+          { q: "Fungsi vili di usus halus...", opts: ["Serap nutrisi", "Cerna", "Bunuh kuman", "Simpan"], ans: 0, exp: "Memperluas permukaan penyerapan." },
+          { q: "Pencernaan kimiawi protein dimulai di...", opts: ["Mulut", "Lambung", "Usus", "Kerongkongan"], ans: 1, exp: "Lambung (pepsin)." }
+        ]
+      }
+    ],
+    bindo: [
+      {
+      title: "Teks Eksposisi",
+        desc: "Struktur, ciri, dan cara menulis teks eksposisi.",
+        materi: `
+          <h2>Teks Eksposisi</h2>
+          <p>Teks eksposisi memaparkan informasi disertai pendapat/argumen.</p>
+          <h3>🎯 Struktur</h3>
+          <ul>
+            <li><strong>Tesis:</strong> pendapat awal</li>
+            <li><strong>Argumentasi:</strong> alasan pendukung</li>
+            <li><strong>Penegasan Ulang:</strong> simpulan</li>
+          </ul>
+        `,
+        flashcards: [
+          { q: "Struktur teks eksposisi?", a: "Tesis → Argumentasi → Penegasan ulang" }
+        ],
+        kuis: [
+          { q: "Struktur pertama teks eksposisi...", opts: ["Argumentasi", "Tesis", "Penegasan", "Orientasi"], ans: 1, exp: "Tesis = pendapat awal." },
+          { q: "Teks eksposisi bertujuan...", opts: ["Menghibur", "Memaparkan info", "Membujuk", "Menceritakan"], ans: 1, exp: "Memaparkan informasi." },
+          { q: "Bagian argumentasi berisi...", opts: ["Pendapat", "Alasan", "Simpulan", "Saran"], ans: 1, exp: "Alasan pendukung." },
+          { q: "Penegasan ulang = ...", opts: ["Tesis", "Simpulan", "Argumen", "Orientasi"], ans: 1, exp: "Simpulan." },
+          { q: "Ciri teks eksposisi...", opts: ["Fiktif", "Faktual", "Imajinatif", "Puitis"], ans: 1, exp: "Berbasis fakta." },
+          { q: "Bahasa teks eksposisi...", opts: ["Gaul", "Baku", "Puitis", "Daerah"], ans: 1, exp: "Baku." },
+          { q: "Kata 'oleh karena itu' termasuk...", opts: ["Konjungsi", "Adjektiva", "Verba", "Nomina"], ans: 0, exp: "Konjungsi kausalitas." },
+          { q: "Tesis bersifat...", opts: ["Netral", "Subjektif", "Objektif", "Fiktif"], ans: 1, exp: "Pendapat penulis (subjektif)." },
+          { q: "Teks eksposisi biasanya ada di...", opts: ["Cerpen", "Artikel", "Puisi", "Dongeng"], ans: 1, exp: "Artikel/berita." },
+          { q: "Penegasan ulang berisi...", opts: ["Opini baru", "Simpulan", "Kritik", "Cerita"], ans: 1, exp: "Simpulan." }
+        ]
+      }
+    ],
+    bing: [
+      {
+        title: "Analytical Exposition",
+        desc: "Text that analyzes and persuades with arguments.",
+        materi: `
+          <h2>Analytical Exposition</h2>
+          <p>Analytical exposition is a text that elaborates the writer's idea about the phenomenon surrounding.</p>
+          <h3>🎯 Structure</h3>
+          <ul>
+            <li><strong>Thesis:</strong> introduces the topic</li>
+            <li><strong>Arguments:</strong> reasons to support</li>
+            <li><strong>Reiteration:</strong> restates the thesis</li>
+          </ul>
+        `,
+        flashcards: [
+          { q: "Struktur analytical exposition?", a: "Thesis → Arguments → Reiteration" }
+        ],
+        kuis: [
+          { q: "Analytical exposition is to...", opts: ["Describe", "Persuade", "Tell story", "Instruct"], ans: 1, exp: "To persuade." },
+          { q: "First structure of analytical exposition...", opts: ["Argument", "Thesis", "Reiteration", "Orientation"], ans: 1, exp: "Thesis." },
+          { q: "Reiteration means...", opts: ["Repeat", "Restate thesis", "Argue", "Describe"], ans: 1, exp: "Restate the thesis." },
+          { q: "Tense used...", opts: ["Past", "Present", "Future", "Perfect"], ans: 1, exp: "Simple present." },
+          { q: "Purpose of analytical exposition...", opts: ["Entertain", "Convince", "Describe", "Tell"], ans: 1, exp: "Convince the reader." },
+          { q: "Connectors used...", opts: ["First, second", "Once upon a time", "Finally", "In my opinion"], ans: 0, exp: "First, second, etc." },
+          { q: "Example of analytical exposition...", opts: ["Cinderella", "Why Homework is Important", "How to Cook", "My Cat"], ans: 1, exp: "Argumentative text." },
+          { q: "Analytical exposition includes...", opts: ["Opinions", "Steps", "Description", "Story"], ans: 0, exp: "Opinions & arguments." },
+          { q: "Language feature...", opts: ["Imagery", "Simple present", "Past tense", "Rhetoric"], ans: 1, exp: "Simple present tense." },
+          { q: "'In conclusion' belongs to...", opts: ["Thesis", "Arguments", "Reiteration", "Title"], ans: 2, exp: "Reiteration part." }
+        ]
+      }
+    ],
+    sejarah: [
+      {
+        title: "Kolonialisme & Imperialisme",
+        desc: "Kedatangan bangsa Barat dan penjajahan di Indonesia.",
+        materi: `
+          <h2>Kolonialisme & Imperialisme</h2>
+          <p>Kolonialisme = penguasaan wilayah. Imperialisme = perluasan kekuasaan.</p>
+          <h3>🎯 Negara Penjajah</h3>
+          <ul>
+            <li>Portugis (1511) → Maluku</li>
+            <li>Spanyol → Maluku</li>
+            <li>Belanda (VOC, 1602) → hampir seluruh Indonesia</li>
+            <li>Inggris (Raffles) → Jawa</li>
+          </ul>
+        `,
+        flashcards: [
+          { q: "VOC didirikan tahun?", a: "1602" },
+          { q: "Penjajah paling lama di Indonesia?", a: "Belanda" }
+        ],
+        kuis: [
+          { q: "VOC didirikan tahun...", opts: ["1596", "1602", "1611", "1799"], ans: 1, exp: "1602." },
+          { q: "VOC dibubarkan tahun...", opts: ["1799", "1800", "1811", "1816"], ans: 0, exp: "31 Des 1799." },
+          { q: "Gubernur Jenderal Inggris di Jawa...", opts: ["Daendels", "Raffles", "Van den Bosch", "Coen"], ans: 1, exp: "Stamford Raffles." },
+          { q: "Sistem Tanam Paksa dicetuskan...", opts: ["Daendels", "Van den Bosch", "Raffles", "Coen"], ans: 1, exp: "Johannes van den Bosch." },
+          { q: "Semboyan 3G adalah...", opts: ["Gold, Glory, Gospel", "Good, Great, God", "Gold, Great, God"], ans: 0, exp: "Gold, Glory, Gospel." },
+          { q: "Belanda pertama kali datang dipimpin...", opts: ["Cornelis de Houtman", "Vasco da Gama", "Magellan", "Columbus"], ans: 0, exp: "Cornelis de Houtman (1596)." },
+          { q: "Politik Etis dicetuskan...", opts: ["Van Deventer", "Raffles", "Van den Bosch", "Coen"], ans: 0, exp: "Van Deventer (1901)." },
+          { q: "VOC adalah kongsi dagang negara...", opts: ["Inggris", "Belanda", "Portugis", "Spanyol"], ans: 1, exp: "Belanda." },
+          { q: "Ibu kota VOC di...", opts: ["Batavia", "Amsterdam", "Malaka", "Banten"], ans: 0, exp: "Batavia (Jakarta)." },
+          { q: "Portugis merebut Malaka tahun...", opts: ["1511", "1596", "1602", "1799"], ans: 0, exp: "1511." }
+        ]
+      }
+    ],
+    geografi: [
+      {
+        title: "Biosfer & Persebaran Flora-Fauna",
+        desc: "Persebaran flora dan fauna di Indonesia.",
+        materi: `
+          <h2>Biosfer & Persebaran Flora-Fauna</h2>
+          <p>Indonesia kaya akan flora dan fauna karena posisi geografisnya.</p>
+          <h3>🎯 Garis Persebaran</h3>
+          <ul>
+            <li><strong>Garis Wallace:</strong> pemisah fauna Asiatik & Australis</li>
+            <li><strong>Garis Weber:</strong> zona peralihan</li>
+            <li><strong>Garis Lydekker:</strong> batas Australis</li>
+          </ul>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> Fauna Indonesia tengah (peralihan): komodo, anoa, babi rusa.
+          </div>
+        `,
+        flashcards: [
+          { q: "Garis pemisah fauna Asiatik-Australis?", a: "Garis Wallace" },
+          { q: "Contoh fauna peralihan?", a: "Komodo, anoa, babi rusa" }
+        ],
+            kuis: [
+          { q: "Garis Wallace memisahkan...", opts: ["Flora", "Fauna Asiatik-Australis", "Iklim", "Cuaca"], ans: 1, exp: "Fauna Asiatik & Australis." },
+          { q: "Komodo termasuk fauna...", opts: ["Asiatik", "Australis", "Peralihan", "Endemik luar"], ans: 2, exp: "Peralihan." },
+          { q: "Garis Weber adalah...", opts: ["Batas Asiatik", "Zona peralihan", "Batas Australis", "Garis khatulistiwa"], ans: 1, exp: "Zona peralihan." },
+          { q: "Fauna Australis contohnya...", opts: ["Orangutan", "Kanguru", "Komodo", "Harimau"], ans: 1, exp: "Kanguru (Australis)." },
+          { q: "Fauna Asiatik contohnya...", opts: ["Kanguru", "Cendrawasih", "Orangutan", "Komodo"], ans: 2, exp: "Orangutan." },
+          { q: "Flora di Indonesia timur mirip...", opts: ["Asia", "Australia", "Eropa", "Afrika"], ans: 1, exp: "Mirip Australia." },
+          { q: "Hutan hujan tropis banyak di...", opts: ["Kalimantan", "NTB", "NTT", "Maluku"], ans: 0, exp: "Kalimantan." },
+          { q: "Sabana terdapat di...", opts: ["Papua", "NTT", "Jawa", "Bali"], ans: 1, exp: "NTT (kering)." },
+          { q: "Garis Lydekker batas...", opts: ["Asiatik", "Australis", "Peralihan", "Khatulistiwa"], ans: 1, exp: "Batas Australis." },
+          { q: "Anoa berasal dari...", opts: ["Sumatera", "Sulawesi", "Papua", "Jawa"], ans: 1, exp: "Sulawesi (peralihan)." }
+        ]
+      }
+    ],
+    ekonomi: [
+      {
+        title: "Pendapatan Nasional",
+        desc: "PDB, PNB, dan cara menghitung pendapatan nasional.",
+        materi: `
+          <h2>Pendapatan Nasional</h2>
+          <p>Pendapatan nasional = total pendapatan suatu negara dalam periode tertentu.</p>
+          <h3>🎯 Konsep</h3>
+          <ul>
+            <li><strong>GDP/PDB:</strong> produksi dalam negeri</li>
+            <li><strong>GNP/PNB:</strong> produksi warga negara</li>
+            <li><strong>NNI:</strong> PNB − penyusutan</li>
+            <li><strong>PI:</strong> pendapatan pribadi</li>
+          </ul>
+        `,
+        flashcards: [
+          { q: "PDB adalah...", a: "Produk Domestik Bruto" },
+          { q: "PNB = ...", a: "GDP + pendapatan neto luar negeri" }
+        ],
+        kuis: [
+          { q: "PDB singkatan dari...", opts: ["Pendapatan Domestik Bruto", "Produk Domestik Bruto", "Produk Dalam Bruto", "Pendapatan Dalam Bruto"], ans: 1, exp: "Produk Domestik Bruto." },
+          { q: "PNB = ...", opts: ["GDP + neto LN", "GDP − neto LN", "GDP × neto LN", "GDP / neto LN"], ans: 0, exp: "GDP + pendapatan neto luar negeri." },
+          { q: "NNI = ...", opts: ["PNB − penyusutan", "PDB + penyusutan", "PNB + pajak", "PDB − pajak"], ans: 0, exp: "PNB − penyusutan." },
+          { q: "Pendapatan per kapita = ...", opts: ["PNB × jumlah penduduk", "PNB / jumlah penduduk", "PDB × penduduk", "PDB + penduduk"], ans: 1, exp: "PNB / jumlah penduduk." },
+          { q: "Manfaat pendapatan nasional...", opts: ["Bandingkan negara", "Hitung pengangguran", "Hitung inflasi", "Hitung pajak"], ans: 0, exp: "Membandingkan antarnegara." },
+          { q: "Metode perhitungan pendapatan nasional...", opts: ["2", "3", "4", "5"], ans: 1, exp: "3: produksi, pendapatan, pengeluaran." },
+          { q: "PI adalah...", opts: ["Personal Income", "Public Income", "Private Income", "Primary Income"], ans: 0, exp: "Personal Income." },
+          { q: "DI adalah...", opts: ["Disposable Income", "Direct Income", "Domestic Income", "Daily Income"], ans: 0, exp: "Disposable Income." },
+          { q: "GDP dihitung berdasarkan...", opts: ["Wilayah", "Warga", "Penduduk", "Ekspor"], ans: 0, exp: "Batas wilayah." },
+          { q: "GNP dihitung berdasarkan...", opts: ["Wilayah", "Warga negara", "Penduduk", "Impor"], ans: 1, exp: "Kewarganegaraan." }
+        ]
+      }
+    ],
+    sosiologi: [
+      {
+        title: "Konflik Sosial",
+        desc: "Pengertian, penyebab, dan resolusi konflik.",
+        materi: `
+          <h2>Konflik Sosial</h2>
+          <p>Konflik sosial adalah pertentangan antar individu atau kelompok.</p>
+          <h3>🎯 Penyebab</h3>
+          <ul>
+            <li>Perbedaan pendirian</li>
+            <li>Perbedaan kebudayaan</li>
+            <li>Perbedaan kepentingan</li>
+            <li>Perubahan sosial</li>
+          </ul>
+          <h3>🛠️ Resolusi Konflik</h3>
+          <ul>
+            <li>Mediasi, arbitrase, konsiliasi, kompromi</li>
+          </ul>
+        `,
+        flashcards: [
+          { q: "Resolusi konflik dengan pihak ketiga?", a: "Mediasi" },
+          { q: "Keputusan pihak ketiga mengikat?", a: "Arbitrase" }
+        ],
+        kuis: [
+          { q: "Penyebab konflik...", opts: ["Kesamaan", "Perbedaan kepentingan", "Kerja sama", "Persatuan"], ans: 1, exp: "Perbedaan kepentingan." },
+          { q: "Pihak ketiga netral...", opts: ["Mediasi", "Arbitrase", "Koersi", "Ajudikasi"], ans: 0, exp: "Mediasi." },
+          { q: "Keputusan pihak ketiga mengikat...", opts: ["Mediasi", "Arbitrase", "Konsiliasi", "Kompromi"], ans: 1, exp: "Arbitrase." },
+          { q: "Konflik yang diselesaikan pengadilan...", opts: ["Mediasi", "Ajudikasi", "Arbitrase", "Konsiliasi"], ans: 1, exp: "Ajudikasi." },
+          { q: "Kompromi artinya...", opts: ["Saling mengalah", "Paksaan", "Pihak ketiga", "Perang"], ans: 0, exp: "Saling mengalah." },
+          { q: "Konflik antar suku disebut...", opts: ["Antarpribadi", "Antarkelompok", "Antarras", "Antarnegara"], ans: 1, exp: "Antarkelompok." },
+          { q: "Dampak positif konflik...", opts: ["Perpecahan", "Solidaritas", "Kerusakan", "Kematian"], ans: 1, exp: "Meningkatkan solidaritas." },
+          { q: "Konsiliasi menggunakan...", opts: ["Kekerasan", "Pihak ketiga", "Perang", "Hukum"], ans: 1, exp: "Pihak ketiga (netral)." },
+          { q: "Konflik vertikal contoh...", opts: ["Suku A vs B", "Atasan vs bawahan", "Sekolah vs sekolah", "Negara vs negara"], ans: 1, exp: "Atasan vs bawahan." },
+          { q: "Konflik horizontal contoh...", opts: ["Buruh vs pengusaha", "Antarsuku", "Rakyat vs negara", "Atasan vs bawahan"], ans: 1, exp: "Antarsuku." }
+        ]
+      }
+    ]
+  },
+  12: {
+    matematika: [
+      { 
+        title: "Limit Fungsi Trigonometri", 
+        desc: "Limit fungsi trigonometri dan penyelesaiannya.",
+        materi: `
+          <h2>Limit Fungsi Trigonometri</h2>
+          <p>Limit trigonometri punya rumus istimewa yang penting dihafal.</p>
+          <div class="rumus-box">lim(x→0) sin x / x = 1</div>
+          <div class="rumus-box">lim(x→0) tan x / x = 1</div>
+          <div class="rumus-box">lim(x→0) (1 − cos 2x) / x² = 2</div>
+        `,
+        flashcards: [
+          { q: "lim sin x / x = ?", a: "1" },
+          { q: "lim tan x / x = ?", a: "1" }
+        ],
+        kuis: [
+          { q: "lim(x→0) sin 3x / x = ...", opts: ["1", "2", "3", "0"], ans: 2, exp: "sin 3x/x = 3·(sin 3x/3x) = 3." },
+          { q: "lim(x→0) sin x / x = ...", opts: ["0", "1", "∞", "−1"], ans: 1, exp: "Limit istimewa = 1." },
+          { q: "lim(x→0) tan x / x = ...", opts: ["0", "1", "∞", "−1"], ans: 1, exp: "= 1." },
+          { q: "lim(x→0) sin 2x / 3x = ...", opts: ["2/3", "3/2", "1", "2"], ans: 0, exp: "(2/3)·(sin2x/2x) = 2/3." },
+          { q: "lim(x→0) (1−cos x)/x² = ...", opts: ["0", "1/2", "1", "∞"], ans: 1, exp: "Rumus: 1/2." },
+          { q: "lim(x→0) sin x / tan x = ...", opts: ["0", "1", "∞", "−1"], ans: 1, exp: "sin x/tan x = cos x = 1." },
+          { q: "lim(x→0) 2sin x / x = ...", opts: ["0", "1", "2", "∞"], ans: 2, exp: "2·1 = 2." },
+          { q: "lim(x→0) x / tan 2x = ...", opts: ["1/2", "2", "1", "0"], ans: 0, exp: "(1/2)·(2x/tan2x) = 1/2." },
+          { q: "lim(x→0) sin²x / x = ...", opts: ["0", "1", "2", "∞"], ans: 0, exp: "sin x·(sin x/x) → 0·1 = 0." },
+          { q: "lim(x→0) tan 4x / sin 2x = ...", opts: ["1", "2", "3", "4"], ans: 1, exp: "4x/2x = 2." }
+        ]
+      },
+      {
+        title: "Integral Tak Tentu",
+        desc: "Konsep integral, rumus dasar, dan penerapannya.",
+        materi: `
+          <h2>Integral Tak Tentu</h2>
+          <p>Integral adalah kebalikan dari turunan (antiturunan).</p>
+          <div class="rumus-box">∫ xⁿ dx = xⁿ⁺¹/(n+1) + C, n ≠ −1</div>
+          <h3>🎯 Rumus Dasar</h3>
+          <ul>
+            <li>∫ k dx = kx + C</li>
+            <li>∫ sin x dx = −cos x + C</li>
+            <li>∫ cos x dx = sin x + C</li>
+            <li>∫ 1/x dx = ln|x| + C</li>
+          </ul>
+        `,
+        flashcards: [
+          { q: "∫ xⁿ dx = ?", a: "xⁿ⁺¹/(n+1) + C" },
+          { q: "∫ cos x dx = ?", a: "sin x + C" },
+          { q: "∫ sin x dx = ?", a: "−cos x + C" }
+        ],
+            kuis: [
+          { q: "∫ x³ dx = ...", opts: ["x⁴/4 + C", "3x² + C", "x⁴ + C", "x²/2 + C"], ans: 0, exp: "x⁴/4 + C." },
+          { q: "∫ 2x dx = ...", opts: ["x² + C", "2x² + C", "x + C", "2 + C"], ans: 0, exp: "x² + C." },
+          { q: "∫ 5 dx = ...", opts: ["5x + C", "0", "5 + C", "x + C"], ans: 0, exp: "5x + C." },
+          { q: "∫ cos x dx = ...", opts: ["sin x + C", "−sin x + C", "cos x + C", "−cos x + C"], ans: 0, exp: "sin x + C." },
+          { q: "∫ sin x dx = ...", opts: ["cos x + C", "−cos x + C", "sin x + C", "−sin x + C"], ans: 1, exp: "−cos x + C." },
+          { q: "∫ (3x² + 2) dx = ...", opts: ["x³ + 2x + C", "3x³ + 2x + C", "x³ + C", "6x + C"], ans: 0, exp: "x³ + 2x + C." },
+          { q: "∫ 1/x dx = ...", opts: ["ln|x| + C", "1 + C", "x + C", "−1/x² + C"], ans: 0, exp: "ln|x| + C." },
+          { q: "∫ eˣ dx = ...", opts: ["eˣ + C", "xeˣ + C", "eˣ/x + C", "1 + C"], ans: 0, exp: "eˣ + C." },
+          { q: "∫ 4x³ dx = ...", opts: ["x⁴ + C", "12x² + C", "x⁴/4 + C", "4x² + C"], ans: 0, exp: "4·x⁴/4 = x⁴ + C." },
+          { q: "∫ (x + 1) dx = ...", opts: ["x²/2 + x + C", "x² + x + C", "x + C", "x²/2 + C"], ans: 0, exp: "x²/2 + x + C." }
+        ]
+      }
+    ],
+    fisika: [
+      {
+        title: "Listrik Statis",
+        desc: "Muatan listrik, Hukum Coulomb, dan medan listrik.",
+        materi: `
+          <h2>Listrik Statis</h2>
+          <p>Listrik statis mempelajari muatan listrik yang tidak bergerak.</p>
+          <div class="rumus-box">F = k·q₁·q₂ / r²</div>
+          <div class="rumus-box">E = F/q = k·Q/r²</div>
+          <h3>🎯 Konstanta</h3>
+          <ul>
+            <li>k = 9 × 10⁹ N·m²/C²</li>
+            <li>Muatan elektron = −1,6 × 10⁻¹⁹ C</li>
+          </ul>
+        `,
+        flashcards: [
+          { q: "Rumus Hukum Coulomb?", a: "F = k·q₁·q₂/r²" },
+          { q: "Nilai konstanta k?", a: "9 × 10⁹ N·m²/C²" }
+        ],
+        kuis: [
+          { q: "Hukum Coulomb tentang...", opts: ["Gravitasi", "Gaya listrik", "Magnet", "Gerak"], ans: 1, exp: "Gaya listrik antar muatan." },
+          { q: "Satuan muatan listrik...", opts: ["Ampere", "Coulomb", "Volt", "Watt"], ans: 1, exp: "Coulomb (C)." },
+          { q: "Jika jarak 2× lipat, gaya jadi...", opts: ["2×", "1/2×", "4×", "1/4×"], ans: 3, exp: "F ∝ 1/r², jadi 1/4." },
+          { q: "Muatan sejenis akan...", opts: ["Tarik", "Tolak", "Diam", "Netral"], ans: 1, exp: "Sejenis tolak-menolak." },
+          { q: "Medan listrik disimbolkan...", opts: ["F", "E", "Q", "V"], ans: 1, exp: "E." },
+          { q: "Satuan medan listrik...", opts: ["N/C", "C/N", "N·C", "C·N"], ans: 0, exp: "N/C." },
+          { q: "Muatan berbeda jenis...", opts: ["Tolak", "Tarik", "Diam", "Netral"], ans: 1, exp: "Tarik-menarik." },
+          { q: "Jika muatan 2× lipat, gaya...", opts: ["2×", "1/2×", "4×", "Sama"], ans: 0, exp: "F ∝ q, jadi 2×." },
+          { q: "Kuat medan listrik pada jarak r...", opts: ["E ∝ r", "E ∝ 1/r", "E ∝ 1/r²", "E ∝ r²"], ans: 2, exp: "E ∝ 1/r²." },
+          { q: "Alat deteksi muatan...", opts: ["Amperemeter", "Elektroskop", "Voltmeter", "Termometer"], ans: 1, exp: "Elektroskop." }
+        ]
+      }
+    ],
+    kimia: [
+      {
+        title: "Sifat Koligatif Larutan",
+        desc: "Penurunan tekanan uap, titik didih, titik beku, dan osmosis.",
+        materi: `
+          <h2>Sifat Koligatif Larutan</h2>
+          <p>Sifat koligatif bergantung pada jumlah partikel zat terlarut, bukan jenisnya.</p>
+          <h3>🎯 Empat Sifat</h3>
+          <ul>
+            <li>Penurunan tekanan uap (ΔP)</li>
+            <li>Kenaikan titik didih (ΔTb)</li>
+            <li>Penurunan titik beku (ΔTf)</li>
+            <li>Tekanan osmotik (π)</li>
+          </ul>
+          <div class="rumus-box">ΔTb = Kb · m</div>
+          <div class="rumus-box">ΔTf = Kf · m</div>
+        `,
+        flashcards: [
+          { q: "Sifat koligatif bergantung pada...", a: "Jumlah partikel zat terlarut" },
+          { q: "Rumus ΔTf?", a: "Kf × molalitas" }
+        ],
+        kuis: [
+          { q: "Sifat koligatif bergantung pada...", opts: ["Jenis zat", "Jumlah partikel", "Warna", "Massa jenis"], ans: 1, exp: "Jumlah partikel." },
+          { q: "Larutan garam lebih...", opts: ["Cepat beku", "Sulit beku", "Sama", "Cepat didih"], ans: 1, exp: "Titik beku turun." },
+          { q: "ΔTb = ...", opts: ["Kb·m", "Kf·m", "Kb/m", "m/Kb"], ans: 0, exp: "Kb × molalitas." },
+          { q: "ΔTf = ...", opts: ["Kb·m", "Kf·m", "Kf/m", "m/Kf"], ans: 1, exp: "Kf × molalitas." },
+          { q: "Molalitas satuan...", opts: ["mol/L", "mol/kg", "mol", "gram"], ans: 1, exp: "mol/kg pelarut." },
+          { q: "Tekanan osmotik rumus...", opts: ["π = MRT", "π = mRT", "π = M/R", "π = RT"], ans: 0, exp: "π = M·R·T." },
+          { q: "Titik didih air murni...", opts: ["0°C", "100°C", "−10°C", "50°C"], ans: 1, exp: "100°C." },
+          { q: "Titik beku air murni...", opts: ["0°C", "100°C", "−10°C", "50°C"], ans: 0, exp: "0°C." },
+          { q: "Larutan elektrolit punya faktor...", opts: ["i (van't Hoff)", "R", "K", "T"], ans: 0, exp: "Faktor van't Hoff." },
+          { q: "Sifat koligatif ada...", opts: ["2", "3", "4", "5"], ans: 2, exp: "4 sifat." }
+        ]
+      }
+    ],
+    biologi: [
+      {
+        title: "Genetika & Pewarisan Sifat",
+        desc: "DNA, gen, dan Hukum Mendel.",
+        materi: `
+          <h2>Genetika & Pewarisan Sifat</h2>
+          <p>Genetika mempelajari pewarisan sifat dari induk ke keturunan.</p>
+          <h3>🎯 Hukum Mendel</h3>
+          <ul>
+            <li><strong>Hukum I (Segregasi):</strong> alel berpisah saat meiosis</li>
+            <li><strong>Hukum II (Asortasi Bebas):</strong> gen berbeda diwariskan independen</li>
+          </ul>
+          <div class="rumus-box">Genotipe: PP, Pp, pp</div>
+        `,
+        flashcards: [
+          { q: "Hukum I Mendel?", a: "Segregasi (pemisahan alel)" },
+          { q: "Genotipe heterozigot?", a: "Pp" }
+        ],
+        kuis: [
+          { q: "Hukum I Mendel disebut...", opts: ["Asortasi", "Segregasi", "Pewarisan", "Mutasi"], ans: 1, exp: "Segregasi." },
+          { q: "Genotipe PP bersifat...", opts: ["Heterozigot", "Homozigot dominan", "Homozigot resesif", "Mutasi"], ans: 1, exp: "Homozigot dominan." },
+          { q: "Persilangan Pp × Pp menghasilkan...", opts: ["3:1", "1:1", "2:1", "9:3:3:1"], ans: 0, exp: "Fenotipe 3:1." },
+          { q: "DNA tersusun dari...", opts: ["Gula", "Nukleotida", "Protein", "Lemak"], ans: 1, exp: "Nukleotida." },
+          { q: "Basa nitrogen DNA...", opts: ["A, T, G, C", "A, U, G, C", "A, T, U, C", "A, G, U, T"], ans: 0, exp: "A-T, G-C." },
+          { q: "Hukum II Mendel...", opts: ["Segregasi", "Asortasi bebas", "Dominansi", "Mutasi"], ans: 1, exp: "Asortasi bebas." },
+          { q: "Alel resesif dilambangkan...", opts: ["Huruf besar", "Huruf kecil", "Angka", "Simbol"], ans: 1, exp: "Huruf kecil." },
+          { q: "Persilangan PP × pp menghasilkan...", opts: ["PP", "Pp semua", "pp", "PP & pp"], ans: 1, exp: "Pp semua (100%)." },
+          { q: "Gen terletak di...", opts: ["Sitoplasma", "Kromosom", "Ribosom", "Membran"], ans: 1, exp: "Kromosom." },
+          { q: "Rasio F2 dihibrid...", opts: ["3:1", "1:1", "9:3:3:1", "1:2:1"], ans: 2, exp: "9:3:3:1." },
+          { q: "Pewarisan sifat dari...", opts: ["Induk ke anak", "Anak ke induk", "Lingkungan", "Tanah"], ans: 0, exp: "Induk ke keturunan." }
+        ]
+      }
+    ],
+    bindo: [
+      {
+        title: "Teks Editorial",
+        desc: "Struktur, ciri, dan cara menulis teks editorial.",
+        materi: `
+          <h2>Teks Editorial</h2>
+          <p>Teks editorial = artikel opini yang ditulis redaksi media.</p>
+          <h3>🎯 Struktur</h3>
+          <ul>
+            <li>Tesis (pernyataan umum)</li>
+            <li>Argumentasi</li>
+            <li>Penegasan ulang</li>
+          </ul>
+        `,
+        flashcards: [
+          { q: "Teks editorial ditulis oleh?", a: "Redaksi media" }
+        ],
+        kuis: [
+          { q: "Teks editorial berisi...", opts: ["Fakta saja", "Opini redaksi", "Cerita", "Puisi"], ans: 1, exp: "Opini redaksi." },
+          { q: "Struktur teks editorial...", opts: ["Tesis, argumen, penegasan", "Orientasi, komplikasi", "Identifikasi, deskripsi", "Tujuan, langkah"], ans: 0, exp: "Tesis, argumen, penegasan." },
+          { q: "Bahasa teks editorial...", opts: ["Gaul", "Baku", "Puitis", "Daerah"], ans: 1, exp: "Baku." },
+          { q: "Tujuan teks editorial...", opts: ["Hibur", "Pengaruhi opini", "Cerita", "Instruksi"], ans: 1, exp: "Mempengaruhi pembaca." },
+          { q: "Teks editorial biasanya di...", opts: ["Novel", "Surat kabar", "Puisi", "Dongeng"], ans: 1, exp: "Surat kabar." },
+          { q: "Penegasan ulang berisi...", opts: ["Simpulan", "Opini baru", "Cerita", "Saran"], ans: 0, exp: "Simpulan." },
+          { q: "Argumentasi berisi...", opts: ["Alasan", "Tujuan", "Langkah", "Cerita"], ans: 0, exp: "Alasan pendukung." },
+          { q: "Ciri teks editorial...", opts: ["Fiktif", "Aktual", "Imajinatif", "Puitis"], ans: 1, exp: "Isu aktual." },
+          { q: "Editorial termasuk teks...", opts: ["Fiksi", "Nonfiksi", "Puisi", "Drama"], ans: 1, exp: "Nonfiksi." },
+          { q: "Tesis berisi...", opts: ["Pendapat awal", "Simpulan", "Alasan", "Data"], ans: 0, exp: "Pendapat awal." }
+        ]
+      }
+    ],
+    bing: [
+      {
+          title: "Application Letter",
+        desc: "How to write a job application letter.",
+        materi: `
+          <h2>Application Letter</h2>
+          <p>An application letter is a letter written to apply for a job.</p>
+          <h3>🎯 Structure</h3>
+          <ul>
+            <li>Your address & date</li>
+            <li>Recipient's address</li>
+            <li>Salutation</li>
+            <li>Body (introduction, skills, closing)</li>
+            <li>Signature</li>
+          </ul>
+        `,
+        flashcards: [
+          { q: "Purpose of application letter?", a: "To apply for a job" }
+        ],
+        kuis: [
+          { q: "Application letter is for...", opts: ["Fun", "Applying job", "Inviting", "Complaining"], ans: 1, exp: "Applying for a job." },
+          { q: "It starts with...", opts: ["Body", "Address & date", "Salutation", "Signature"], ans: 1, exp: "Address and date." },
+          { q: "Salutation example...", opts: ["Hello", "Dear Sir/Madam", "Hi", "Hey"], ans: 1, exp: "Dear Sir/Madam." },
+          { q: "Body contains...", opts: ["Skills", "Address", "Date", "Stamp"], ans: 0, exp: "Skills and experience." },
+          { q: "Closing example...", opts: ["Bye", "Sincerely yours", "See you", "Later"], ans: 1, exp: "Sincerely yours." },
+          { q: "Tone of application letter...", opts: ["Casual", "Formal", "Funny", "Rude"], ans: 1, exp: "Formal." },
+          { q: "Should include...", opts: ["CV", "Poem", "Story", "Joke"], ans: 0, exp: "CV/resume." },
+          { q: "Language used...", opts: ["Slang", "Standard", "Dialect", "Poetic"], ans: 1, exp: "Standard/formal English." },
+          { q: "Application letter includes...", opts: ["Position applied", "Favorite food", "Hobby only", "Pet name"], ans: 0, exp: "Position applied for." },
+          { q: "Length ideally...", opts: ["1 page", "5 pages", "10 pages", "Half page"], ans: 0, exp: "1 page." }
+        ]
+      }
+    ],
+    sejarah: [
+      {
+        title: "Orde Baru & Reformasi",
+        desc: "Pemerintahan Soeharto hingga reformasi 1998.",
+        materi: `
+          <h2>Orde Baru & Reformasi</h2>
+          <p>Orde Baru (1966-1998) di bawah Soeharto, berakhir dengan reformasi 1998.</p>
+          <h3>🎯 Peristiwa Penting</h3>
+          <ul>
+            <li>Supersemar (1966)</li>
+            <li>Pemilu pertama Orde Baru (1971)</li>
+            <li>Krisis moneter (1997)</li>
+            <li>Soeharto mundi (21 Mei 1998)</li>
+          </ul>
+        `,
+        flashcards: [
+          { q: "Presiden Orde Baru?", a: "Soeharto" },
+          { q: "Soeharto mundur tanggal?", a: "21 Mei 1998" }
+        ],
+        kuis: [
+          { q: "Orde Baru dipimpin...", opts: ["Soekarno", "Soeharto", "Habibie", "Gus Dur"], ans: 1, exp: "Soeharto." },
+          { q: "Soeharto mundur tahun...", opts: ["1996", "1997", "1998", "1999"], ans: 2, exp: "1998." },
+          { q: "Supersemar tahun...", opts: ["1965", "1966", "1967", "1968"], ans: 1, exp: "1966." },
+          { q: "Krisis moneter melanda tahun...", opts: ["1995", "1996", "1997", "1998"], ans: 2, exp: "1997." },
+          { q: "Presiden setelah Soeharto...", opts: ["Megawati", "Habibie", "Gus Dur", "SBY"], ans: 1, exp: "B.J. Habibie." },
+          { q: "Reformasi terjadi tahun...", opts: ["1996", "1997", "1998", "1999"], ans: 2, exp: "1998." },
+          { q: "Pemilu pertama Orde Baru...", opts: ["1966", "1971", "1977", "1982"], ans: 1, exp: "1971." },
+          { q: "Partai penguasa Orde Baru...", opts: ["PDI", "Golkar", "PPP", "PKB"], ans: 1, exp: "Golkar." },
+          { q: "Latar belakang reformasi...", opts: ["Krisis", "Perang", "Bencana", "Pemilu"], ans: 0, exp: "Krisis ekonomi & politik." },
+          { q: "Orde Baru berlangsung...", opts: ["30 tahun", "32 tahun", "34 tahun", "36 tahun"], ans: 1, exp: "1966-1998 = 32 tahun." }
+        ]
+      }
+    ],
+    geografi: [
+      {
+        title: "Penginderaan Jauh & SIG",
+        desc: "Konsep remote sensing dan Sistem Informasi Geografis.",
+        materi: `
+          <h2>Penginderaan Jauh & SIG</h2>
+          <p>Penginderaan jauh = teknik memperoleh informasi tanpa kontak langsung. SIG = sistem pengelolaan data spasial.</p>
+          <h3>🎯 Komponen SIG</h3>
+          <ul>
+            <li>Hardware, software, data, SDM, metode</li>
+          </ul>
+        `,
+        flashcards: [
+          { q: "SIG singkatan?", a: "Sistem Informasi Geografis" },
+          { q: "Penginderaan jauh tanpa...", a: "Kontak langsung" }
+        ],
+        kuis: [
+          { q: "SIG singkatan...", opts: ["Sistem Informasi Geografis", "Sistem Informasi Global", "Sistem Internet Geografi", "Sistem Indera Geografi"], ans: 0, exp: "Sistem Informasi Geografis." },
+          { q: "Penginderaan jauh tanpa...", opts: ["Kontak langsung", "Data", "Alat", "Peta"], ans: 0, exp: "Tanpa kontak langsung." },
+          { q: "Contoh penginderaan jauh...", opts: ["Peta", "Satelit", "Kompas", "GPS"], ans: 1, exp: "Satelit." },
+          { q: "Komponen SIG...", opts: ["5", "4", "3", "6"], ans: 0, exp: "5 komponen." },
+          { q: "Data SIG berupa...", opts: ["Spasial & atribut", "Angka", "Huruf", "Gambar"], ans: 0, exp: "Spasial & atribut." },
+          { q: "Remote sensing = ...", opts: ["Penginderaan jauh", "Peta", "Atlas", "Globe"], ans: 0, exp: "Penginderaan jauh." },
+          { q: "Citra satelit termasuk...", opts: ["Peta", "Data raster", "Data vektor", "Atribut"], ans: 1, exp: "Data raster." },
+          { q: "Software SIG contohnya...", opts: ["Word", "ArcGIS", "Excel", "PowerPoint"], ans: 1, exp: "ArcGIS." },
+          { q: "GPS termasuk...", opts: ["Penginderaan jauh", "Navigasi satelit", "Peta", "Atlas"], ans: 1, exp: "Navigasi satelit." },
+          { q: "Manfaat SIG...", opts: ["Analisis spasial", "Menulis", "Menghitung", "Menggambar"], ans: 0, exp: "Analisis spasial." }
+        ]
+      }
+    ],
+    ekonomi: [
+      {
+        title: "Akuntansi Dasar",
+        desc: "Persamaan akuntansi, jurnal, dan laporan keuangan.",
+        materi: `
+          <h2>Akuntansi Dasar</h2>
+          <p>Akuntansi = seni mencatat, mengklasifikasi, dan melaporkan transaksi keuangan.</p>
+          <div class="rumus-box">Aset = Kewajiban + Ekuitas</div>
+        `,
+        flashcards: [
+          { q: "Persamaan akuntansi?", a: "Aset = Kewajiban + Ekuitas" },
+          { q: "Laporan keuangan utama?", a: "Neraca, Laba-Rugi, Arus Kas" }
+        ],
+        kuis: [
+          { q: "Persamaan akuntansi...", opts: ["A = K + E", "A = K − E", "A = E − K", "A = K × E"], ans: 0, exp: "Aset = Kewajiban + Ekuitas." },
+          { q: "Laporan posisi keuangan...", opts: ["Neraca", "Laba rugi", "Arus kas", "Perubahan modal"], ans: 0, exp: "Neraca." },
+          { q: "Akuntansi = seni...", opts: ["Mencatat", "Menggambar", "Menghitung", "Menulis"], ans: 0, exp: "Mencatat transaksi." },
+          { q: "Aset lancar contoh...", opts: ["Kas", "Gedung", "Tanah", "Mesin"], ans: 0, exp: "Kas." },
+          { q: "Kewajiban = ...", opts: ["Utang", "Modal", "Aset", "Pendapatan"], ans: 0, exp: "Utang." },
+          { q: "Ekuitas = ...", opts: ["Modal", "Utang", "Aset", "Beban"], ans: 0, exp: "Modal." },
+          { q: "Laba = ...", opts: ["Pendapatan − beban", "Pendapatan + beban", "Beban − pendapatan", "Pendapatan × beban"], ans: 0, exp: "Pendapatan − beban." },
+          { q: "Jurnal mencatat...", opts: ["Transaksi", "Gambar", "Peta", "Cerita"], ans: 0, exp: "Transaksi keuangan." },
+          { q: "Debit menambah...", opts: ["Aset", "Kewajiban", "Modal", "Pendapatan"], ans: 0, exp: "Debit menambah aset." },
+          { q: "Kredit menambah...", opts: ["Aset", "Kewajiban", "Beban", "Prive"], ans: 1, exp: "Kredit menambah kewajiban." }
+        ]
+      }
+    ],
+    sosiologi: [
+      {
+      title: "Perubahan Sosial",
+        desc: "Bentuk, faktor, dan dampak perubahan sosial.",
+        materi: `
+          <h2>Perubahan Sosial</h2>
+          <p>Perubahan sosial = perubahan struktur dan fungsi masyarakat.</p>
+          <h3>🎯 Bentuk</h3>
+          <ul>
+            <li>Evolusi vs Revolusi</li>
+            <li>Kecil vs Besar</li>
+            <li>Direncanakan vs Tidak</li>
+          </ul>
+        `,
+        flashcards: [
+          { q: "Perubahan cepat?", a: "Revolusi" },
+          { q: "Perubahan lambat?", a: "Evolusi" }
+        ],
+        kuis: [
+          { q: "Perubahan cepat disebut...", opts: ["Evolusi", "Revolusi", "Regresi", "Stagnasi"], ans: 1, exp: "Revolusi." },
+          { q: "Perubahan lambat...", opts: ["Evolusi", "Revolusi", "Regresi", "Krisis"], ans: 0, exp: "Evolusi." },
+          { q: "Faktor pendorong perubahan...", opts: ["Kontak budaya", "Isolasi", "Tradisi", "Adat"], ans: 0, exp: "Kontak budaya." },
+          { q: "Faktor penghambat...", opts: ["Adat", "Pendidikan", "Teknologi", "Urbanisasi"], ans: 0, exp: "Adat/tradisi." },
+          { q: "Dampak positif perubahan...", opts: ["Kemajuan", "Kemunduran", "Konflik", "Krisis"], ans: 0, exp: "Kemajuan." },
+          { q: "Perubahan direncanakan contoh...", opts: ["Pembangunan", "Bencana", "Perang", "Krisis"], ans: 0, exp: "Pembangunan." },
+          { q: "Perubahan tidak direncanakan...", opts: ["Bencana", "Program", "Rencana", "Kebijakan"], ans: 0, exp: "Bencana alam." },
+          { q: "Modernisasi contoh...", opts: ["Teknologi", "Adat", "Tradisi", "Mitos"], ans: 0, exp: "Teknologi." },
+          { q: "Globalisasi menyebabkan...", opts: ["Perubahan", "Stagnasi", "Isolasi", "Regresi"], ans: 0, exp: "Perubahan sosial." },
+          { q: "Teori evolusi sosial...", opts: ["Spencer", "Marx", "Weber", "Durkheim"], ans: 0, exp: "Herbert Spencer." }
+        ]
+      }
+    ]
+  }
+};
+
+/* ============================================================
+   STATE & PROGRESS
+   ============================================================ */
+
+let state = {
+  kelas: null,
+  mapel: null,
+  babIndex: null,
+  currentView: 'home',
+  quizState: null,
+  flashcardState: null,
+  progress: {}
+};
+
+// Load progress dari localStorage
+function loadProgress() {
+  try {
+    const saved = localStorage.getItem('sma_progress');
+    if (saved) state.progress = JSON.parse(saved);
+  } catch(e) { state.progress = {}; }
+}
+
+function saveProgress() {
+  try {
+    localStorage.setItem('sma_progress', JSON.stringify(state.progress));
+  } catch(e) {}
+}
+
+function getBabKey(kelas, mapel, babIndex) {
+  return `${kelas}-${mapel}-${babIndex}`;
+}
+
+function markMateriRead(kelas, mapel, babIndex) {
+  const key = getBabKey(kelas, mapel, babIndex);
+  if (!state.progress[key]) state.progress[key] = { materiRead: false, quizScore: null };
+  state.progress[key].materiRead = true;
+  saveProgress();
+}
+
+function saveQuizScore(kelas, mapel, babIndex, score) {
+  const key = getBabKey(kelas, mapel, babIndex);
+  if (!state.progress[key]) state.progress[key] = { materiRead: false, quizScore: null };
+  state.progress[key].quizScore = Math.max(state.progress[key].quizScore || 0, score);
+  saveProgress();
+}
+
+function getTotalBab() {
+  let total = 0;
+  for (const k of [10,11,12]) {
+    if (DATA[k]) {
+      for (const m in DATA[k]) {
+        total += DATA[k][m].length;
+      }
+    }
+  }
+  return total;
+}
+
+function getCompletedCount() {
+  let done = 0;
+  for (const key in state.progress) {
+    if (state.progress[key].quizScore !== null) done++;
+  }
+  return done;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+function goHome() {
+  showView('home');
+  state.kelas = null; state.mapel = null; state.babIndex = null;
+  updateBreadcrumb();
+  renderHome();
+}
+
+function goMapel(kelas) {
+  state.kelas = kelas;
+  showView('mapel');
+  renderMapel();
+  updateBreadcrumb();
+}
+
+function goBab(mapel) {
+  state.mapel = mapel;
+  showView('bab');
+  renderBab();
+  updateBreadcrumb();
+}
+
+function goMateri(babIndex) {
+  state.babIndex = babIndex;
+  showView('materi');
+  renderMateri();
+  markMateriRead(state.kelas, state.mapel, babIndex);
+  updateBreadcrumb();
+}
+
+function goKuis() {
+  showView('quiz');
+  startQuiz();
+  updateBreadcrumb();
+}
+
+function goFlashcards() {
+  showView('flashcard');
+  startFlashcards();
+  updateBreadcrumb();
+}
+
+function goAnimasi() {
+  showView('animasi');
+  renderAnimasi();
+  updateBreadcrumb();
+}
+
+function showView(view) {
+  state.currentView = view;
+  ['home','mapel','bab','materi','quiz','flashcard','animasi'].forEach(v => {
+    document.getElementById(v + 'View').classList.toggle('hidden', v !== view);
+  });
+}
+
+function updateBreadcrumb() {
+  const bc = document.getElementById('breadcrumb');
+  const parts = [];
+  if (state.kelas) parts.push(`<span onclick="goHome()">Kelas ${state.kelas}</span>`);
+  if (state.mapel) parts.push(`<span onclick="goBab('${state.mapel}')">${MAPEL[state.mapel].name}</span>`);
+  if (state.babIndex !== null && state.currentView !== 'bab') {
+    const bab = DATA[state.kelas][state.mapel][state.babIndex];
+    if (state.currentView === 'quiz') parts.push(`<span onclick="goMateri(${state.babIndex})">Kuis</span>`);
+    else if (state.currentView === 'flashcard') parts.push(`<span onclick="goMateri(${state.babIndex})">Flashcards</span>`);
+    else if (state.currentView === 'animasi') parts.push(`<span onclick="goMateri(${state.babIndex})">Animasi</span>`);
+  }
+  bc.innerHTML = parts.join(' › ');
+}
+
+/* ============================================================
+   RENDER HOME
+   ============================================================ */
+
+function renderHome() {
+  const grid = document.getElementById('kelasGrid');
+  grid.innerHTML = [10,11,12].map(k => `
+    <div class="card card-kelas" onclick="goMapel(${k})">
+      <span class="icon">📚</span>
+      <div class="title">Kelas ${k}</div>
+      <div class="subtitle">${Object.keys(DATA[k]).length} mata pelajaran</div>
+    </div>
+  `).join('');
+  document.getElementById('totalBabStat').textContent = getTotalBab();
+  const done = getCompletedCount();
+  const total = getTotalBab();
+  document.getElementById('progressStat').textContent = total ? Math.round(done/total*100) + '%' : '0%';
+}
+
+/* ============================================================
+   RENDER MAPEL
+   ============================================================ */
+
+function renderMapel() {
+  document.getElementById('mapelViewTitle').textContent = `Kelas ${state.kelas} — Pilih Mata Pelajaran`;
+  const grid = document.getElementById('mapelGrid');
+  const mapelList = Object.keys(DATA[state.kelas] || {});
+  if (mapelList.length === 0) {
+    grid.innerHTML = '<p style="color:var(--text-muted)">Belum ada data untuk kelas ini.</p>';
+    return;
+  }
+  grid.innerHTML = mapelList.map(m => {
+    const info = MAPEL[m];
+    const totalBab = DATA[state.kelas][m].length;
+    const doneBab = DATA[state.kelas][m].filter((_, i) => {
+      const key = getBabKey(state.kelas, m, i);
+      return state.progress[key] && state.progress[key].quizScore !== null;
+    }).length;
+    return `
+      <div class="card card-mapel" onclick="goBab('${m}')">
+        <span class="icon">${info.icon}</span>
+        <div class="name">${info.name}</div>
+        <div style="font-size:0.75rem;color:var(--text-muted)">${doneBab}/${totalBab} bab selesai</div>
+        <div class="progress-bar" style="width:80%;margin-top:0.4rem">
+          <div class="progress-fill" style="width:${totalBab?doneBab/totalBab*100:0}%"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+/* ============================================================
+   RENDER BAB
+   ============================================================ */
+
+function renderBab() {
+  const info = MAPEL[state.mapel];
+  document.getElementById('babViewTitle').textContent = `${info.icon} ${info.name} — Kelas ${state.kelas}`;
+  document.getElementById('babBackBtn').onclick = () => goMapel(state.kelas);
+  const grid = document.getElementById('babGrid');
+  const babs = DATA[state.kelas][state.mapel];
+  grid.innerHTML = babs.map((b, i) => {
+    const key = getBabKey(state.kelas, state.mapel, i);
+    const prog = state.progress[key] || {};
+    const quizDone = prog.quizScore !== null && prog.quizScore !== undefined;
+    const quizScore = prog.quizScore;
+    return `
+      <div class="card card-bab" onclick="goMateri(${i})">
+        <div class="bab-header">
+          <span class="bab-number">BAB ${i+1}</span>
+          ${quizDone ? `<span style="font-size:0.75rem;color:var(--success);font-weight:700">✓ ${quizScore}/10</span>` : ''}
+        </div>
+        <div class="bab-title">${b.title}</div>
+        <div class="bab-desc">${b.desc}</div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width:${quizDone?100:0}%"></div>
+        </div>
+        <div class="bab-actions" onclick="event.stopPropagation()">
+          <button class="btn btn-primary" onclick="goMateri(${i})" style="font-size:0.75rem;padding:0.4rem 0.8rem">📖 Materi</button>
+          ${b.flashcards ? `<button class="btn btn-outline" onclick="goFlashcardsFromBab(${i})" style="font-size:0.75rem;padding:0.4rem 0.8rem">🃏 Flashcard</button>` : ''}
+          ${MAPEL[state.mapel].hasAnimasi ? `<button class="btn btn-outline" onclick="goAnimasiFromBab(${i})" style="font-size:0.75rem;padding:0.4rem 0.8rem">✨ Animasi</button>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function goFlashcardsFromBab(i) {
+  state.babIndex = i;
+  goFlashcards();
+}
+
+function goAnimasiFromBab(i) {
+  state.babIndex = i;
+  goAnimasi();
+}
+
+/* ============================================================
+   RENDER MATERI
+   ============================================================ */
+
+function renderMateri() {
+  const bab = DATA[state.kelas][state.mapel][state.babIndex];
+  const total = DATA[state.kelas][state.mapel].length;
+  document.getElementById('materiContent').innerHTML = bab.materi;
+  document.getElementById('materiBackBtn').onclick = () => goBab(state.mapel);
+  document.getElementById('btnKuis').onclick = goKuis;
+  document.getElementById('btnPrevBab').style.visibility = state.babIndex > 0 ? 'visible' : 'hidden';
+  document.getElementById('btnNextBab').style.visibility = state.babIndex < total-1 ? 'visible' : 'hidden';
+  document.getElementById('btnPrevBab').onclick = () => { if (state.babIndex>0) goMateri(state.babIndex-1); };
+  document.getElementById('btnNextBab').onclick = () => { if (state.babIndex<total-1) goMateri(state.babIndex+1); };
+}
+
+/* ============================================================
+   QUIZ
+   ============================================================ */
+
+function startQuiz() {
+  const bab = DATA[state.kelas][state.mapel][state.babIndex];
+  state.quizState = { index: 0, score: 0, answered: false, questions: bab.kuis };
+  renderQuiz();
+}
+
+function renderQuiz() {
+  const q = state.quizState;
+  const container = document.getElementById('quizContent');
+  if (q.index >= q.questions.length) {
+    // Selesai
+    const pct = Math.round(q.score / q.questions.length * 100);
+    let msg = '';
+    if (pct >= 80) msg = '🎉 Mantap! Lo udah paham banget!';
+    else if (pct >= 60) msg = '👍 Lumayan! Sedikit lagi sempurna.';
+    else msg = '💪 Semangat! Baca ulang materinya, terus coba lagi.';
+    saveQuizScore(state.kelas, state.mapel, state.babIndex, q.score);
+    container.innerHTML = `
+      <div class="quiz-result">
+        <h3>Kuis Selesai!</h3>
+        <div class="quiz-score">${q.score}/${q.questions.length}</div>
+        <p>${msg}</p>
+        <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap">
+          <button class="btn btn-outline" onclick="startQuiz()">🔄 Coba Lagi</button>
+          <button class="btn btn-primary" onclick="goMateri(${state.babIndex})">← Balik ke Materi</button>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  const current = q.questions[q.index];
+  container.innerHTML = `
+    <div class="quiz-header">
+      <span class="quiz-progress">Soal ${q.index+1} / ${q.questions.length}</span>
+      <span style="font-size:0.85rem;color:var(--text-muted)">Skor: ${q.score}</span>
+    </div>
+    <div class="quiz-question">${current.q}</div>
+    <div class="quiz-options" id="quizOptions">
+      ${current.opts.map((opt, i) => `
+        <button class="quiz-option" onclick="answerQuiz(${i})" data-index="${i}">
+          <span class="option-label">${String.fromCharCode(65+i)}</span>
+          <span>${opt}</span>
+        </button>
+      `).join('')}
+    </div>
+    <div id="quizFeedback"></div>
+  `;
+  document.getElementById('quizBackBtn').onclick = () => goMateri(state.babIndex);
+}
+
+function answerQuiz(selected) {
+  if (state.quizState.answered) return;
+  state.quizState.answered = true;
+  const current = state.quizState.questions[state.quizState.index];
+  const correct = selected === current.ans;
+  const options = document.querySelectorAll('#quizOptions .quiz-option');
+  options.forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === current.ans) btn.classList.add('correct');
+    else if (i === selected) btn.classList.add('wrong');
+  });
+  if (correct) state.quizState.score++;
+  const fb = document.getElementById('quizFeedback');
+  fb.innerHTML = `
+    <div class="quiz-explanation ${correct?'correct':'wrong'}">
+      <strong>${correct ? '✅ Benar!' : '❌ Salah!'}</strong>
+      ${correct ? 'Jawaban lo tepat.' : `Jawaban yang benar: <strong>${current.opts[current.ans]}</strong>`}<br><br>
+      <strong>Penjelasan:</strong> ${current.exp}
+    </div>
+    <button class="btn btn-primary btn-block" onclick="nextQuiz()">
+      ${state.quizState.index < state.quizState.questions.length-1 ? 'Soal Selanjutnya →' : 'Lihat Hasil →'}
+    </button>
+  `;
+}
+
+function nextQuiz() {
+  state.quizState.index++;
+  state.quizState.answered = false;
+  renderQuiz();
+}
+
+/* ============================================================
+   FLASHCARDS
+   ============================================================ */
+
+function startFlashcards() {
+  const bab = DATA[state.kelas][state.mapel][state.babIndex];
+  if (!bab.flashcards || bab.flashcards.length === 0) {
+    document.getElementById('flashcardTitle').textContent = 'Flashcards';
+    document.getElementById('flashcardFront').textContent = 'Belum ada flashcard untuk bab ini.';
+    document.getElementById('flashcardBack').textContent = '-';
+    return;
+  }
+  state.flashcardState = { index: 0, cards: bab.flashcards, flipped: false };
+  document.getElementById('flashcardTitle').textContent = `🃏 Flashcards — ${bab.title}`;
+  renderFlashcard();
+  document.getElementById('flashcardBackBtn').onclick = () => goMateri(state.babIndex);
+}
+
+function renderFlashcard() {
+  const f = state.flashcardState;
+  if (!f) return;
+  const card = f.cards[f.index];
+  document.getElementById('flashcardFront').textContent = card.q;
+  document.getElementById('flashcardBack').textContent = card.a;
+  document.getElementById('flashcardCounter').textContent = `${f.index+1} / ${f.cards.length}`;
+  const fc = document.getElementById('flashcard');
+  fc.classList.remove('flipped');
+  f.flipped = false;
+}
+
+function flipCard() {
+  const fc = document.getElementById('flashcard');
+  fc.classList.toggle('flipped');
+  state.flashcardState.flipped = !state.flashcardState.flipped;
+}
+
+function nextCard() {
+  const f = state.flashcardState;
+  if (!f) return;
+  f.index = (f.index + 1) % f.cards.length;
+  renderFlashcard();
+}
+
+function prevCard() {
+  const f = state.flashcardState;
+  if (!f) return;
+  f.index = (f.index - 1 + f.cards.length) % f.cards.length;
+  renderFlashcard();
+}
+
+/* ============================================================
+   ANIMASI PELAJARAN
+   ============================================================ */
+
+const ANIMASI_DATA = {
+  matematika: {
+    0: { title: "Grafik Persamaan Linear", subtitle: "Visualisasi y = mx + c", caption: "Garis lurus dengan gradien m dan intersep c. Ubah nilai untuk lihat perubahannya!", render: renderAnimasiLinear },
+    1: { title: "Parabola Fungsi Kuadrat", subtitle: "Visualisasi f(x) = ax² + bx + c", caption: "Parabola terbuka ke atas jika a > 0, ke bawah jika a < 0.", render: renderAnimasiParabola },
+    2: { title: "Gelombang Sinus & Cosinus", subtitle: "Visualisasi fungsi trigonometri", caption: "Gelombang sinus dan cosinus punya periode 360° (2π radian).", render: renderAnimasiTrigonometri }
+  },
+  fisika: {
+    0: { title: "Gerak Jatuh Bebas", subtitle: "Simulasi bola jatuh", caption: "Benda jatuh bebas dipengaruhi gravitasi (g = 9,8 m/s²).", render: renderAnimasiJatuhBebas },
+    1: { title: "Tekanan Hidrostatis", subtitle: "Semakin dalam, semakin besar tekanan", caption: "Tekanan hidrostatis P = ρgh. Semakin dalam, semakin besar tekanan.", render: renderAnimasiHidrostatis }
+  },
+  kimia: {
+    0: { title: "Struktur Atom", subtitle: "Model atom dengan elektron mengorbit", caption: "Elektron mengelilingi inti atom pada lintasan tertentu.", render: renderAnimasiAtom },
+    1: { title: "Ikatan Kovalen H₂O", subtitle: "Pemakaian elektron bersama", caption: "Atom H dan O berbagi elektron untuk mencapai kestabilan.", render: renderAnimasiIkatan }
+  },
+geografi: {
+    0: { title: "Rotasi Bumi", subtitle: "Bumi berputar pada porosnya", caption: "Bumi berotasi dari barat ke timur selama 24 jam.", render: renderAnimasiBumi },
+    1: { title: "Siklus Air", subtitle: "Evaporasi, kondensasi, presipitasi", caption: "Air menguap, mengembun, lalu turun sebagai hujan.", render: renderAnimasiSiklusAir }
+  }
+};
+
+function goAnimasi() {
+  showView('animasi');
+  renderAnimasi();
+  updateBreadcrumb();
+}
+
+function renderAnimasi() {
+  const mapel = state.mapel;
+  const babIdx = state.babIndex;
+  const animData = ANIMASI_DATA[mapel] && ANIMASI_DATA[mapel][babIdx];
+  
+  if (!animData) {
+    document.getElementById('animasiTitle').textContent = '✨ Animasi Interaktif';
+    document.getElementById('animasiSubtitle').textContent = 'Belum ada animasi untuk bab ini';
+    document.getElementById('animasiCanvas').innerHTML = '<div style="padding:2rem;color:var(--text-muted)">Animasi belum tersedia untuk bab ini.</div>';
+    document.getElementById('animasiCaption').textContent = '';
+    document.getElementById('animasiBackBtn').onclick = () => goMateri(state.babIndex);
+    return;
+  }
+  
+  document.getElementById('animasiTitle').textContent = `✨ ${animData.title}`;
+  document.getElementById('animasiSubtitle').textContent = animData.subtitle;
+  document.getElementById('animasiCaption').textContent = animData.caption;
+  animData.render();
+  document.getElementById('animasiBackBtn').onclick = () => goMateri(state.babIndex);
+}
+
+function renderAnimasiLinear() {
+  const canvas = document.getElementById('animasiCanvas');
+  canvas.innerHTML = `
+    <svg class="animasi-svg" viewBox="0 0 400 300">
+      <!-- Grid -->
+      <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e5e7eb" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="400" height="300" fill="url(#grid)"/>
+      <!-- Sumbu -->
+      <line x1="200" y1="0" x2="200" y2="300" stroke="#6b7280" stroke-width="1.5"/>
+      <line x1="0" y1="150" x2="400" y2="150" stroke="#6b7280" stroke-width="1.5"/>
+      <!-- Garis linear y = 0.5x + 1 -->
+      <line x1="50" y1="250" x2="350" y2="50" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round">
+        <animate attributeName="stroke-dasharray" from="0,1000" to="1000,0" dur="2s" fill="freeze"/>
+      </line>
+      <!-- Titik -->
+      <circle cx="200" cy="150" r="6" fill="#8b5cf6">
+        <animate attributeName="r" values="4;8;4" dur="1.5s" repeatCount="indefinite"/>
+      </circle>
+      <text x="210" y="145" font-size="12" fill="#6d28d9" font-weight="bold">(0,1)</text>
+      <text x="60" y="40" font-size="14" fill="#6d28d9" font-weight="bold">y = 0.5x + 1</text>
+    </svg>
+  `;
+}
+
+function renderAnimasiParabola() {
+  const canvas = document.getElementById('animasiCanvas');
+  canvas.innerHTML = `
+    <svg class="animasi-svg" viewBox="0 0 400 300">
+      <defs>
+        <pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e5e7eb" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="400" height="300" fill="url(#grid2)"/>
+      <line x1="200" y1="0" x2="200" y2="300" stroke="#6b7280" stroke-width="1.5"/>
+      <line x1="0" y1="150" x2="400" y2="150" stroke="#6b7280" stroke-width="1.5"/>
+      <!-- Parabola y = 0.01(x-200)^2 + 50 -->
+      <path d="M 50 280 Q 200 0 350 280" stroke="#8b5cf6" stroke-width="3" fill="none" stroke-linecap="round">
+        <animate attributeName="stroke-dasharray" from="0,1000" to="1000,0" dur="2s" fill="freeze"/>
+      </path>
+      <!-- Titik puncak -->
+      <circle cx="200" cy="50" r="6" fill="#f59e0b">
+        <animate attributeName="r" values="4;9;4" dur="1.5s" repeatCount="indefinite"/>
+      </circle>
+      <text x="210" y="45" font-size="12" fill="#92400e" font-weight="bold">Titik Puncak</text>
+      <text x="60" y="40" font-size="14" fill="#6d28d9" font-weight="bold">f(x) = ax² + bx + c</text>
+    </svg>
+  `;
+}
+
+function renderAnimasiTrigonometri() {
+  const canvas = document.getElementById('animasiCanvas');
+  let phase = 0;
+  canvas.innerHTML = `
+    <svg class="animasi-svg" viewBox="0 0 400 300">
+      <line x1="0" y1="150" x2="400" y2="150" stroke="#6b7280" stroke-width="1.5"/>
+      <path id="sinWave" d="" stroke="#8b5cf6" stroke-width="3" fill="none"/>
+      <path id="cosWave" d="" stroke="#f59e0b" stroke-width="3" fill="none"/>
+      <text x="10" y="30" font-size="13" fill="#8b5cf6" font-weight="bold">sin x</text>
+      <text x="10" y="50" font-size="13" fill="#f59e0b" font-weight="bold">cos x</text>
+    </svg>
+  `;
+  const sinPath = document.getElementById('sinWave');
+  const cosPath = document.getElementById('cosWave');
+  function animate() {
+    let d1 = 'M 0 150';
+    let d2 = 'M 0 150';
+    for (let x = 0; x <= 400; x += 4) {
+      const y1 = 150 - 80 * Math.sin((x/400)*Math.PI*4 + phase);
+      const y2 = 150 - 80 * Math.cos((x/400)*Math.PI*4 + phase);
+      d1 += ` L ${x} ${y1}`;
+      d2 += ` L ${x} ${y2}`;
+    }
+    sinPath.setAttribute('d', d1);
+    cosPath.setAttribute('d', d2);
+    phase += 0.05;
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
+
+function renderAnimasiJatuhBebas() {
+  const canvas = document.getElementById('animasiCanvas');
+  canvas.innerHTML = `
+    <svg class="animasi-svg" viewBox="0 0 400 300">
+      <line x1="50" y1="30" x2="50" y2="270" stroke="#6b7280" stroke-width="2"/>
+      <line x1="40" y1="270" x2="360" y2="270" stroke="#6b7280" stroke-width="2"/>
+      <text x="20" y="150" font-size="12" fill="#6b7280" transform="rotate(-90 20 150)">Ketinggian</text>
+      <text x="180" y="290" font-size="12" fill="#6b7280">Waktu →</text>
+      <circle id="ball" cx="200" cy="50" r="18" fill="#8b5cf6">
+        <animate attributeName="cy" values="50;250;50" dur="2s" repeatCount="indefinite" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.4 0 1 1;0 0 0.6 1"/>
+      </circle>
+      <line id="ballLine" x1="200" y1="50" x2="200" y2="50" stroke="#a78bfa" stroke-width="2" stroke-dasharray="4,4">
+        <animate attributeName="y1" values="50;250;50" dur="2s" repeatCount="indefinite" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.4 0 1 1;0 0 0.6 1"/>
+      </line>
+      <text x="230" y="40" font-size="13" fill="#6d28d9" font-weight="bold">v = g·t</text>
+      <text x="230" y="60" font-size="13" fill="#6d28d9" font-weight="bold">h = ½·g·t²</text>
+    </svg>
+  `;
+}
+
+function renderAnimasiHidrostatis() {
+  const canvas = document.getElementById('animasiCanvas');
+  canvas.innerHTML = `
+    <svg class="animasi-svg" viewBox="0 0 400 300">
+      <rect x="100" y="40" width="200" height="220" fill="#dbeafe" stroke="#3b82f6" stroke-width="2" rx="4"/>
+      <text x="150" y="30" font-size="13" fill="#1e40af" font-weight="bold">Tekanan Hidrostatis</text>
+      <line x1="100" y1="90" x2="300" y2="90" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="4,4"/>
+      <text x="310" y="95" font-size="11" fill="#1e40af">h₁ (dangkal)</text>
+      <line x1="100" y1="160" x2="300" y2="160" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,4"/>
+      <text x="310" y="165" font-size="11" fill="#1e40af">h₂ (sedang)</text>
+      <line x1="100" y1="230" x2="300" y2="230" stroke="#1d4ed8" stroke-width="1.5" stroke-dasharray="4,4"/>
+      <text x="310" y="235" font-size="11" fill="#1e40af">h₃ (dalam)</text>
+      <circle cx="150" cy="90" r="5" fill="#93c5fd"><animate attributeName="r" values="4;7;4" dur="1.5s" repeatCount="indefinite"/></circle>
+      <circle cx="150" cy="160" r="7" fill="#60a5fa"><animate attributeName="r" values="5;9;5" dur="1.5s" repeatCount="indefinite"/></circle>
+      <circle cx="150" cy="230" r="9" fill="#3b82f6"><animate attributeName="r" values="6;11;6" dur="1.5s" repeatCount="indefinite"/></circle>
+      <text x="30" y="150" font-size="13" fill="#1e40af" font-weight="bold" transform="rotate(-90 30 150)">Kedalaman →</text>
+      <text x="160" y="280" font-size="13" fill="#1e40af" font-weight="bold">P = ρ·g·h</text>
+    </svg>
+  `;
+}
+
+function renderAnimasiAtom() {
+  const canvas = document.getElementById('animasiCanvas');
+  canvas.innerHTML = `
+    <svg class="animasi-svg" viewBox="0 0 400 300">
+      <circle cx="200" cy="150" r="30" fill="#8b5cf6">
+        <animate attributeName="r" values="28;32;28" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <text x="190" y="155" font-size="14" fill="white" font-weight="bold">Inti</text>
+      <g transform="translate(200,150)">
+        <ellipse rx="90" ry="40" fill="none" stroke="#c4b5fd" stroke-width="1.5"/>
+        <g>
+          <circle r="8" fill="#a78bfa">
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="cx" values="90;0;90" dur="3s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+      </g>
+      <g transform="translate(200,150) rotate(60)">
+        <ellipse rx="90" ry="40" fill="none" stroke="#c4b5fd" stroke-width="1.5"/>
+        <circle r="8" fill="#a78bfa">
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="cx" values="90;0;90" dur="4s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+      <g transform="translate(200,150) rotate(-60)">
+        <ellipse rx="90" ry="40" fill="none" stroke="#c4b5fd" stroke-width="1.5"/>
+        <circle r="8" fill="#a78bfa">
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="5s" repeatCount="indefinite"/>
+          <animate attributeName="cx" values="90;0;90" dur="5s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+      <text x="120" y="30" font-size="14" fill="#6d28d9" font-weight="bold">Struktur Atom</text>
+    </svg>
+  `;
+}
+
+function renderAnimasiIkatan() {
+  const canvas = document.getElementById('animasiCanvas');
+  canvas.innerHTML = `
+    <svg class="animasi-svg" viewBox="0 0 400 300">
+      <text x="130" y="30" font-size="14" fill="#6d28d9" font-weight="bold">Ikatan Kovalen H₂O</text>
+      <circle cx="200" cy="150" r="40" fill="#ef4444">
+        <animate attributeName="r" values="38;42;38" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <text x="190" y="155" font-size="16" fill="white" font-weight="bold">O</text>
+      <circle cx="100" cy="100" r="25" fill="#3b82f6">
+        <animate attributeName="cx" values="100;120;100" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <text x="94" y="105" font-size="14" fill="white" font-weight="bold">H</text>
+      <circle cx="100" cy="200" r="25" fill="#3b82f6">
+        <animate attributeName="cx" values="100;120;100" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <text x="94" y="205" font-size="14" fill="white" font-weight="bold">H</text>
+      <line x1="120" y1="115" x2="165" y2="135" stroke="#fbbf24" stroke-width="3" stroke-dasharray="5,3">
+        <animate attributeName="stroke-dashoffset" from="0" to="16" dur="1s" repeatCount="indefinite"/>
+      </line>
+      <line x1="120" y1="185" x2="165" y2="165" stroke="#fbbf24" stroke-width="3" stroke-dasharray="5,3">
+        <animate attributeName="stroke-dashoffset" from="0" to="16" dur="1s" repeatCount="indefinite"/>
+      </line>
+      <text x="140" y="270" font-size="12" fill="#6b7280">Elektron dipakai bersama (kovalen)</text>
+    </svg>
+  `;
+}
+
+function renderAnimasiBumi() {
+  const canvas = document.getElementById('animasiCanvas');
+  canvas.innerHTML = `
+    <svg class="animasi-svg" viewBox="0 0 400 300">
+      <text x="110" y="30" font-size="14" fill="#6d28d9" font-weight="bold">Rotasi Bumi</text>
+      <g transform="translate(200,150)">
+        <circle r="70" fill="#3b82f6">
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/>
+        </circle>
+        <ellipse rx="30" ry="70" fill="#22c55e" opacity="0.8">
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/>
+        </ellipse>
+        <ellipse rx="70" ry="30" fill="#22c55e" opacity="0.8">
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/>
+        </ellipse>
+      </g>
+      <line x1="200" y1="50" x2="200" y2="250" stroke="#6b7280" stroke-width="1" stroke-dasharray="4,4"/>
+      <text x="210" y="270" font-size="12" fill="#6b7280">Sumbu rotasi</text>
+      <text x="300" y="80" font-size="12" fill="#6b7280">24 jam</text>
+    </svg>
+  `;
+}
+
+function renderAnimasiSiklusAir() {
+  const canvas = document.getElementById('animasiCanvas');
+  canvas.innerHTML = `
+    <svg class="animasi-svg" viewBox="0 0 400 300">
+      <text x="120" y="25" font-size="14" fill="#6d28d9" font-weight="bold">Siklus Air</text>
+      <rect x="0" y="220" width="400" height="80" fill="#3b82f6" opacity="0.4"/>
+      <text x="20" y="260" font-size="12" fill="#1e40af">Laut / Danau</text>
+      <ellipse cx="200" cy="70" rx="90" ry="30" fill="#9ca3af" opacity="0.7">
+        <animate attributeName="rx" values="85;95;85" dur="3s" repeatCount="indefinite"/>
+      </ellipse>
+      <text x="160" y="75" font-size="12" fill="#374151">Awan</text>
+      <path d="M 100 200 Q 120 130 170 90" stroke="#60a5fa" stroke-width="2" fill="none" stroke-dasharray="6,4">
+        <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="1s" repeatCount="indefinite"/>
+      </path>
+      <text x="60" y="160" font-size="11" fill="#1e40af">Evaporasi</text>
+      <path d="M 220 90 Q 280 150 300 200" stroke="#3b82f6" stroke-width="2" fill="none" stroke-dasharray="6,4">
+        <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="1s" repeatCount="indefinite"/>
+      </path>
+      <text x="290" y="150" font-size="11" fill="#1e40af">Presipitasi</text>
+      <circle cx="280" cy="90" r="4" fill="#60a5fa">
+        <animate attributeName="cy" values="90;200;90" dur="2s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  `;
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+
+loadProgress();
+renderHome();
+</script>
+</body>
+</html>
