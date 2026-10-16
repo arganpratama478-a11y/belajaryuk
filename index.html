@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SMA Learning Hub - Belajar Jadi Gampang</title>
+<title>BelajarYuk — Sains Interaktif</title>
 <style>
   :root {
     --primary: #8b5cf6;
@@ -770,6 +770,34 @@
     margin-top: 0.25rem;
   }
 
+  /* ===== BELAJARYUK SCIENCE LAB V2 ===== */
+  .science-launch{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.5rem;margin:0 0 2.5rem;background:linear-gradient(120deg,#111827,#172554);border-radius:20px;color:#fff;box-shadow:0 12px 35px rgba(15,23,42,.15)}
+  .science-launch h2{font-size:1.4rem;margin:.25rem 0 .5rem}.science-launch p{color:#dbeafe;max-width:650px}
+  .science-kicker{font-size:.72rem;letter-spacing:.13em;font-weight:800;color:#0d9488}.science-launch .science-kicker{color:#5eead4}
+  .science-heading{margin:1.25rem 0 1.5rem}.science-heading h1{font-size:clamp(1.8rem,5vw,2.6rem);color:#312e81;margin:.35rem 0}.science-heading p{max-width:850px;color:var(--text-muted)}
+  .science-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.65rem;margin-bottom:1rem}
+  .science-tab{border:1px solid #ddd6fe;background:#fff;border-radius:12px;padding:.85rem .5rem;font-weight:750;color:#4c1d95;cursor:pointer}
+  .science-tab.active{background:#4c1d95;color:#fff;border-color:#4c1d95}
+  .science-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:1rem;align-items:start}
+  .science-panel{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:1.2rem;box-shadow:var(--shadow);min-width:0}
+  .science-panel h2{font-size:1.2rem;color:#312e81;margin-bottom:.6rem}.science-panel h3{font-size:1rem;margin:1rem 0 .35rem;color:#374151}
+  .science-muted{color:#6b7280;font-size:.9rem}.science-equation{font-size:1.2rem;font-weight:800;background:#f5f3ff;color:#4c1d95;padding:.8rem;border-radius:10px;text-align:center;margin:.8rem 0}
+  .science-variable{padding:.8rem 0;border-bottom:1px solid #f1f5f9}.science-variable:last-child{border-bottom:0}.science-variable label{display:flex;justify-content:space-between;gap:.75rem;font-weight:700;font-size:.92rem}.science-variable input{width:100%;accent-color:#7c3aed;margin-top:.65rem}
+  .science-result{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:850;color:#047857;margin:.25rem 0}.science-result-label{font-size:.85rem;color:#6b7280}
+  .science-note{font-size:.88rem;line-height:1.55;background:#fffbeb;border-left:4px solid #f59e0b;border-radius:8px;padding:.8rem;margin-top:1rem;color:#78350f}
+  .science-good{font-size:.88rem;background:#ecfdf5;border-left:4px solid #10b981;border-radius:8px;padding:.8rem;margin-top:.8rem;color:#065f46}
+  .science-visual-stage{height:230px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at 50% 35%,#f5f3ff,#eef2ff 68%,#fff);border-radius:12px;perspective:700px;margin:.75rem 0}
+  .science-object{position:relative;transform-style:preserve-3d;transition:transform .35s ease}.science-object.spin{animation:scienceSpin 12s linear infinite}
+  @keyframes scienceSpin{from{transform:rotateX(-18deg) rotateY(0deg)}to{transform:rotateX(-18deg) rotateY(360deg)}}
+  .science-cube{width:82px;height:82px;background:linear-gradient(135deg,#a78bfa,#6d28d9);border:2px solid #5b21b6;box-shadow:0 18px 35px #6d28d944;transform:rotateX(-18deg) rotateY(28deg)}
+  .science-cell{width:140px;height:110px;border-radius:48% 52% 55% 45%;background:radial-gradient(ellipse at 60% 38%,#fbcfe8 0 12%,transparent 13%),radial-gradient(ellipse at 36% 62%,#a7f3d0 0 10%,transparent 11%),radial-gradient(ellipse at 58% 65%,#fde68a 0 8%,transparent 9%),radial-gradient(ellipse at 50% 50%,#c4b5fd,#818cf8 70%);border:4px solid #6366f1;box-shadow:inset 0 0 0 8px #ffffff55,0 20px 30px #6366f133;transform:rotateX(25deg) rotateY(-25deg)}
+  .science-molecule{width:160px;height:100px;transform:rotateX(-12deg) rotateY(25deg)}.science-atom{position:absolute;width:48px;height:48px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fecaca,#dc2626 65%);box-shadow:0 10px 15px #dc262644;left:58px;top:24px}.science-atom.small{width:30px;height:30px;background:radial-gradient(circle at 30% 25%,#bfdbfe,#2563eb 70%);left:15px;top:5px}.science-atom.small.two{left:116px;top:58px}.science-bond{position:absolute;width:60px;height:8px;background:#94a3b8;border-radius:8px;left:25px;top:38px;transform:rotate(28deg);transform-origin:right center}.science-bond.two{left:77px;top:57px;transform:rotate(-25deg);transform-origin:left center}
+  .science-terrain{width:190px;height:100px;background:linear-gradient(160deg,#86efac 0 25%,#65a30d 26% 48%,#92400e 49% 55%,#b45309 56%);border:2px solid #64748b;transform:rotateX(58deg) rotateZ(-12deg);box-shadow:0 28px 20px #0f172a22;position:relative}.science-terrain:before,.science-terrain:after{content:"";position:absolute;inset:10px 0;border-top:2px solid #ffffff77;transform:translateZ(8px)}.science-terrain:after{inset:0 25% 0 25%;border-top:0;border-left:2px solid #ffffff66;border-right:2px solid #ffffff66}
+  .science-bar{height:10px;background:#e5e7eb;border-radius:99px;overflow:hidden;margin:.4rem 0}.science-bar span{display:block;height:100%;background:linear-gradient(90deg,#34d399,#059669);width:0;transition:width .25s}
+  .science-data{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;margin-top:.8rem}.science-data div{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:.7rem}.science-data strong{display:block;font-size:1.05rem;color:#334155}.science-data span{font-size:.78rem;color:#64748b}
+  .science-footer{margin-top:1rem;font-size:.8rem;color:#64748b}
+  @media(max-width:760px){.science-layout{grid-template-columns:1fr}.science-launch{align-items:flex-start;flex-direction:column}.science-launch .btn{width:100%}.science-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.science-panel{padding:1rem}.science-visual-stage{height:200px}}
+
   /* ===== RESPONSIVE ===== */
   @media (max-width: 640px) {
     .container { padding: 1rem; }
@@ -792,7 +820,7 @@
   <div class="header-content">
     <div class="logo" onclick="goHome()">
       <div class="logo-icon">🎓</div>
-      <span>SMA Learning Hub</span>
+      <span>BelajarYuk</span>
     </div>
     <div class="breadcrumb" id="breadcrumb"></div>
   </div>
@@ -802,8 +830,8 @@
   <!-- HOME VIEW -->
   <div id="homeView">
     <div class="hero">
-      <h1>Belajar SMA Jadi Gampang 🚀</h1>
-      <p>Materi lengkap kelas 10, 11, 12. Ada kuis, flashcard, dan animasi interaktif. Belajar santai, hasil maksimal!</p>
+      <h1>BelajarYuk: Pahami Sains, Uji Modelnya 🔬</h1>
+      <p>Hubungkan materi, variabel, eksperimen, grafik, dan visualisasi 3D. Hasil simulasi adalah model yang punya asumsi dan batasan.</p>
     </div>
 
     <div class="stats-row" id="statsRow">
@@ -824,6 +852,15 @@
         <div class="stat-label">Progress Belajar</div>
       </div>
     </div>
+
+    <section class="science-launch">
+      <div class="science-launch-copy">
+        <span class="science-kicker">BELAJAR BERBASIS MODEL</span>
+        <h2>Laboratorium Sains Interaktif</h2>
+        <p>Mulai dari konsep dan variabel, ubah parameter, lalu amati hasil serta visualisasi 3D sederhana.</p>
+      </div>
+      <button class="btn btn-primary" onclick="goScienceLab()">Buka Laboratorium →</button>
+    </section>
 
     <h2 class="section-title">Pilih Kelas</h2>
     <div class="grid grid-kelas" id="kelasGrid"></div>
@@ -850,6 +887,7 @@
     <div class="materi-nav">
       <button class="btn btn-outline" id="btnPrevBab">← Bab Sebelumnya</button>
       <button class="btn btn-primary" id="btnKuis">📝 Mulai Kuis (10 Soal)</button>
+      <button class="btn btn-outline" onclick="goScienceFromMateri()">🔬 Eksperimen Sains</button>
       <button class="btn btn-outline" id="btnNextBab">Bab Selanjutnya →</button>
     </div>
   </div>
@@ -904,6 +942,23 @@
       <div class="animasi-canvas" id="animasiCanvas"></div>
       <div class="animasi-caption" id="animasiCaption"></div>
     </div>
+  </div>
+
+  <!-- SCIENCE LAB V2 -->
+  <div id="scienceView" class="hidden">
+    <button class="btn btn-back" onclick="goHome()">← Kembali ke Beranda</button>
+    <div class="science-heading">
+      <span class="science-kicker">LABORATORIUM V2 · MODEL EDUKASI</span>
+      <h1>Eksperimen Sains</h1>
+      <p>Pilih bidang, baca variabelnya, ubah parameter, dan periksa hasil model. Angka yang ditampilkan bukan pengukuran dunia nyata kecuali dinyatakan demikian.</p>
+    </div>
+    <div class="science-tabs" role="tablist" aria-label="Bidang sains">
+      <button class="science-tab active" data-science="fisika" onclick="selectScience('fisika')">⚛️ Fisika</button>
+      <button class="science-tab" data-science="biologi" onclick="selectScience('biologi')">🧬 Biologi</button>
+      <button class="science-tab" data-science="kimia" onclick="selectScience('kimia')">🧪 Kimia</button>
+      <button class="science-tab" data-science="geografi" onclick="selectScience('geografi')">🌍 Geografi</button>
+    </div>
+    <div id="scienceContent"></div>
   </div>
 </div>
 
@@ -2338,7 +2393,7 @@ function goAnimasi() {
 
 function showView(view) {
   state.currentView = view;
-  ['home','mapel','bab','materi','quiz','flashcard','animasi'].forEach(v => {
+  ['home','mapel','bab','materi','quiz','flashcard','animasi','science'].forEach(v => {
     document.getElementById(v + 'View').classList.toggle('hidden', v !== view);
   });
 }
@@ -2895,6 +2950,111 @@ function renderAnimasiSiklusAir() {
     </svg>
   `;
 }
+
+/* ============================================================
+   BELAJARYUK V2 — SCIENCE FOUNDATION + INTERACTIVE MODELS
+   ============================================================ */
+const SCIENCE_MODELS = {
+  fisika: {
+    title: 'Hukum II Newton: gaya, massa, dan gerak',
+    intro: 'Model benda dengan massa tetap dan gaya resultan konstan. Percepatan mengikuti Hukum II Newton.',
+    equation: 'F = m × a  →  a = F / m',
+    variables: [
+      ['force','Gaya resultan (F)','N',1,100,1,20],
+      ['mass','Massa (m)','kg',1,20,1,5],
+      ['time','Waktu (t)','s',1,10,1,3]
+    ],
+    definitions: 'Gaya resultan adalah jumlah vektor gaya yang bekerja pada benda. Massa mengukur kelembaman. Waktu adalah durasi sejak gerak dimulai.',
+    limits: 'Mengasumsikan gaya resultan konstan, massa tetap, dan gerak satu dimensi. Hambatan udara, gesekan, serta perubahan gaya tidak dimodelkan.',
+    visual: 'cube'
+  },
+  biologi: {
+    title: 'Model pertumbuhan populasi sederhana',
+    intro: 'Amati bagaimana populasi ideal berubah jika pertumbuhan bersih per langkah dianggap konstan.',
+    equation: 'N(t) = N₀ × (1 + r)ᵗ',
+    variables: [
+      ['initial','Populasi awal (N₀)','individu',10,100,10,40],
+      ['rate','Laju pertumbuhan per langkah','%',1,20,1,8],
+      ['time','Jumlah langkah waktu (t)','langkah',1,10,1,5]
+    ],
+    definitions: 'N₀ adalah jumlah awal; r adalah fraksi pertumbuhan bersih per langkah; t adalah jumlah langkah. “Langkah” belum tentu satu hari atau satu tahun—itu harus ditentukan oleh konteks data.',
+    limits: 'Model eksponensial ini tidak memasukkan daya dukung lingkungan, usia, migrasi terpisah, penyakit, atau perubahan sumber daya. Ini bukan prediksi populasi nyata.',
+    visual: 'cell'
+  },
+  kimia: {
+    title: 'Pengaruh suhu dan konsentrasi terhadap laju relatif',
+    intro: 'Model ilustratif untuk menunjukkan bahwa konsentrasi dan suhu dapat memengaruhi laju reaksi. Ini bukan persamaan universal untuk semua reaksi.',
+    equation: 'Indeks laju ∝ C × 2^((T − 25)/10)',
+    variables: [
+      ['concentration','Konsentrasi (C)','mol/L',0.1,2,0.1,1],
+      ['temperature','Suhu (T)','°C',10,80,1,25]
+    ],
+    definitions: 'Konsentrasi menyatakan jumlah zat terlarut per volume larutan. Suhu adalah kondisi termal sistem. Indeks laju di sini dinormalisasi terhadap C = 1 mol/L dan T = 25°C.',
+    limits: 'Diasumsikan orde satu terhadap konsentrasi dan faktor Q₁₀ = 2. Reaksi nyata perlu hukum laju eksperimen; perubahan suhu juga dapat mengubah mekanisme atau kesetimbangan.',
+    visual: 'molecule'
+  },
+  geografi: {
+    title: 'Indeks limpasan permukaan sederhana',
+    intro: 'Jelajahi bagaimana hujan, kemiringan lereng, dan tutupan vegetasi memengaruhi indeks limpasan relatif pada model konseptual.',
+    equation: 'Indeks = hujan × (1 − vegetasi) × sin(lereng)',
+    variables: [
+      ['rain','Curah hujan','mm (input)',0,200,5,100],
+      ['slope','Kemiringan lereng','°',0,45,1,20],
+      ['vegetation','Tutupan vegetasi','%',0,100,5,50]
+    ],
+    definitions: 'Curah hujan adalah tinggi air hujan yang terkumpul pada bidang datar. Kemiringan diukur dalam derajat. Tutupan vegetasi adalah persentase permukaan yang tertutup vegetasi.',
+    limits: 'Hasil hanya indeks relatif tanpa satuan debit, bukan prediksi banjir. Model tidak memasukkan jenis tanah, infiltrasi, intensitas hujan, drainase, bentuk DAS, dan kondisi awal tanah.',
+    visual: 'terrain'
+  }
+};
+let scienceState = { subject: 'fisika', values: {} };
+function goScienceLab(){ showView('science'); selectScience(scienceState.subject || 'fisika'); updateBreadcrumb(); }
+function goScienceFromMateri(){ const map={fisika:'fisika',biologi:'biologi',kimia:'kimia',geografi:'geografi'}; scienceState.subject=map[state.mapel]||'fisika'; goScienceLab(); }
+function selectScience(subject){
+  scienceState.subject = subject;
+  document.querySelectorAll('.science-tab').forEach(b=>b.classList.toggle('active',b.dataset.science===subject));
+  const model=SCIENCE_MODELS[subject];
+  if(!scienceState.values[subject]){
+    scienceState.values[subject]={};
+    model.variables.forEach(v=>scienceState.values[subject][v[0]]=v[6]);
+  }
+  renderScienceModel();
+}
+function scienceFmt(n,d=2){return Number(n).toLocaleString('id-ID',{maximumFractionDigits:d,minimumFractionDigits:0});}
+function renderScienceModel(){
+  const subject=scienceState.subject, m=SCIENCE_MODELS[subject], vals=scienceState.values[subject];
+  const controls=m.variables.map(v=>`<div class="science-variable"><label for="sv-${v[0]}"><span>${v[1]}</span><span id="sv-${v[0]}-value">${scienceFmt(vals[v[0]])} ${v[2]}</span></label><input id="sv-${v[0]}" type="range" min="${v[3]}" max="${v[4]}" step="${v[5]}" value="${vals[v[0]]}" oninput="updateScienceValue('${v[0]}',this.value)"></div>`).join('');
+  document.getElementById('scienceContent').innerHTML=`<div class="science-layout"><section class="science-panel"><h2>${m.title}</h2><p class="science-muted">${m.intro}</p><div class="science-equation">${m.equation}</div><h3>Variabel yang bisa diubah</h3>${controls}<h3>Definisi variabel</h3><p class="science-muted">${m.definitions}</p><div class="science-note"><strong>Batas model:</strong> ${m.limits}</div></section><section class="science-panel"><h2>Hasil & visualisasi</h2><p class="science-muted">Visualisasi 3D skematis untuk membantu membayangkan konsep; bukan model anatomi/geologi dengan skala presisi.</p><div class="science-visual-stage"><div id="scienceObject" class="science-object science-${m.visual}"></div></div><button class="btn btn-outline" onclick="toggleScienceSpin()">⟳ Putar visualisasi</button><div id="scienceResult" aria-live="polite"></div><div class="science-good"><strong>Cara membaca:</strong> ubah satu variabel pada satu waktu, catat hasil, lalu bandingkan. Perubahan bersama beberapa variabel tidak cukup untuk mengisolasi sebab tunggal.</div><div class="science-footer">Versi awal menggunakan model matematika edukatif. Cocokkan dengan data eksperimen dan sumber ilmiah sebelum dipakai untuk kesimpulan dunia nyata.</div></section></div>`;
+  const obj=document.getElementById('scienceObject');
+  if(m.visual==='molecule') obj.innerHTML='<span class="science-bond"></span><span class="science-bond two"></span><span class="science-atom"></span><span class="science-atom small"></span><span class="science-atom small two"></span>';
+  else obj.innerHTML='';
+  updateScienceResult();
+}
+function updateScienceValue(key,value){scienceState.values[scienceState.subject][key]=Number(value);const label=document.getElementById(`sv-${key}-value`);if(label){const v=SCIENCE_MODELS[scienceState.subject].variables.find(x=>x[0]===key);label.textContent=`${scienceFmt(Number(value))} ${v[2]}`;}updateScienceResult();}
+function updateScienceResult(){
+  const s=scienceState.subject,v=scienceState.values[s],out=document.getElementById('scienceResult');if(!out)return;
+  let html='';
+  if(s==='fisika'){
+    const a=v.force/v.mass, vel=a*v.time, displacement=.5*a*v.time*v.time;
+    html=`<div class="science-result">${scienceFmt(a)} m/s²</div><div class="science-result-label">Percepatan (a = F/m)</div><div class="science-data"><div><strong>${scienceFmt(vel)} m/s</strong><span>Kecepatan akhir, dari keadaan diam</span></div><div><strong>${scienceFmt(displacement)} m</strong><span>Perpindahan, dari keadaan diam</span></div></div>`;
+    const obj=document.getElementById('scienceObject');if(obj)obj.style.transform=`rotateX(-18deg) rotateY(28deg) translateX(${Math.min(65,displacement*2)}px)`;
+  } else if(s==='biologi'){
+    const pop=v.initial*Math.pow(1+v.rate/100,v.time);
+    html=`<div class="science-result">${scienceFmt(pop,1)} individu</div><div class="science-result-label">Populasi model setelah ${v.time} langkah</div><div class="science-bar"><span style="width:${Math.min(100,pop/Math.max(100,v.initial*Math.pow(1+v.rate/100,10))*100)}%"></span></div><div class="science-data"><div><strong>${scienceFmt(v.initial)} individu</strong><span>Populasi awal</span></div><div><strong>+${scienceFmt((pop-v.initial)/v.initial*100)}%</strong><span>Perubahan relatif dari awal</span></div></div>`;
+    const obj=document.getElementById('scienceObject');if(obj)obj.style.transform=`rotateX(25deg) rotateY(-25deg) scale(${Math.min(1.35,.9+pop/1000)})`;
+  } else if(s==='kimia'){
+    const index=v.concentration*Math.pow(2,(v.temperature-25)/10);
+    html=`<div class="science-result">${scienceFmt(index,3)}×</div><div class="science-result-label">Indeks laju relatif terhadap 1 mol/L pada 25°C</div><div class="science-data"><div><strong>${scienceFmt(v.concentration)} mol/L</strong><span>Konsentrasi</span></div><div><strong>${scienceFmt(v.temperature)} °C</strong><span>Suhu</span></div></div>`;
+    const obj=document.getElementById('scienceObject');if(obj)obj.style.transform=`rotateX(-12deg) rotateY(${25+v.temperature}deg) scale(${Math.min(1.25,.85+v.concentration*.15)})`;
+  } else {
+    const index=v.rain*(1-v.vegetation/100)*Math.sin(v.slope*Math.PI/180);
+    const relative=v.rain===0?0:index/(200)*100;
+    html=`<div class="science-result">${scienceFmt(index,1)}</div><div class="science-result-label">Indeks limpasan relatif (tanpa satuan; bukan debit)</div><div class="science-bar"><span style="width:${Math.min(100,relative)}%"></span></div><div class="science-data"><div><strong>${scienceFmt(v.rain)} mm</strong><span>Curah hujan input</span></div><div><strong>${scienceFmt(v.vegetation)}%</strong><span>Tutupan vegetasi</span></div></div>`;
+    const obj=document.getElementById('scienceObject');if(obj)obj.style.transform=`rotateX(${58-v.slope/5}deg) rotateZ(-12deg) translateY(${v.slope/4}px)`;
+  }
+  out.innerHTML=html;
+}
+function toggleScienceSpin(){const obj=document.getElementById('scienceObject');if(obj)obj.classList.toggle('spin');}
 
 /* ============================================================
    INIT
