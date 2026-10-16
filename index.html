@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BelajarYuk — Sains Interaktif</title>
+<title>BelajarYuk - Belajar Sains Jadi Gampang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --primary: #8b5cf6;
@@ -812,6 +815,120 @@
     .grid-mapel { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
     .grid-bab { grid-template-columns: 1fr; }
   }
+  /* ===== REFRESH BERANDA (BelajarYuk) ===== */
+  :root {
+    --k10: #2563eb; --k10-bg: #dbeafe;
+    --k11: #059669; --k11-bg: #d1fae5;
+    --k12: #ea580c; --k12-bg: #ffedd5;
+    --primary-dark: #5b21b6;
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f7f5ff;
+  }
+  button, input { font-family: inherit; }
+
+  .hero { text-align: left; padding: 1.5rem 0 1.25rem; margin-bottom: 0; }
+  .hero h1 { font-size: clamp(1.6rem, 6vw, 2.5rem); letter-spacing: -0.02em; margin-bottom: 0.4rem; }
+  .hero p { font-size: 1rem; margin: 0; max-width: 520px; }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+    min-width: 0;
+  }
+  .stat-item + .stat-item { border-left: 1px solid var(--border); }
+  .stat-ico {
+    flex: none;
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    background: var(--primary-bg-2);
+    display: grid; place-items: center;
+  }
+  .stat-ico svg, .kelas-go {
+    fill: none; stroke: currentColor; stroke-width: 2;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+  .stat-ico svg { width: 20px; height: 20px; color: var(--primary-dark); }
+  .stat-item .stat-value { font-size: 1.35rem; font-weight: 800; line-height: 1.1; color: var(--text); }
+  .stat-item .stat-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+  .stat-bar { height: 5px; background: var(--primary-bg-2); border-radius: 3px; margin-top: 6px; overflow: hidden; }
+  .stat-bar span { display: block; height: 100%; width: 0; background: var(--success); border-radius: 3px; transition: width .5s ease; }
+
+  .grid-kelas { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .card-kelas {
+    --c: var(--primary); --c-bg: var(--primary-bg-2);
+    display: flex; align-items: center; gap: 1rem;
+    text-align: left;
+    padding: 1.1rem 1.25rem;
+    border-radius: 20px;
+  }
+  .card-kelas::before { display: none; }
+  .card-kelas[data-k="10"] { --c: var(--k10); --c-bg: var(--k10-bg); }
+  .card-kelas[data-k="11"] { --c: var(--k11); --c-bg: var(--k11-bg); }
+  .card-kelas[data-k="12"] { --c: var(--k12); --c-bg: var(--k12-bg); }
+  .card-kelas:hover { border-color: var(--c); }
+  .card-kelas:active { transform: scale(0.98); }
+  .kelas-num {
+    flex: none;
+    width: 64px; height: 64px;
+    border-radius: 18px;
+    background: var(--c-bg);
+    color: var(--c);
+    font-size: 1.75rem; font-weight: 800; letter-spacing: -0.03em;
+    display: grid; place-items: center;
+  }
+  .kelas-info { flex: 1; min-width: 0; }
+  .card-kelas .title { font-size: 1.15rem; color: var(--text); margin-bottom: 2px; }
+  .card-kelas .subtitle { font-size: 0.85rem; }
+  .kelas-go { flex: none; width: 22px; height: 22px; color: var(--c); }
+
+  .section-title { font-size: 1.15rem; color: var(--text); }
+
+
+  .science-launch {
+    position: relative; overflow: hidden;
+    background: linear-gradient(120deg, #4c1d95 0%, #312e81 100%);
+    border-radius: 20px; padding: 1.5rem 1.75rem; margin: 0 0 2rem;
+    box-shadow: 0 10px 28px rgba(76, 29, 149, .22);
+  }
+  .science-launch > * { position: relative; z-index: 1; }
+  .science-launch .lab-atom { position: absolute; z-index: 0; right: -10px; top: 50%; width: 170px; height: 170px; transform: translateY(-50%); color: rgba(255,255,255,.12); }
+  .science-launch h2 { font-size: 1.3rem; margin: .2rem 0 .4rem; }
+  .science-launch p { color: #e0e7ff; max-width: 480px; }
+  .science-launch .science-kicker { color: #c4b5fd; font-size: .85rem; letter-spacing: 0; font-weight: 700; text-transform: none; }
+  .btn.btn-light { background: #fff; color: var(--primary-dark); font-weight: 700; padding: .75rem 1.4rem; border-radius: 12px; border: none; cursor: pointer; flex: none; }
+  .btn.btn-light:active { transform: scale(.98); }
+
+  :focus-visible { outline: 3px solid var(--primary-light); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media (max-width: 900px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .stat-item:nth-child(3) { border-left: none; }
+    .stat-item:nth-child(n+3) { border-top: 1px solid var(--border); }
+    .grid-kelas { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .hero { padding: 1rem 0 1rem; }
+    .stat-item { padding: 0.75rem; gap: 0.6rem; }
+    .stat-ico { width: 36px; height: 36px; }
+    .kelas-num { width: 56px; height: 56px; font-size: 1.5rem; }
+  }
 </style>
 </head>
 <body>
@@ -830,36 +947,41 @@
   <!-- HOME VIEW -->
   <div id="homeView">
     <div class="hero">
-      <h1>BelajarYuk: Pahami Sains, Uji Modelnya 🔬</h1>
-      <p>Hubungkan materi, variabel, eksperimen, grafik, dan visualisasi 3D. Hasil simulasi adalah model yang punya asumsi dan batasan.</p>
+      <h1>Pahami sains, uji modelnya.</h1>
+      <p>Materi, kuis, flashcard, dan laboratorium simulasi untuk kelas 10, 11, dan 12.</p>
     </div>
 
     <div class="stats-row" id="statsRow">
-      <div class="stat-card">
-        <div class="stat-value">10</div>
-        <div class="stat-label">Mata Pelajaran</div>
+      <div class="stat-item">
+        <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/></svg></span>
+        <div><div class="stat-value">10</div><div class="stat-label">Mata pelajaran</div></div>
       </div>
-      <div class="stat-card">
-        <div class="stat-value">3</div>
-        <div class="stat-label">Tingkat Kelas</div>
+      <div class="stat-item">
+        <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg></span>
+        <div><div class="stat-value">3</div><div class="stat-label">Tingkat kelas</div></div>
       </div>
-      <div class="stat-card">
-        <div class="stat-value" id="totalBabStat">0</div>
-        <div class="stat-label">Total Bab</div>
+      <div class="stat-item">
+        <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12"/><path d="M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg></span>
+        <div><div class="stat-value" id="totalBabStat">0</div><div class="stat-label">Total bab</div></div>
       </div>
-      <div class="stat-card">
-        <div class="stat-value" id="progressStat">0%</div>
-        <div class="stat-label">Progress Belajar</div>
+      <div class="stat-item">
+        <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
+        <div>
+          <div class="stat-value" id="progressStat">0%</div>
+          <div class="stat-label" id="progressHint">Progress belajar</div>
+          <div class="stat-bar"><span id="progressBar"></span></div>
+        </div>
       </div>
     </div>
 
     <section class="science-launch">
+      <svg class="lab-atom" viewBox="0 0 120 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="60" cy="60" rx="50" ry="18"/><ellipse cx="60" cy="60" rx="50" ry="18" transform="rotate(60 60 60)"/><ellipse cx="60" cy="60" rx="50" ry="18" transform="rotate(120 60 60)"/></g><circle cx="60" cy="60" r="7" fill="currentColor"/></svg>
       <div class="science-launch-copy">
-        <span class="science-kicker">BELAJAR BERBASIS MODEL</span>
+        <span class="science-kicker">Belajar berbasis model</span>
         <h2>Laboratorium Sains Interaktif</h2>
-        <p>Mulai dari konsep dan variabel, ubah parameter, lalu amati hasil serta visualisasi 3D sederhana.</p>
+        <p>Ubah parameter, lihat hasilnya, dan amati visualisasi 3D sederhana.</p>
       </div>
-      <button class="btn btn-primary" onclick="goScienceLab()">Buka Laboratorium →</button>
+      <button class="btn btn-light" onclick="goScienceLab()">Buka Laboratorium</button>
     </section>
 
     <h2 class="section-title">Pilih Kelas</h2>
@@ -905,15 +1027,6 @@
     <div class="flashcard-container">
       <div class="flashcard" id="flashcard" onclick="flipCard()">
         <div class="flashcard-face flashcard-front">
-          <div class="label">Pertanyaan</div>
-          <div class="content" id="flashcardFront">-</div>
-        </div>
-        <div class="flashcard-face flashcard-back">
-          <div class="label">Jawaban</div>
-          <div class="content" id="flashcardBack">-</div>
-        </div>
-      </div>
-      <div class="flashcardface flashcard-front">
           <div class="label">Pertanyaan</div>
           <div class="content" id="flashcardFront">-</div>
         </div>
@@ -2418,17 +2531,27 @@ function updateBreadcrumb() {
 
 function renderHome() {
   const grid = document.getElementById('kelasGrid');
-  grid.innerHTML = [10,11,12].map(k => `
-    <div class="card card-kelas" onclick="goMapel(${k})">
-      <span class="icon">📚</span>
-      <div class="title">Kelas ${k}</div>
-      <div class="subtitle">${Object.keys(DATA[k]).length} mata pelajaran</div>
-    </div>
-  `).join('');
-  document.getElementById('totalBabStat').textContent = getTotalBab();
+  grid.innerHTML = [10,11,12].map(k => {
+    const mapelCount = Object.keys(DATA[k]).length;
+    const babCount = Object.values(DATA[k]).reduce((a, arr) => a + arr.length, 0);
+    return `
+    <div class="card card-kelas" data-k="${k}" role="button" tabindex="0"
+         onclick="goMapel(${k})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();goMapel(${k})}">
+      <div class="kelas-num">${k}</div>
+      <div class="kelas-info">
+        <div class="title">Kelas ${k}</div>
+        <div class="subtitle">${mapelCount} mata pelajaran, ${babCount} bab</div>
+      </div>
+      <svg class="kelas-go" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+    </div>`;
+  }).join('');
   const done = getCompletedCount();
   const total = getTotalBab();
-  document.getElementById('progressStat').textContent = total ? Math.round(done/total*100) + '%' : '0%';
+  const pct = total ? Math.round(done/total*100) : 0;
+  document.getElementById('totalBabStat').textContent = total;
+  document.getElementById('progressStat').textContent = pct + '%';
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressHint').textContent = done === 0 ? 'Yuk mulai belajar!' : done + ' dari ' + total + ' bab selesai';
 }
 
 /* ============================================================
