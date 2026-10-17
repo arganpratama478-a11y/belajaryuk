@@ -1225,7 +1225,55 @@ const DATA = {
           { q: "sin 60° = ...", opts: ["1/2", "√3/2", "1/√2", "1"], ans: 1, exp: "sin 60° = √3/2." },
           { q: "tan 0° = ...", opts: ["0", "1", "∞", "−1"], ans: 0, exp: "tan 0° = 0." }
          ]
-        }
+      },
+      {
+        title: "Eksponen dan Logaritma",
+        desc: "Sifat-sifat eksponen, bentuk pangkat pecahan, dan dasar logaritma.",
+        materi: "<h2>Eksponen dan Logaritma</h2>\n<p><strong>Eksponen</strong> adalah perkalian berulang: aⁿ = a × a × … × a sebanyak n faktor. <strong>Logaritma</strong> adalah kebalikan dari eksponen.</p>\n<h3>🎯 Sifat Eksponen (a ≠ 0)</h3>\n<div class=\"rumus-box\">aᵐ · aⁿ = aᵐ⁺ⁿ</div>\n<div class=\"rumus-box\">aᵐ / aⁿ = aᵐ⁻ⁿ</div>\n<div class=\"rumus-box\">(aᵐ)ⁿ = aᵐⁿ</div>\n<div class=\"rumus-box\">(a·b)ⁿ = aⁿ · bⁿ</div>\n<div class=\"rumus-box\">a⁰ = 1 &nbsp;&nbsp; a⁻ⁿ = 1/aⁿ &nbsp;&nbsp; a^(m/n) = ⁿ√(aᵐ)</div>\n<h3>📐 Logaritma</h3>\n<p><sup>a</sup>log b = c berarti aᶜ = b, dengan a &gt; 0, a ≠ 1, dan b &gt; 0.</p>\n<div class=\"rumus-box\"><sup>a</sup>log (b·c) = <sup>a</sup>log b + <sup>a</sup>log c</div>\n<div class=\"rumus-box\"><sup>a</sup>log (b/c) = <sup>a</sup>log b − <sup>a</sup>log c</div>\n<div class=\"rumus-box\"><sup>a</sup>log bⁿ = n · <sup>a</sup>log b</div>\n<div class=\"rumus-box\"><sup>a</sup>log a = 1 &nbsp;&nbsp; <sup>a</sup>log 1 = 0</div>\n<div class=\"highlight-box\"><strong>💡 Tips:</strong> Kalau ragu, ubah logaritma ke bentuk eksponen. ²log 8 = 3 sama artinya dengan 2³ = 8.</div>\n<h3>📝 Contoh Soal</h3>\n<div class=\"contoh-soal\"><strong>Sederhanakan 2³ × 2⁴</strong><br><br>Eksponen dijumlah: 2³⁺⁴ = 2⁷ = <strong>128</strong></div>\n<div class=\"contoh-soal\"><strong>Hitung <sup>3</sup>log 18 − <sup>3</sup>log 2</strong><br><br><sup>3</sup>log (18/2) = <sup>3</sup>log 9 = <strong>2</strong>, karena 3² = 9</div>",
+        flashcards: [
+          { q: "a⁰ = ?", a: "1 (dengan a ≠ 0)" },
+          { q: "a⁻ⁿ = ?", a: "1/aⁿ" },
+          { q: "aᵐ · aⁿ = ?", a: "aᵐ⁺ⁿ" },
+          { q: "ᵃlog b = c artinya?", a: "aᶜ = b" },
+          { q: "ᵃlog (b·c) = ?", a: "ᵃlog b + ᵃlog c" }
+        ],
+        kuis: [
+          { q: "2³ × 2⁴ = ...", opts: ["2⁷", "2¹²", "4⁷", "4¹²"], ans: 0, exp: "Eksponen dijumlah: 2³⁺⁴ = 2⁷." },
+          { q: "5⁶ / 5² = ...", opts: ["5³", "5⁴", "5⁸", "5¹²"], ans: 1, exp: "Eksponen dikurang: 5⁶⁻² = 5⁴." },
+          { q: "(3²)³ = ...", opts: ["3⁵", "3⁸", "3⁹", "3⁶"], ans: 3, exp: "Eksponen dikali: 3²ˣ³ = 3⁶." },
+          { q: "7⁰ + 2⁻¹ = ...", opts: ["1", "0,5", "1,5", "2"], ans: 2, exp: "7⁰ = 1 dan 2⁻¹ = ½, jadi 1 + 0,5 = 1,5." },
+          { q: "8^(2/3) = ...", opts: ["2", "8", "4", "16"], ans: 2, exp: "8^(2/3) = ∛(8²) = ∛64 = 4." },
+          { q: "²log 8 = ...", opts: ["3", "2", "4", "6"], ans: 0, exp: "2³ = 8, maka ²log 8 = 3." },
+          { q: "³log 81 = ...", opts: ["3", "9", "27", "4"], ans: 3, exp: "3⁴ = 81, maka ³log 81 = 4." },
+          { q: "²log 4 + ²log 8 = ...", opts: ["6", "12", "5", "32"], ans: 2, exp: "²log (4·8) = ²log 32 = 5." },
+          { q: "⁵log 125 − ⁵log 5 = ...", opts: ["25", "2", "3", "4"], ans: 1, exp: "3 − 1 = 2, atau ⁵log 25 = 2." },
+          { q: "ᵃlog 1 = ...", opts: ["1", "a", "Tidak terdefinisi", "0"], ans: 3, exp: "a⁰ = 1, sehingga ᵃlog 1 = 0." }
+        ]
+      },
+      {
+        title: "Barisan dan Deret",
+        desc: "Barisan dan deret aritmetika serta geometri.",
+        materi: "<h2>Barisan dan Deret</h2>\n<p><strong>Barisan</strong> adalah urutan bilangan menurut pola tertentu. <strong>Deret</strong> adalah jumlah suku-suku barisan.</p>\n<h3>🎯 Aritmetika (selisih tetap = beda b)</h3>\n<div class=\"rumus-box\">Uₙ = a + (n − 1)·b</div>\n<div class=\"rumus-box\">Sₙ = n/2 · (2a + (n − 1)·b)</div>\n<h3>📐 Geometri (perbandingan tetap = rasio r)</h3>\n<div class=\"rumus-box\">Uₙ = a · rⁿ⁻¹</div>\n<div class=\"rumus-box\">Sₙ = a(rⁿ − 1)/(r − 1), untuk r &gt; 1</div>\n<div class=\"highlight-box\"><strong>💡 Tips:</strong> a adalah suku pertama. Beda dicari dengan U₂ − U₁, rasio dicari dengan U₂ / U₁.</div>\n<h3>📝 Contoh Soal</h3>\n<div class=\"contoh-soal\"><strong>Suku ke-10 dari barisan 3, 7, 11, …</strong><br><br>a = 3, b = 4<br>U₁₀ = 3 + 9·4 = <strong>39</strong></div>\n<div class=\"contoh-soal\"><strong>Jumlah 10 suku pertama dari 2 + 5 + 8 + …</strong><br><br>a = 2, b = 3<br>S₁₀ = 10/2 · (2·2 + 9·3) = 5 · 31 = <strong>155</strong></div>\n<div class=\"contoh-soal\"><strong>Suku ke-5 dari barisan geometri 2, 6, 18, …</strong><br><br>a = 2, r = 3<br>U₅ = 2 · 3⁴ = <strong>162</strong></div>",
+        flashcards: [
+          { q: "Rumus Uₙ aritmetika?", a: "Uₙ = a + (n − 1)·b" },
+          { q: "Rumus Uₙ geometri?", a: "Uₙ = a · rⁿ⁻¹" },
+          { q: "Rumus Sₙ aritmetika?", a: "Sₙ = n/2 · (2a + (n − 1)·b)" },
+          { q: "Apa itu beda (b)?", a: "Selisih dua suku berurutan pada barisan aritmetika" },
+          { q: "Apa itu rasio (r)?", a: "Perbandingan dua suku berurutan pada barisan geometri" }
+        ],
+        kuis: [
+          { q: "Suku ke-10 dari 3, 7, 11, … adalah...", opts: ["35", "39", "43", "47"], ans: 1, exp: "a = 3, b = 4, U₁₀ = 3 + 9·4 = 39." },
+          { q: "Beda barisan 5, 9, 13, 17, … adalah...", opts: ["3", "5", "4", "9"], ans: 2, exp: "9 − 5 = 4." },
+          { q: "Rasio barisan 2, 6, 18, 54, … adalah...", opts: ["2", "4", "6", "3"], ans: 3, exp: "6 / 2 = 3." },
+          { q: "Suku ke-5 barisan geometri 2, 6, 18, … adalah...", opts: ["54", "108", "162", "486"], ans: 2, exp: "U₅ = 2·3⁴ = 162." },
+          { q: "Jumlah 10 suku pertama 2 + 5 + 8 + … adalah...", opts: ["145", "155", "165", "175"], ans: 1, exp: "S₁₀ = 5·(4 + 27) = 155." },
+          { q: "Jumlah 5 suku pertama 1 + 2 + 4 + 8 + 16 adalah...", opts: ["31", "32", "30", "16"], ans: 0, exp: "S₅ = 1·(2⁵ − 1)/(2 − 1) = 31." },
+          { q: "Pada barisan aritmetika, U₃ = 7 dan U₇ = 19. Bedanya adalah...", opts: ["2", "4", "3", "5"], ans: 2, exp: "4b = 19 − 7 = 12, maka b = 3." },
+          { q: "Dari soal sebelumnya, suku pertama a = ...", opts: ["2", "3", "0", "1"], ans: 3, exp: "U₃ = a + 2b = 7 → a = 7 − 6 = 1." },
+          { q: "Jumlah bilangan asli 1 sampai 100 adalah...", opts: ["5000", "5050", "5100", "10100"], ans: 1, exp: "S₁₀₀ = 100/2 · (1 + 100) = 5050." },
+          { q: "Rasio barisan 81, 27, 9, 3, … adalah...", opts: ["3", "−3", "1/3", "9"], ans: 2, exp: "27 / 81 = 1/3." }
+        ]
+      }
     ],
     fisika: [
       {
@@ -1920,6 +1968,54 @@ title: "Ikatan Kimia", anim: 1,
           { q: "Turunan ln x adalah...", opts: ["1/x", "x", "ln x", "eˣ"], ans: 0, exp: "d/dx ln x = 1/x." },
           { q: "f(x) = 2x³, f'(2) = ...", opts: ["12", "24", "6", "18"], ans: 1, exp: "f'=6x², f'(2)=6·4=24." }
         ]
+      },
+      {
+        title: "Matriks",
+        desc: "Ordo, operasi matriks, determinan, dan invers matriks 2×2.",
+        materi: "<h2>Matriks</h2>\n<p><strong>Matriks</strong> adalah susunan bilangan dalam baris dan kolom. Ordo matriks ditulis <strong>m × n</strong> (m baris, n kolom). Pada tulisan di sini, baris dipisahkan tanda titik koma, misalnya [1 2; 3 4].</p>\n<h3>🎯 Operasi Matriks</h3>\n<ul>\n<li><strong>Penjumlahan/pengurangan:</strong> hanya bisa jika ordonya sama, operasikan elemen yang seletak.</li>\n<li><strong>Perkalian skalar:</strong> kalikan setiap elemen dengan skalar itu.</li>\n<li><strong>Perkalian matriks:</strong> A(m×n) · B(n×p) = C(m×p). Setiap elemen adalah baris × kolom. Secara umum AB ≠ BA.</li>\n</ul>\n<h3>📐 Determinan dan Invers (2×2)</h3>\n<p>Untuk A = [a b; c d]:</p>\n<div class=\"rumus-box\">det(A) = ad − bc</div>\n<div class=\"rumus-box\">A⁻¹ = (1 / det A) · [d −b; −c a], jika det A ≠ 0</div>\n<div class=\"highlight-box\"><strong>💡 Tips:</strong> Matriks yang determinannya 0 tidak punya invers. Perkalian dengan matriks identitas I tidak mengubah matriks: A · I = A.</div>\n<h3>📝 Contoh Soal</h3>\n<div class=\"contoh-soal\"><strong>A = [2 1; 3 4] dan B = [1 0; 2 5]. Tentukan A + B.</strong><br><br>A + B = [2+1  1+0; 3+2  4+5] = <strong>[3 1; 5 9]</strong></div>\n<div class=\"contoh-soal\"><strong>Tentukan A · B untuk matriks di atas.</strong><br><br>[2·1+1·2  2·0+1·5; 3·1+4·2  3·0+4·5] = <strong>[4 5; 11 20]</strong></div>\n<div class=\"contoh-soal\"><strong>Tentukan det(A).</strong><br><br>det(A) = 2·4 − 1·3 = <strong>5</strong></div>",
+        flashcards: [
+          { q: "Ordo matriks dengan 3 baris dan 2 kolom?", a: "3 × 2" },
+          { q: "Syarat penjumlahan dua matriks?", a: "Ordo kedua matriks sama" },
+          { q: "Syarat perkalian A · B?", a: "Jumlah kolom A = jumlah baris B" },
+          { q: "Determinan matriks [a b; c d]?", a: "ad − bc" },
+          { q: "Kapan matriks 2×2 punya invers?", a: "Jika determinannya tidak sama dengan nol" }
+        ],
+        kuis: [
+          { q: "Matriks dengan 2 baris dan 3 kolom berordo...", opts: ["3 × 2", "2 × 3", "2 × 2", "3 × 3"], ans: 1, exp: "Ordo ditulis baris × kolom, yaitu 2 × 3." },
+          { q: "[1 2; 3 4] + [5 6; 7 8] = ...", opts: ["[6 8; 10 12]", "[5 12; 21 32]", "[6 8; 12 10]", "[4 4; 4 4]"], ans: 0, exp: "Jumlahkan elemen yang seletak." },
+          { q: "3 · [1 −2; 0 4] = ...", opts: ["[3 −2; 0 4]", "[4 1; 3 7]", "[3 −6; 0 12]", "[3 −6; 0 4]"], ans: 2, exp: "Semua elemen dikali 3." },
+          { q: "Determinan [3 2; 1 4] adalah...", opts: ["14", "12", "8", "10"], ans: 3, exp: "3·4 − 2·1 = 10." },
+          { q: "Determinan [5 3; 2 1] adalah...", opts: ["1", "11", "−1", "−11"], ans: 2, exp: "5·1 − 3·2 = −1." },
+          { q: "A berordo 2×3 dan B berordo 3×4. Ordo AB adalah...", opts: ["3 × 3", "2 × 3", "4 × 2", "2 × 4"], ans: 3, exp: "Hasil kali berordo (baris A) × (kolom B) = 2 × 4." },
+          { q: "A = [1 2; 3 4], B = [0 1; 1 0]. AB = ...", opts: ["[2 1; 4 3]", "[0 2; 3 0]", "[1 2; 3 4]", "[3 4; 1 2]"], ans: 0, exp: "Baris × kolom: [1·0+2·1  1·1+2·0; 3·0+4·1  3·1+4·0] = [2 1; 4 3]. Pilihan terakhir adalah BA." },
+          { q: "Matriks [4 2; 6 3] memiliki determinan 0, sehingga matriks ini...", opts: ["Matriks nol", "Tidak punya invers", "Matriks identitas", "Punya invers"], ans: 1, exp: "4·3 − 2·6 = 0, sehingga inversnya tidak ada." },
+          { q: "Hasil kali matriks A dengan matriks identitas I (ordo sesuai) adalah...", opts: ["Matriks nol", "I", "−A", "A"], ans: 3, exp: "Matriks identitas tidak mengubah matriks lain." },
+          { q: "Pada perkalian matriks, secara umum berlaku...", opts: ["AB = BA selalu", "AB = A + B", "AB = 0", "AB belum tentu sama dengan BA"], ans: 3, exp: "Perkalian matriks tidak komutatif." }
+        ]
+      },
+      {
+        title: "Peluang",
+        desc: "Aturan pencacahan, permutasi, kombinasi, dan peluang kejadian.",
+        materi: "<h2>Peluang</h2>\n<p><strong>Aturan perkalian:</strong> jika suatu pekerjaan dapat dilakukan dengan m cara dan pekerjaan lain dengan n cara, maka keduanya bisa dilakukan dengan m × n cara.</p>\n<h3>🎯 Faktorial, Permutasi, Kombinasi</h3>\n<div class=\"rumus-box\">n! = n · (n − 1) · … · 2 · 1 &nbsp;&nbsp; 0! = 1</div>\n<div class=\"rumus-box\">Permutasi (urutan penting): P(n, r) = n! / (n − r)!</div>\n<div class=\"rumus-box\">Kombinasi (urutan tidak penting): C(n, r) = n! / (r! · (n − r)!)</div>\n<h3>📐 Peluang Kejadian</h3>\n<div class=\"rumus-box\">P(A) = n(A) / n(S)</div>\n<div class=\"rumus-box\">P(A′) = 1 − P(A)</div>\n<div class=\"rumus-box\">Frekuensi harapan: Fh = P(A) × banyak percobaan</div>\n<div class=\"highlight-box\"><strong>💡 Tips:</strong> Tanya diri sendiri: apakah urutan berpengaruh? Memilih ketua, sekretaris, dan bendahara memakai permutasi. Memilih anggota tim biasa memakai kombinasi. Nilai peluang selalu antara 0 dan 1.</div>\n<h3>📝 Contoh Soal</h3>\n<div class=\"contoh-soal\"><strong>Dari 5 orang dipilih ketua, sekretaris, dan bendahara. Berapa susunannya?</strong><br><br>P(5, 3) = 5! / 2! = 120 / 2 = <strong>60</strong></div>\n<div class=\"contoh-soal\"><strong>Dari 5 orang dipilih 3 orang sebagai tim (tanpa jabatan). Berapa cara?</strong><br><br>C(5, 3) = 5! / (3!·2!) = <strong>10</strong></div>\n<div class=\"contoh-soal\"><strong>Satu dadu dilempar. Peluang muncul bilangan prima?</strong><br><br>Prima = {2, 3, 5}, jadi P = 3/6 = <strong>1/2</strong></div>",
+        flashcards: [
+          { q: "Rumus permutasi?", a: "P(n, r) = n! / (n − r)!" },
+          { q: "Rumus kombinasi?", a: "C(n, r) = n! / (r! · (n − r)!)" },
+          { q: "Beda permutasi dan kombinasi?", a: "Permutasi memperhatikan urutan, kombinasi tidak" },
+          { q: "Rumus peluang kejadian A?", a: "P(A) = n(A) / n(S)" },
+          { q: "Berapa nilai 0! ?", a: "1" }
+        ],
+        kuis: [
+          { q: "5! = ...", opts: ["25", "60", "120", "720"], ans: 2, exp: "5·4·3·2·1 = 120." },
+          { q: "P(5, 2) = ...", opts: ["10", "20", "25", "120"], ans: 1, exp: "5!/3! = 5·4 = 20." },
+          { q: "C(5, 2) = ...", opts: ["10", "20", "25", "5"], ans: 0, exp: "5!/(2!·3!) = 10." },
+          { q: "Ada 4 baju dan 3 celana. Banyak pasangan baju-celana adalah...", opts: ["7", "14", "24", "12"], ans: 3, exp: "Aturan perkalian: 4 × 3 = 12." },
+          { q: "Banyak susunan huruf berbeda dari kata ABC adalah...", opts: ["3", "6", "9", "12"], ans: 1, exp: "3! = 6." },
+          { q: "Peluang muncul mata dadu genap pada pelemparan satu dadu adalah...", opts: ["1/6", "1/3", "1/2", "2/3"], ans: 2, exp: "Genap = {2, 4, 6}, jadi 3/6 = 1/2." },
+          { q: "Dua koin dilempar bersamaan. Peluang keduanya muncul angka adalah...", opts: ["1/2", "1/3", "3/4", "1/4"], ans: 3, exp: "Ruang sampel 4 titik, kejadiannya 1, jadi 1/4." },
+          { q: "Peluang hujan besok 0,3. Peluang tidak hujan adalah...", opts: ["0,3", "0,6", "0,7", "1,3"], ans: 2, exp: "1 − 0,3 = 0,7." },
+          { q: "Sebuah dadu dilempar 60 kali. Frekuensi harapan muncul mata 6 adalah...", opts: ["6", "10", "12", "60"], ans: 1, exp: "Fh = 1/6 × 60 = 10." },
+          { q: "Dari 6 siswa dipilih 2 orang sebagai tim. Banyak cara adalah...", opts: ["15", "12", "30", "36"], ans: 0, exp: "C(6, 2) = 6·5 / 2 = 15." }
+        ]
       }
     ],
     fisika: [
@@ -2284,6 +2380,54 @@ kimia: [
           { q: "∫ eˣ dx = ...", opts: ["eˣ + C", "xeˣ + C", "eˣ/x + C", "1 + C"], ans: 0, exp: "eˣ + C." },
           { q: "∫ 4x³ dx = ...", opts: ["x⁴ + C", "12x² + C", "x⁴/4 + C", "4x² + C"], ans: 0, exp: "4·x⁴/4 = x⁴ + C." },
           { q: "∫ (x + 1) dx = ...", opts: ["x²/2 + x + C", "x² + x + C", "x + C", "x²/2 + C"], ans: 0, exp: "x²/2 + x + C." }
+        ]
+      },
+      {
+        title: "Integral Tentu",
+        desc: "Integral tentu, teorema dasar kalkulus, dan luas daerah di bawah kurva.",
+        materi: "<h2>Integral Tentu</h2>\n<p>Integral tentu adalah integral yang punya batas bawah a dan batas atas b, sehingga hasilnya berupa <strong>angka</strong>, bukan fungsi.</p>\n<h3>🎯 Teorema Dasar Kalkulus</h3>\n<div class=\"rumus-box\">∫ₐᵇ f(x) dx = F(b) − F(a)</div>\n<p>Dengan F(x) adalah antiturunan dari f(x). Untuk pangkat:</p>\n<div class=\"rumus-box\">∫ xⁿ dx = xⁿ⁺¹ / (n + 1) + C, &nbsp; n ≠ −1</div>\n<h3>📐 Sifat Integral Tentu</h3>\n<ul>\n<li>∫ₐᵃ f(x) dx = 0</li>\n<li>∫ₐᵇ f(x) dx = −∫ᵦᵃ f(x) dx (batas ditukar, tanda berubah)</li>\n<li>∫ₐᵇ k·f(x) dx = k · ∫ₐᵇ f(x) dx</li>\n<li>∫ₐᵇ f(x) dx + ∫ᵇᶜ f(x) dx = ∫ₐᶜ f(x) dx</li>\n</ul>\n<h3>📏 Luas Daerah</h3>\n<p>Luas daerah di bawah kurva y = f(x) (yang berada di atas sumbu x) dari x = a sampai x = b:</p>\n<div class=\"rumus-box\">L = ∫ₐᵇ f(x) dx</div>\n<div class=\"highlight-box\"><strong>💡 Tips:</strong> Konstanta C tidak perlu ditulis pada integral tentu, karena habis saat dikurangkan F(b) − F(a). Jika kurva berada di bawah sumbu x, integralnya negatif, sedangkan luas selalu positif.</div>\n<h3>📝 Contoh Soal</h3>\n<div class=\"contoh-soal\"><strong>Hitung ∫₀² 3x² dx</strong><br><br>F(x) = x³<br>= 2³ − 0³ = <strong>8</strong></div>\n<div class=\"contoh-soal\"><strong>Hitung ∫₁³ (2x + 1) dx</strong><br><br>F(x) = x² + x<br>= (9 + 3) − (1 + 1) = <strong>10</strong></div>\n<div class=\"contoh-soal\"><strong>Luas daerah di bawah y = x², dari x = 0 sampai x = 3</strong><br><br>L = ∫₀³ x² dx = [x³/3]₀³ = 27/3 − 0 = <strong>9 satuan luas</strong></div>",
+        flashcards: [
+          { q: "Teorema dasar kalkulus?", a: "∫ₐᵇ f(x) dx = F(b) − F(a)" },
+          { q: "∫ xⁿ dx = ?", a: "xⁿ⁺¹ / (n + 1) + C, dengan n ≠ −1" },
+          { q: "∫ₐᵃ f(x) dx = ?", a: "0" },
+          { q: "Jika batas ditukar, ∫ₐᵇ f(x) dx = ?", a: "−∫ᵦᵃ f(x) dx" },
+          { q: "Luas di bawah y = f(x) dari a ke b?", a: "L = ∫ₐᵇ f(x) dx" }
+        ],
+        kuis: [
+          { q: "∫₀² 3x² dx = ...", opts: ["6", "8", "12", "16"], ans: 1, exp: "F = x³, jadi 2³ − 0³ = 8." },
+          { q: "∫₁³ 2x dx = ...", opts: ["4", "6", "8", "10"], ans: 2, exp: "F = x², jadi 9 − 1 = 8." },
+          { q: "∫₀⁴ 5 dx = ...", opts: ["5", "9", "25", "20"], ans: 3, exp: "F = 5x, jadi 5·4 − 0 = 20." },
+          { q: "∫₀¹ (x + 1) dx = ...", opts: ["1/2", "1", "3/2", "2"], ans: 2, exp: "F = x²/2 + x, jadi 1/2 + 1 = 3/2." },
+          { q: "∫₀³ x² dx = ...", opts: ["9", "3", "6", "27"], ans: 0, exp: "F = x³/3, jadi 27/3 = 9." },
+          { q: "∫₂² x³ dx = ...", opts: ["16", "4", "2", "0"], ans: 3, exp: "Batas atas dan bawah sama, sehingga hasilnya 0." },
+          { q: "Jika ∫₀³ f(x) dx = 5 dan ∫₃⁵ f(x) dx = 2, maka ∫₀⁵ f(x) dx = ...", opts: ["3", "7", "10", "−3"], ans: 1, exp: "Sifat penjumlahan batas: 5 + 2 = 7." },
+          { q: "Jika ∫₁⁴ f(x) dx = 6, maka ∫₄¹ f(x) dx = ...", opts: ["6", "0", "−6", "1/6"], ans: 2, exp: "Batas ditukar, tanda berubah." },
+          { q: "Luas daerah di bawah y = 2x dari x = 0 sampai x = 3 adalah...", opts: ["6", "12", "18", "9"], ans: 3, exp: "∫₀³ 2x dx = [x²]₀³ = 9." },
+          { q: "Luas daerah di bawah y = x² + 1 dari x = 0 sampai x = 2 adalah...", opts: ["14/3", "6", "10/3", "8"], ans: 0, exp: "[x³/3 + x]₀² = 8/3 + 2 = 14/3." }
+        ]
+      },
+      {
+        title: "Statistika",
+        desc: "Mean, median, modus, jangkauan, kuartil, dan jangkauan interkuartil.",
+        materi: "<h2>Statistika</h2>\n<p>Statistika membantu merangkum data dengan ukuran pemusatan (nilai tengah) dan ukuran penyebaran.</p>\n<h3>🎯 Ukuran Pemusatan (data tunggal)</h3>\n<ul>\n<li><strong>Mean (rata-rata):</strong> jumlah semua data dibagi banyak data.</li>\n<li><strong>Median:</strong> nilai tengah setelah data diurutkan. Jika banyak data genap, ambil rata-rata dua data tengah.</li>\n<li><strong>Modus:</strong> data yang paling sering muncul.</li>\n</ul>\n<div class=\"rumus-box\">x̄ = (x₁ + x₂ + … + xₙ) / n</div>\n<h3>📐 Ukuran Penyebaran</h3>\n<div class=\"rumus-box\">Jangkauan = data terbesar − data terkecil</div>\n<div class=\"rumus-box\">Jangkauan interkuartil: IQR = Q₃ − Q₁</div>\n<p>Q₂ adalah median. Q₁ adalah median data bagian bawah, dan Q₃ adalah median data bagian atas.</p>\n<div class=\"highlight-box\"><strong>💡 Tips:</strong> Selalu urutkan data dari kecil ke besar sebelum mencari median dan kuartil.</div>\n<h3>📝 Contoh Soal</h3>\n<div class=\"contoh-soal\"><strong>Data: 4, 6, 8, 10, 12. Tentukan mean, median, dan jangkauan.</strong><br><br>Mean = 40/5 = <strong>8</strong><br>Median = <strong>8</strong> (data tengah)<br>Jangkauan = 12 − 4 = <strong>8</strong></div>\n<div class=\"contoh-soal\"><strong>Data: 3, 5, 5, 7, 9, 9, 9, 11. Tentukan mean, median, dan modus.</strong><br><br>Mean = 58/8 = <strong>7,25</strong><br>Median = (7 + 9)/2 = <strong>8</strong><br>Modus = <strong>9</strong></div>\n<div class=\"contoh-soal\"><strong>Data: 2, 4, 6, 8, 10, 12, 14. Tentukan Q₁, Q₃, dan IQR.</strong><br><br>Q₂ = 8, bagian bawah (2, 4, 6) → Q₁ = <strong>4</strong><br>Bagian atas (10, 12, 14) → Q₃ = <strong>12</strong><br>IQR = 12 − 4 = <strong>8</strong></div>",
+        flashcards: [
+          { q: "Rumus mean?", a: "Jumlah semua data dibagi banyak data" },
+          { q: "Median untuk banyak data genap?", a: "Rata-rata dua data tengah (setelah diurutkan)" },
+          { q: "Apa itu modus?", a: "Data yang paling sering muncul" },
+          { q: "Rumus jangkauan?", a: "Data terbesar − data terkecil" },
+          { q: "Rumus jangkauan interkuartil?", a: "IQR = Q₃ − Q₁" }
+        ],
+        kuis: [
+          { q: "Mean dari 4, 6, 8, 10, 12 adalah...", opts: ["6", "7", "8", "10"], ans: 2, exp: "40 / 5 = 8." },
+          { q: "Median dari 3, 7, 5, 9, 1 adalah...", opts: ["7", "5", "3", "9"], ans: 1, exp: "Urut: 1, 3, 5, 7, 9. Data tengahnya 5." },
+          { q: "Median dari 2, 4, 6, 8 adalah...", opts: ["4", "6", "5", "20"], ans: 2, exp: "(4 + 6) / 2 = 5." },
+          { q: "Modus dari 2, 3, 3, 4, 5, 3, 6 adalah...", opts: ["3", "2", "4", "6"], ans: 0, exp: "Angka 3 muncul tiga kali." },
+          { q: "Jangkauan dari 12, 5, 20, 8, 15 adalah...", opts: ["15", "12", "8", "20"], ans: 0, exp: "20 − 5 = 15." },
+          { q: "Rata-rata 4 bilangan adalah 6. Setelah ditambah bilangan 11, rata-rata barunya...", opts: ["6,5", "7", "7,5", "8"], ans: 1, exp: "Jumlah awal 24, jadi (24 + 11) / 5 = 7." },
+          { q: "Rata-rata nilai 5 siswa adalah 80. Jika siswa bernilai 100 keluar, rata-rata 4 siswa lain...", opts: ["70", "72,5", "75", "76"], ans: 2, exp: "Jumlah 400, sisa 300, jadi 300 / 4 = 75." },
+          { q: "Q₁ dari data 2, 4, 6, 8, 10, 12, 14 adalah...", opts: ["6", "8", "2", "4"], ans: 3, exp: "Median bagian bawah (2, 4, 6) adalah 4." },
+          { q: "IQR dari data 2, 4, 6, 8, 10, 12, 14 adalah...", opts: ["6", "8", "10", "12"], ans: 1, exp: "Q₃ − Q₁ = 12 − 4 = 8." },
+          { q: "Kuartil kedua (Q₂) sama dengan...", opts: ["Mean", "Modus", "Jangkauan", "Median"], ans: 3, exp: "Q₂ membagi data menjadi dua bagian sama banyak, yaitu median." }
         ]
       }
     ],
