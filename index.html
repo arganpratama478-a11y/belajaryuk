@@ -1098,7 +1098,7 @@ const DATA = {
   10: {
     matematika: [
       { 
-        title: "Persamaan & Pertidaksamaan Linear", 
+        title: "Persamaan & Pertidaksamaan Linear", anim: 0, 
         desc: "Konsep dasar persamaan linear satu variabel dan penerapannya.",
         materi: `
           <h2>Persamaan & Pertidaksamaan Linear</h2>
@@ -1146,7 +1146,7 @@ const DATA = {
           ]
         },
       { 
-  title: "Fungsi Kuadrat", 
+  title: "Fungsi Kuadrat", anim: 1, 
         desc: "Grafik parabola, akar-akar, dan titik puncak fungsi kuadrat.",
         materi: `
           <h2>Fungsi Kuadrat</h2>
@@ -1188,7 +1188,7 @@ const DATA = {
           ]
         },    
       {
-        title: "Trigonometri Dasar", 
+        title: "Trigonometri Dasar", anim: 2, 
         desc: "Sinus, cosinus, tangen pada segitiga siku-siku.",
         materi: `
           <h2>Trigonometri Dasar</h2>
@@ -1226,8 +1226,8 @@ const DATA = {
           { q: "tan 0° = ...", opts: ["0", "1", "∞", "−1"], ans: 0, exp: "tan 0° = 0." }
          ]
         }
-      ],
-        fisika: [
+    ],
+    fisika: [
       {
         title: "Besaran & Satuan",
         desc: "Besaran pokok, turunan, dan sistem satuan internasional.",
@@ -1271,7 +1271,7 @@ const DATA = {
         ]
         },
        {
-        title: "Gerak Lurus",
+        title: "Gerak Lurus", anim: 0,
         desc: "GLB, GLBB, jarak, perpindahan, kecepatan, dan percepatan.",
           materi: `
           <h2>Gerak Lurus</h2>
@@ -1311,11 +1311,201 @@ const DATA = {
           { q: "Benda jatuh bebas, g = 10 m/s². Setelah 3 s, v = ...", opts: ["10", "20", "30", "40"], ans: 2, exp: "v = g·t = 10·3 = 30 m/s." },
           { q: "GLBB diperlambat punya a...", opts: ["Positif", "Negatif", "Nol", "Tak hingga"], ans: 1, exp: "Diperlambat → a negatif." }
         ]
+      },
+      {
+        title: "Vektor",
+        desc: "Besaran skalar dan vektor, resultan, dan komponen vektor.",
+        materi: `
+          <h2>Vektor</h2>
+          <p><strong>Besaran skalar</strong> hanya punya nilai (massa, waktu, jarak, laju). <strong>Besaran vektor</strong> punya nilai dan arah (perpindahan, kecepatan, percepatan, gaya).</p>
+          <h3>🎯 Resultan Dua Vektor</h3>
+          <ul>
+            <li><strong>Searah:</strong> R = A + B</li>
+            <li><strong>Berlawanan arah:</strong> R = A − B (searah vektor yang lebih besar)</li>
+            <li><strong>Saling tegak lurus:</strong> R = √(A² + B²)</li>
+            <li><strong>Membentuk sudut θ:</strong> R = √(A² + B² + 2AB cos θ)</li>
+          </ul>
+          <h3>📐 Komponen Vektor</h3>
+          <p>Vektor A yang membentuk sudut θ terhadap sumbu x dapat diuraikan menjadi:</p>
+          <div class="rumus-box">Aₓ = A cos θ</div>
+          <div class="rumus-box">A_y = A sin θ</div>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> Jarak itu skalar (panjang lintasan), perpindahan itu vektor (posisi akhir dikurangi posisi awal). Keduanya bisa berbeda nilainya.
+          </div>
+          <h3>📝 Contoh Soal</h3>
+          <div class="contoh-soal">
+            <strong>Dua gaya 3 N dan 4 N saling tegak lurus. Berapa resultannya?</strong><br><br>
+            R = √(3² + 4²) = √25 = <strong>5 N</strong>
+          </div>
+          <div class="contoh-soal">
+            <strong>Gaya 20 N membentuk sudut 30° terhadap sumbu x. Tentukan komponennya.</strong><br><br>
+            Fₓ = 20 cos 30° = 10√3 ≈ <strong>17,3 N</strong><br>
+            F_y = 20 sin 30° = <strong>10 N</strong>
+          </div>`,
+        flashcards: [
+          { q: "Apa beda besaran skalar dan vektor?", a: "Skalar hanya punya nilai, vektor punya nilai dan arah" },
+          { q: "Sebutkan 3 contoh besaran vektor", a: "Perpindahan, kecepatan, gaya (juga percepatan)" },
+          { q: "Resultan dua vektor saling tegak lurus?", a: "R = √(A² + B²)" },
+          { q: "Komponen x vektor A bersudut θ terhadap sumbu x?", a: "Aₓ = A cos θ" },
+          { q: "Resultan dua vektor berlawanan arah?", a: "Selisih besarnya, searah dengan vektor yang lebih besar" }
+        ],
+        kuis: [
+          { q: "Manakah yang termasuk besaran skalar?", opts: ["Perpindahan", "Kecepatan", "Massa", "Gaya"], ans: 2, exp: "Massa hanya punya nilai, tanpa arah." },
+          { q: "Besaran vektor adalah besaran yang memiliki...", opts: ["Nilai saja", "Arah saja", "Nilai dan arah", "Satuan saja"], ans: 2, exp: "Vektor ditentukan oleh nilai dan arah." },
+          { q: "Dua gaya 5 N dan 7 N searah. Resultannya...", opts: ["2 N", "12 N", "35 N", "√74 N"], ans: 1, exp: "Searah: R = 5 + 7 = 12 N." },
+          { q: "Dua gaya 8 N dan 3 N berlawanan arah. Resultannya...", opts: ["5 N", "11 N", "24 N", "8/3 N"], ans: 0, exp: "Berlawanan: R = 8 − 3 = 5 N." },
+          { q: "Gaya 6 N dan 8 N saling tegak lurus. Resultannya...", opts: ["14 N", "2 N", "10 N", "48 N"], ans: 2, exp: "R = √(36 + 64) = √100 = 10 N." },
+          { q: "Vektor 10 N bersudut 60° terhadap sumbu x. Komponen x-nya...", opts: ["5 N", "5√3 N", "10 N", "10√3 N"], ans: 0, exp: "Aₓ = 10 cos 60° = 10 × ½ = 5 N." },
+          { q: "Vektor 20 N bersudut 30° terhadap sumbu x. Komponen y-nya...", opts: ["10√3 N", "20 N", "10 N", "5 N"], ans: 2, exp: "A_y = 20 sin 30° = 20 × ½ = 10 N." },
+          { q: "Andi berjalan 3 m ke timur lalu 4 m ke utara. Besar perpindahannya...", opts: ["1 m", "5 m", "7 m", "12 m"], ans: 1, exp: "Tegak lurus: √(3² + 4²) = 5 m." },
+          { q: "Pada soal sebelumnya, jarak yang ditempuh Andi adalah...", opts: ["1 m", "5 m", "7 m", "12 m"], ans: 2, exp: "Jarak = panjang lintasan = 3 + 4 = 7 m." },
+          { q: "Dua vektor sama besar F dan berlawanan arah. Resultannya...", opts: ["F", "2F", "F²", "0"], ans: 3, exp: "Saling meniadakan: F − F = 0." }
+        ]
+      },
+      {
+        title: "Gerak Parabola",
+        desc: "Gerak peluru: gabungan GLB dan GLBB, tinggi maksimum, dan jangkauan.",
+        materi: `
+          <h2>Gerak Parabola</h2>
+          <p>Gerak parabola adalah gabungan dua gerak: <strong>GLB</strong> pada sumbu x (horizontal) dan <strong>GLBB</strong> pada sumbu y (vertikal, percepatan g ke bawah). Rumus di bawah berlaku tanpa hambatan udara dan pada tanah datar.</p>
+          <h3>🎯 Komponen Kecepatan Awal</h3>
+          <div class="rumus-box">v₀ₓ = v₀ cos α</div>
+          <div class="rumus-box">v₀_y = v₀ sin α</div>
+          <h3>📐 Rumus Penting</h3>
+          <div class="rumus-box">Waktu ke puncak: t = v₀ sin α / g</div>
+          <div class="rumus-box">Waktu total di udara: t = 2 v₀ sin α / g</div>
+          <div class="rumus-box">Tinggi maksimum: H = v₀² sin² α / 2g</div>
+          <div class="rumus-box">Jangkauan: R = v₀² sin 2α / g</div>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> Di titik tertinggi, kecepatan vertikal = 0 tetapi kecepatan horizontal tetap. Jangkauan terjauh dicapai pada α = 45°, dan sudut α dengan (90° − α) memberi jangkauan yang sama.
+          </div>
+          <h3>📝 Contoh Soal</h3>
+          <div class="contoh-soal">
+            <strong>Bola ditendang dengan v₀ = 20 m/s, sudut 30°, g = 10 m/s². Tentukan waktu di udara, tinggi maksimum, dan jangkauan.</strong><br><br>
+            t = 2·20·sin 30° / 10 = <strong>2 s</strong><br>
+            H = 20²·sin² 30° / (2·10) = 400·0,25 / 20 = <strong>5 m</strong><br>
+            R = 20²·sin 60° / 10 = 40·(√3/2) = 20√3 ≈ <strong>34,6 m</strong>
+          </div>`,
+        flashcards: [
+          { q: "Gerak parabola adalah gabungan dari?", a: "GLB (sumbu x) dan GLBB (sumbu y)" },
+          { q: "Kecepatan vertikal di titik tertinggi?", a: "Nol (kecepatan horizontal tetap)" },
+          { q: "Rumus tinggi maksimum?", a: "H = v₀² sin² α / 2g" },
+          { q: "Sudut untuk jangkauan terjauh?", a: "45° (tanpa hambatan udara)" },
+          { q: "Rumus waktu total di udara?", a: "t = 2 v₀ sin α / g" }
+        ],
+        kuis: [
+          { q: "Komponen horizontal gerak parabola bersifat...", opts: ["GLB", "GLBB dipercepat", "GLBB diperlambat", "Diam"], ans: 0, exp: "Tanpa gaya horizontal, kecepatan horizontal konstan (GLB)." },
+          { q: "Percepatan benda di titik tertinggi gerak parabola (tanpa hambatan udara)...", opts: ["Nol", "g ke bawah", "g ke atas", "Berubah-ubah"], ans: 1, exp: "Percepatan selalu g ke bawah, meski kecepatan vertikal sesaat nol." },
+          { q: "Di titik tertinggi, yang bernilai nol adalah...", opts: ["Kecepatan horizontal", "Percepatan", "Kecepatan vertikal", "Gaya gravitasi"], ans: 2, exp: "v_y = 0 di puncak, sedangkan vₓ tetap." },
+          { q: "Sudut tembak untuk jangkauan terjauh adalah...", opts: ["30°", "60°", "90°", "45°"], ans: 3, exp: "R = v₀² sin 2α / g maksimum saat sin 2α = 1, yaitu α = 45°." },
+          { q: "v₀ = 40 m/s, α = 30°, g = 10 m/s². Waktu di udara = ...", opts: ["2 s", "4 s", "6 s", "8 s"], ans: 1, exp: "t = 2·40·0,5 / 10 = 4 s." },
+          { q: "Soal yang sama, tinggi maksimumnya = ...", opts: ["10 m", "15 m", "20 m", "40 m"], ans: 2, exp: "H = 1600·0,25 / 20 = 20 m." },
+          { q: "v₀ = 20 m/s, α = 45°, g = 10 m/s². Jangkauan = ...", opts: ["20 m", "40 m", "20√2 m", "80 m"], ans: 1, exp: "R = 400·sin 90° / 10 = 40 m." },
+          { q: "Bola dilempar mendatar 10 m/s dari tebing setinggi 20 m (g = 10). Waktu sampai tanah = ...", opts: ["1 s", "3 s", "4 s", "2 s"], ans: 3, exp: "h = ½gt², 20 = 5t², t = 2 s." },
+          { q: "Pada soal sebelumnya, jarak horizontal bola dari dasar tebing = ...", opts: ["20 m", "10 m", "40 m", "30 m"], ans: 0, exp: "x = vₓ·t = 10 × 2 = 20 m." },
+          { q: "Dua peluru ditembakkan dengan v₀ sama pada sudut 30° dan 60°. Jangkauannya...", opts: ["Sudut 30° lebih jauh", "Sudut 60° lebih jauh", "Sama jauh", "Tidak dapat ditentukan"], ans: 2, exp: "sin 60° = sin 120°, sehingga jangkauannya sama." }
+        ]
+      },
+      {
+        title: "Hukum Newton",
+        desc: "Hukum I, II, III Newton, gaya berat, dan gaya normal.",
+        materi: `
+          <h2>Hukum Newton tentang Gerak</h2>
+          <p>Gaya adalah dorongan atau tarikan yang dapat mengubah gerak benda. Satuannya <strong>newton (N)</strong>, di mana 1 N = 1 kg·m/s².</p>
+          <h3>🎯 Tiga Hukum Newton</h3>
+          <ul>
+            <li><strong>Hukum I (inersia):</strong> jika resultan gaya nol, benda diam tetap diam atau bergerak lurus beraturan.</li>
+            <li><strong>Hukum II:</strong> percepatan sebanding dengan resultan gaya dan berbanding terbalik dengan massa.</li>
+            <li><strong>Hukum III (aksi-reaksi):</strong> jika benda A memberi gaya pada B, maka B memberi gaya pada A yang sama besar dan berlawanan arah.</li>
+          </ul>
+          <div class="rumus-box">Hukum I: ΣF = 0 → a = 0</div>
+          <div class="rumus-box">Hukum II: ΣF = m · a</div>
+          <div class="rumus-box">Gaya berat: w = m · g</div>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> Pasangan aksi-reaksi bekerja pada <strong>dua benda yang berbeda</strong>, jadi tidak saling meniadakan. Gaya normal (N) selalu tegak lurus bidang sentuh; di lantai datar tanpa gaya vertikal lain, N = w.
+          </div>
+          <h3>📝 Contoh Soal</h3>
+          <div class="contoh-soal">
+            <strong>Balok 4 kg ditarik gaya 20 N pada lantai licin. Berapa percepatannya?</strong><br><br>
+            a = F / m = 20 / 4 = <strong>5 m/s²</strong>
+          </div>
+          <div class="contoh-soal">
+            <strong>Balok 4 kg ditarik gaya 20 N dan ada gaya gesek 4 N. Berapa percepatannya?</strong><br><br>
+            ΣF = 20 − 4 = 16 N<br>
+            a = 16 / 4 = <strong>4 m/s²</strong>
+          </div>`,
+        flashcards: [
+          { q: "Bunyi Hukum I Newton?", a: "Jika ΣF = 0, benda diam tetap diam atau bergerak lurus beraturan" },
+          { q: "Rumus Hukum II Newton?", a: "ΣF = m · a" },
+          { q: "Ciri pasangan aksi-reaksi?", a: "Sama besar, berlawanan arah, bekerja pada dua benda berbeda" },
+          { q: "Rumus gaya berat?", a: "w = m · g" },
+          { q: "Apa itu inersia?", a: "Kecenderungan benda mempertahankan keadaan geraknya" }
+        ],
+        kuis: [
+          { q: "Hukum I Newton disebut juga hukum...", opts: ["Aksi-reaksi", "Inersia", "Gravitasi", "Percepatan"], ans: 1, exp: "Hukum I menyatakan sifat kelembaman (inersia) benda." },
+          { q: "Satuan gaya dalam SI adalah...", opts: ["Joule", "Watt", "Newton", "Pascal"], ans: 2, exp: "Satuan gaya adalah newton (N)." },
+          { q: "Benda 5 kg dikenai gaya 20 N. Percepatannya...", opts: ["4 m/s²", "15 m/s²", "25 m/s²", "100 m/s²"], ans: 0, exp: "a = F/m = 20/5 = 4 m/s²." },
+          { q: "Benda 2 kg bergerak dengan a = 3 m/s². Resultan gayanya...", opts: ["1,5 N", "5 N", "6 N", "9 N"], ans: 2, exp: "F = m·a = 2 × 3 = 6 N." },
+          { q: "Berat benda bermassa 6 kg (g = 10 m/s²) adalah...", opts: ["60 N", "6 N", "16 N", "600 N"], ans: 0, exp: "w = m·g = 6 × 10 = 60 N." },
+          { q: "Seseorang mendorong dinding dengan gaya 50 N. Gaya dinding pada orang itu...", opts: ["0 N", "25 N", "50 N berlawanan arah", "50 N searah"], ans: 2, exp: "Hukum III: sama besar dan berlawanan arah." },
+          { q: "Mobil melaju lurus dengan kecepatan konstan 20 m/s. Resultan gaya padanya...", opts: ["Searah gerak", "Nol", "Berlawanan arah gerak", "Sama dengan beratnya"], ans: 1, exp: "Kecepatan konstan berarti a = 0, sehingga ΣF = 0." },
+          { q: "Balok 10 kg di lantai datar (g = 10). Gaya normalnya...", opts: ["10 N", "50 N", "100 N", "1000 N"], ans: 2, exp: "N = w = m·g = 10 × 10 = 100 N." },
+          { q: "Balok 2 kg ditarik gaya 10 N dan gaya gesek 4 N. Percepatannya...", opts: ["2 m/s²", "3 m/s²", "5 m/s²", "7 m/s²"], ans: 1, exp: "ΣF = 10 − 4 = 6 N, a = 6/2 = 3 m/s²." },
+          { q: "Penumpang terdorong ke depan saat bus mengerem mendadak. Ini contoh...", opts: ["Hukum II Newton", "Hukum I Newton", "Hukum III Newton", "Hukum Gravitasi"], ans: 1, exp: "Tubuh cenderung mempertahankan geraknya (inersia)." }
+        ]
+      },
+      {
+        title: "Usaha dan Energi",
+        desc: "Usaha, energi kinetik, energi potensial, dan kekekalan energi mekanik.",
+        materi: `
+          <h2>Usaha dan Energi</h2>
+          <p><strong>Usaha</strong> adalah hasil kali gaya dengan perpindahan searah gaya. <strong>Energi</strong> adalah kemampuan melakukan usaha. Satuan keduanya joule (J).</p>
+          <h3>🎯 Rumus Dasar</h3>
+          <div class="rumus-box">Usaha: W = F · s · cos θ</div>
+          <div class="rumus-box">Energi kinetik: Ek = ½ m v²</div>
+          <div class="rumus-box">Energi potensial: Ep = m · g · h</div>
+          <div class="rumus-box">Energi mekanik: Em = Ek + Ep</div>
+          <div class="rumus-box">Usaha total: W = ΔEk</div>
+          <div class="rumus-box">Daya: P = W / t (satuan watt)</div>
+          <h3>⚖️ Kekekalan Energi Mekanik</h3>
+          <p>Jika hanya gaya konservatif (misalnya gravitasi) yang bekerja, energi mekanik konstan: Ek₁ + Ep₁ = Ek₂ + Ep₂.</p>
+          <div class="highlight-box">
+            <strong>💡 Tips:</strong> Gaya yang tegak lurus arah perpindahan tidak melakukan usaha, karena cos 90° = 0. Saat benda jatuh, Ep berkurang dan Ek bertambah dengan jumlah yang sama.
+          </div>
+          <h3>📝 Contoh Soal</h3>
+          <div class="contoh-soal">
+            <strong>Gaya 10 N mendorong balok sejauh 5 m searah gaya. Berapa usahanya?</strong><br><br>
+            W = F·s = 10 × 5 = <strong>50 J</strong>
+          </div>
+          <div class="contoh-soal">
+            <strong>Bola 2 kg dijatuhkan dari ketinggian 5 m (g = 10). Berapa kecepatannya di tanah?</strong><br><br>
+            Ep awal = Ek akhir → m·g·h = ½ m v²<br>
+            v = √(2gh) = √(2·10·5) = √100 = <strong>10 m/s</strong>
+          </div>`,
+        flashcards: [
+          { q: "Rumus usaha?", a: "W = F · s · cos θ" },
+          { q: "Rumus energi kinetik?", a: "Ek = ½ m v²" },
+          { q: "Rumus energi potensial gravitasi?", a: "Ep = m · g · h" },
+          { q: "Bunyi kekekalan energi mekanik?", a: "Jika hanya gaya konservatif bekerja, Em = Ek + Ep tetap" },
+          { q: "Satuan usaha dan daya?", a: "Usaha: joule (J), daya: watt (W)" }
+        ],
+        kuis: [
+          { q: "Satuan usaha dalam SI adalah...", opts: ["Newton", "Joule", "Watt", "Pascal"], ans: 1, exp: "Usaha dan energi bersatuan joule (J)." },
+          { q: "Gaya 20 N menggeser benda 3 m searah gaya. Usahanya...", opts: ["6,7 J", "23 J", "60 J", "17 J"], ans: 2, exp: "W = F·s = 20 × 3 = 60 J." },
+          { q: "Gaya yang tegak lurus perpindahan menghasilkan usaha...", opts: ["Maksimum", "Setengah F·s", "Negatif", "Nol"], ans: 3, exp: "cos 90° = 0, sehingga W = 0." },
+          { q: "Energi kinetik benda 2 kg yang bergerak 4 m/s adalah...", opts: ["8 J", "16 J", "32 J", "4 J"], ans: 1, exp: "Ek = ½·2·4² = 16 J." },
+          { q: "Energi potensial benda 3 kg pada ketinggian 5 m (g = 10) adalah...", opts: ["150 J", "15 J", "50 J", "1500 J"], ans: 0, exp: "Ep = m·g·h = 3 × 10 × 5 = 150 J." },
+          { q: "Benda 1 kg dijatuhkan dari ketinggian 20 m (g = 10). Kecepatan di tanah...", opts: ["10 m/s", "20 m/s", "40 m/s", "200 m/s"], ans: 1, exp: "v = √(2gh) = √400 = 20 m/s." },
+          { q: "Pada jatuh bebas tanpa hambatan udara, energi mekanik benda...", opts: ["Bertambah", "Berkurang", "Tetap", "Nol"], ans: 2, exp: "Hanya gravitasi yang bekerja, sehingga Em kekal." },
+          { q: "Mesin berdaya 100 W bekerja selama 10 s. Usaha yang dilakukan...", opts: ["10 J", "1000 J", "100 J", "10.000 J"], ans: 1, exp: "W = P·t = 100 × 10 = 1000 J." },
+          { q: "Usaha total yang dilakukan pada benda sama dengan...", opts: ["Perubahan massa", "Gaya dikali waktu", "Energi mekanik awal", "Perubahan energi kinetik"], ans: 3, exp: "Teorema usaha-energi: W = ΔEk." },
+          { q: "Benda 2 kg dipercepat dari 3 m/s menjadi 6 m/s. Usaha totalnya...", opts: ["9 J", "18 J", "27 J", "36 J"], ans: 2, exp: "W = ½·2·(6² − 3²) = 36 − 9 = 27 J." }
+        ]
       }
     ],
     kimia: [
       {
-        title: "Struktur Atom",
+        title: "Struktur Atom", anim: 0,
         desc: "Partikel penyusun atom, nomor atom, dan konfigurasi elektron.",
         materi: `
           <h2>Struktur Atom</h2>
@@ -1358,7 +1548,7 @@ const DATA = {
         ]
       },
     {
-title: "Ikatan Kimia",
+title: "Ikatan Kimia", anim: 1,
         desc: "Ikatan ion, kovalen, dan logam.",
         materi: `
           <h2>Ikatan Kimia</h2>
@@ -1734,7 +1924,7 @@ title: "Ikatan Kimia",
     ],
     fisika: [
       {
-        title: "Fluida Statis",
+        title: "Fluida Statis", anim: 1,
         desc: "Tekanan, hukum Pascal, Archimedes, dan terapung.",
         materi: `
           <h2>Fluida Statis</h2>
@@ -2615,7 +2805,7 @@ function renderBab() {
         <div class="bab-actions" onclick="event.stopPropagation()">
           <button class="btn btn-primary" onclick="goMateri(${i})" style="font-size:0.75rem;padding:0.4rem 0.8rem">📖 Materi</button>
           ${b.flashcards ? `<button class="btn btn-outline" onclick="goFlashcardsFromBab(${i})" style="font-size:0.75rem;padding:0.4rem 0.8rem">🃏 Flashcard</button>` : ''}
-          ${MAPEL[state.mapel].hasAnimasi ? `<button class="btn btn-outline" onclick="goAnimasiFromBab(${i})" style="font-size:0.75rem;padding:0.4rem 0.8rem">✨ Animasi</button>` : ''}
+          ${(MAPEL[state.mapel].hasAnimasi && b.anim !== undefined) ? `<button class="btn btn-outline" onclick="goAnimasiFromBab(${i})" style="font-size:0.75rem;padding:0.4rem 0.8rem">✨ Animasi</button>` : ''}
         </div>
       </div>
     `;
@@ -2817,7 +3007,8 @@ function goAnimasi() {
 function renderAnimasi() {
   const mapel = state.mapel;
   const babIdx = state.babIndex;
-  const animData = ANIMASI_DATA[mapel] && ANIMASI_DATA[mapel][babIdx];
+  const bab = DATA[state.kelas] && DATA[state.kelas][mapel] && DATA[state.kelas][mapel][babIdx];
+  const animData = (bab && bab.anim !== undefined && ANIMASI_DATA[mapel]) ? ANIMASI_DATA[mapel][bab.anim] : null;
   
   if (!animData) {
     document.getElementById('animasiTitle').textContent = '✨ Animasi Interaktif';
